@@ -1,0 +1,4 @@
+16:10:55 login23-1.hpc.itc.rwth-aachen.de __main__.hello_world-DFTIGP7J7JVB[211052:MainThread] INFO Indirect proxy 211052 child process 212759 started
+16:10:55 login23-1.hpc.itc.rwth-aachen.de __main__.hello_world-DFTIGP7J7JVB[211052:MainThread] INFO Waiting for child process 212759 to complete
+16:10:55 login23-1.hpc.itc.rwth-aachen.de __main__.hello_world-DFTIGP7J7JVB[211052:MainThread] INFO Indirect proxy 211052 child process 212759 complete. return code: 0
+16:10:55 login23-1.hpc.itc.rwth-aachen.de __main__.hello_world-DFTIGP7J7JVB[211052:MainThread] INFO Performing cleanup

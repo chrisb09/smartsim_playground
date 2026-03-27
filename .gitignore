@@ -1,0 +1,13 @@
+python/
+tmp/
+
+.*
+!.gitignore
+!.gitmodules
+!.gitattributes
+
+
+
+
+# We don't use a submodule for SmartRedis, as the install.sh script clones and installs it
+SmartRedis/

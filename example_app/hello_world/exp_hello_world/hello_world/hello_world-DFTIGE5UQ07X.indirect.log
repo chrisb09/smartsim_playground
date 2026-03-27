@@ -1,0 +1,4 @@
+16:10:31 login23-1.hpc.itc.rwth-aachen.de __main__.hello_world-DFTIGE5UQ07X[167457:MainThread] INFO Indirect proxy 167457 child process 170160 started
+16:10:31 login23-1.hpc.itc.rwth-aachen.de __main__.hello_world-DFTIGE5UQ07X[167457:MainThread] INFO Waiting for child process 170160 to complete
+16:10:31 login23-1.hpc.itc.rwth-aachen.de __main__.hello_world-DFTIGE5UQ07X[167457:MainThread] INFO Indirect proxy 167457 child process 170160 complete. return code: 0
+16:10:31 login23-1.hpc.itc.rwth-aachen.de __main__.hello_world-DFTIGE5UQ07X[167457:MainThread] INFO Performing cleanup

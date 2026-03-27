@@ -1,0 +1,3 @@
+/hpcwork/ro092286/smartsim/example_app/build/CMakeFiles/dummy_solver.dir
+/hpcwork/ro092286/smartsim/example_app/build/CMakeFiles/edit_cache.dir
+/hpcwork/ro092286/smartsim/example_app/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,4 @@
+13:19:11 n23m0123.hpc.itc.rwth-aachen.de __main__.hello_world-DFSK6O5NR4IG[135528:MainThread] INFO Indirect proxy 135528 child process 135592 started
+13:19:11 n23m0123.hpc.itc.rwth-aachen.de __main__.hello_world-DFSK6O5NR4IG[135528:MainThread] INFO Waiting for child process 135592 to complete
+13:19:12 n23m0123.hpc.itc.rwth-aachen.de __main__.hello_world-DFSK6O5NR4IG[135528:MainThread] INFO Indirect proxy 135528 child process 135592 complete. return code: 0
+13:19:12 n23m0123.hpc.itc.rwth-aachen.de __main__.hello_world-DFSK6O5NR4IG[135528:MainThread] INFO Performing cleanup

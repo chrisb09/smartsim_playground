@@ -1,0 +1,6 @@
+[submodule "mini_app"]
+	path = mini_app
+	url = git@github.com:chrisb09/terrain_solver.git
+[submodule "lmod_dependencies"]
+	path = lmod_dependencies
+	url = git@github.com:chrisb09/lmod_dependencies.git

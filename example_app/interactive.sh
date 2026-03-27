@@ -1,0 +1,1 @@
+salloc -N 2 --ntasks-per-node=30 --ntasks 60 -t 01:00:00 --partition devel

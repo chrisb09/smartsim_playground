@@ -1,0 +1,4 @@
+11:31:14 login23-g-1.hpc.itc.rwth-aachen.de __main__.hello_world-DFJZMKD68H83[2953:MainThread] INFO Indirect proxy 2953 child process 3060 started
+11:31:14 login23-g-1.hpc.itc.rwth-aachen.de __main__.hello_world-DFJZMKD68H83[2953:MainThread] INFO Waiting for child process 3060 to complete
+11:31:14 login23-g-1.hpc.itc.rwth-aachen.de __main__.hello_world-DFJZMKD68H83[2953:MainThread] INFO Indirect proxy 2953 child process 3060 complete. return code: 0
+11:31:14 login23-g-1.hpc.itc.rwth-aachen.de __main__.hello_world-DFJZMKD68H83[2953:MainThread] INFO Performing cleanup

@@ -1,0 +1,4 @@
+11:47:54 n23m0123.hpc.itc.rwth-aachen.de __main__.hello_world-DFJZZC7C3ZQA[480717:MainThread] INFO Indirect proxy 480717 child process 480761 started
+11:47:54 n23m0123.hpc.itc.rwth-aachen.de __main__.hello_world-DFJZZC7C3ZQA[480717:MainThread] INFO Waiting for child process 480761 to complete
+11:47:55 n23m0123.hpc.itc.rwth-aachen.de __main__.hello_world-DFJZZC7C3ZQA[480717:MainThread] INFO Indirect proxy 480717 child process 480761 complete. return code: 0
+11:47:55 n23m0123.hpc.itc.rwth-aachen.de __main__.hello_world-DFJZZC7C3ZQA[480717:MainThread] INFO Performing cleanup
