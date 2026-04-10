@@ -7,6 +7,40 @@ mkdir -p "$TMPDIR"
 
 . ./set_env_claix23_cuda12.4.sh 
 
+DEFAULT_RUNTIME_ROOT="/home/thes2181/python"
+RUNTIME_ROOT="${SMARTSIM_RUNTIME_ROOT:-$DEFAULT_RUNTIME_ROOT}"
+RUNTIME_TAR_DIR="${SMARTSIM_RUNTIME_TAR_DIR:-$RUNTIME_ROOT}"
+CREATE_RUNTIME_TARS="${SMARTSIM_CREATE_RUNTIME_TARS:-1}"
+CREATE_RUNTIME_SYMLINK="${SMARTSIM_CREATE_RUNTIME_SYMLINK:-1}"
+FORCE_RUNTIME_TAR_REBUILD="${SMARTSIM_FORCE_RUNTIME_TAR_REBUILD:-0}"
+RUNTIME_LIBSTDCPP_GCCCORE_VERSION="${SMARTSIM_RUNTIME_LIBSTDCPP_GCCCORE_VERSION:-13.2.0}"
+RUNTIME_LIBSTDCPP_SOURCE="/cvmfs/software.hpc.rwth.de/Linux/RH9/x86_64/intel/sapphirerapids/software/GCCcore/${RUNTIME_LIBSTDCPP_GCCCORE_VERSION}/lib64/libstdc++.so.6"
+RUNTIME_LIBGCC_SOURCE="/cvmfs/software.hpc.rwth.de/Linux/RH9/x86_64/intel/sapphirerapids/software/GCCcore/${RUNTIME_LIBSTDCPP_GCCCORE_VERSION}/lib64/libgcc_s.so.1"
+
+if [ ! -d "$RUNTIME_ROOT" ]; then
+    mkdir -p "$RUNTIME_ROOT" 2>/dev/null || true
+fi
+if [ ! -w "$RUNTIME_ROOT" ]; then
+    echo "Warning: runtime root '$RUNTIME_ROOT' is not writable. Falling back to '${PWD}/python'."
+    RUNTIME_ROOT="${PWD}/python"
+    RUNTIME_TAR_DIR="${SMARTSIM_RUNTIME_TAR_DIR:-$RUNTIME_ROOT}"
+    mkdir -p "$RUNTIME_ROOT"
+fi
+
+mkdir -p "$RUNTIME_TAR_DIR"
+echo "Using SmartSim runtime root: $RUNTIME_ROOT"
+echo "Using SmartSim runtime tar dir: $RUNTIME_TAR_DIR"
+
+if [ "$CREATE_RUNTIME_SYMLINK" = "1" ]; then
+    if [ ! -L "${PWD}/python" ]; then
+        if [ -d "${PWD}/python" ]; then
+            echo "Keeping existing '${PWD}/python' directory (not replacing with symlink)."
+        else
+            ln -snf "$RUNTIME_ROOT" "${PWD}/python" 2>/dev/null || true
+        fi
+    fi
+fi
+
 # options: cpu,rocm-64,cuda-11,cuda-12
 devices="cpu cuda-12"
 
@@ -53,7 +87,7 @@ for device in $devices; do
 
     echo "SmartSim build command: $smartsim_build_cmd"
 
-    python_env="./python/smartsim_$device/"
+    python_env="$RUNTIME_ROOT/smartsim_$device/"
 
     echo "Install location: $python_env"
 
@@ -156,7 +190,62 @@ for device in $devices; do
         echo "SmartSim is already fully built with all backends."
     fi
 
+    runtime_lib_dir="$python_env/runtime_libs"
+    mkdir -p "$runtime_lib_dir"
+    if [ -f "$RUNTIME_LIBSTDCPP_SOURCE" ]; then
+        if strings "$RUNTIME_LIBSTDCPP_SOURCE" 2>/dev/null | grep -q GLIBCXX_3.4.32; then
+            :
+        else
+            echo "Warning: bundled runtime libstdc++ does not report GLIBCXX_3.4.32 (source: $RUNTIME_LIBSTDCPP_SOURCE)"
+        fi
+        if [ ! -f "$runtime_lib_dir/libstdc++.so.6" ] || ! cmp -s "$RUNTIME_LIBSTDCPP_SOURCE" "$runtime_lib_dir/libstdc++.so.6"; then
+            cp -f "$RUNTIME_LIBSTDCPP_SOURCE" "$runtime_lib_dir/libstdc++.so.6"
+            echo "Bundled runtime libstdc++ from GCCcore/${RUNTIME_LIBSTDCPP_GCCCORE_VERSION} into $runtime_lib_dir"
+        else
+            echo "Runtime libstdc++ already up-to-date in $runtime_lib_dir"
+        fi
+    else
+        echo "Warning: compatible runtime libstdc++ source not found at $RUNTIME_LIBSTDCPP_SOURCE"
+    fi
+    if [ -f "$RUNTIME_LIBGCC_SOURCE" ]; then
+        if [ ! -f "$runtime_lib_dir/libgcc_s.so.1" ] || ! cmp -s "$RUNTIME_LIBGCC_SOURCE" "$runtime_lib_dir/libgcc_s.so.1"; then
+            cp -f "$RUNTIME_LIBGCC_SOURCE" "$runtime_lib_dir/libgcc_s.so.1"
+            echo "Bundled runtime libgcc_s from GCCcore/${RUNTIME_LIBSTDCPP_GCCCORE_VERSION} into $runtime_lib_dir"
+        fi
+    fi
+
 done
+
+if [ "$CREATE_RUNTIME_TARS" = "1" ]; then
+    echo ""
+    echo "--- Creating SmartSim runtime tar bundles ---"
+    for device in $devices; do
+        runtime_dir="$RUNTIME_ROOT/smartsim_$device"
+        runtime_tar="$RUNTIME_TAR_DIR/smartsim_$device.tar"
+        if [ -d "$runtime_dir" ]; then
+            rebuild_tar=0
+            if [ "$FORCE_RUNTIME_TAR_REBUILD" = "1" ]; then
+                rebuild_tar=1
+                echo "Forcing tar rebuild for device '$device' via SMARTSIM_FORCE_RUNTIME_TAR_REBUILD=1"
+            elif [ ! -f "$runtime_tar" ]; then
+                rebuild_tar=1
+                echo "Creating missing runtime tar: $runtime_tar"
+            elif find "$runtime_dir" -type f -newer "$runtime_tar" -print -quit | grep -q .; then
+                rebuild_tar=1
+                echo "Runtime changed since last tar; rebuilding: $runtime_tar"
+            fi
+
+            if [ "$rebuild_tar" = "1" ]; then
+                echo "Packing $runtime_dir -> $runtime_tar"
+                tar -cf "$runtime_tar" -C "$RUNTIME_ROOT" "smartsim_$device"
+            else
+                echo "Runtime tar is up-to-date; skipping: $runtime_tar"
+            fi
+        else
+            echo "Skipping tar for device '$device' (runtime dir missing: $runtime_dir)"
+        fi
+    done
+fi
 
 echo "Installation of the smartsim 'backend' complete. This includes the SmartRedis Python client. The Fortran/C/C++ clients can be built from source as needed."
 
@@ -164,10 +253,17 @@ echo ""
 
 echo "--- Installing SmartRedis C/C++ client ---"
 
-smartsim_branch="develop"
 # This entails multiple bugfixes that have been merged into develop but that for some reason
 # have not resulted in a new tagged release.
-smartsim_commit="552d05b3a59bdd79fc119c25eb75126ebba41b14"
+# Official Repo:
+#smartsim_repo="https://github.com/CrayLabs/SmartRedis.git"
+#smartsim_branch="develop"
+#smartsim_commit="552d05b3a59bdd79fc119c25eb75126ebba41b14"
+
+# My fork
+smartsim_repo="https://github.com/chrisb09/SmartRedis.git"
+smartsim_branch="develop"
+smartsim_commit="a5e235564f5d3912eec9541ea3ebce9dd42eccf7"
 
 compile=false
 
@@ -194,13 +290,22 @@ if [ -d "SmartRedis" ]; then
         echo "Already at the correct commit: $current_commit"
     fi
 else
-    echo "Cloning SmartRedis repository (develop branch, commit 552d05b)..."
+    echo "Cloning SmartRedis repository (${smartsim_branch} branch, commit ${echo $smartsim_commit | head -c 8})..."
 
-    git clone https://github.com/CrayLabs/SmartRedis.git && \
+    git clone "${smartsim_repo}" && \
     cd SmartRedis && \
-    git checkout 552d05b3a59bdd79fc119c25eb75126ebba41b14 && \
+    git checkout "${smartsim_commit}" && \
+    cd .. || { echo "Failed to clone and checkout SmartRedis."; exit 1; }
     compile=true
-    cd ..
+fi
+
+installed_lib="SmartRedis/install/lib64/libsmartredis.so"
+if [ ! -f "$installed_lib" ]; then
+    echo "SmartRedis installed library is missing. A rebuild is required."
+    compile=true
+elif find SmartRedis/include SmartRedis/src SmartRedis/CMakeLists.txt -newer "$installed_lib" -print -quit | grep -q .; then
+    echo "SmartRedis installed library is older than the source tree. A rebuild is required."
+    compile=true
 fi
 
 if [ "$compile" = true ]; then
