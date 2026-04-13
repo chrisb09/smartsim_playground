@@ -4,3 +4,6 @@
 [submodule "lmod_dependencies"]
 	path = lmod_dependencies
 	url = git@github.com:chrisb09/lmod_dependencies.git
+[submodule "CPP-ML-Interface"]
+	path = CPP-ML-Interface
+	url = git@github.com:chrisb09/CPP-ML-Interface.git
