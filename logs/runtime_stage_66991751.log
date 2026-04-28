@@ -1,0 +1,7 @@
+RUNTIME_STAGE_PER_NODE label=solver het_group=0 host=n23m0017.hpc.itc.rwth-aachen.de runtime=/tmp/ro092286/smartsim_runtime/smartsim_cuda-12
+RUNTIME_STAGE_PER_NODE label=db het_group=1 host=n23g0021.hpc.itc.rwth-aachen.de runtime=/tmp/ro092286/smartsim_runtime/smartsim_cuda-12
+RUNTIME_STAGE_PER_NODE label=db het_group=1 host=n23g0019.hpc.itc.rwth-aachen.de runtime=/tmp/ro092286/smartsim_runtime/smartsim_cuda-12
+RUNTIME_STAGE_PER_NODE label=db het_group=1 host=n23g0006.hpc.itc.rwth-aachen.de runtime=/tmp/ro092286/smartsim_runtime/smartsim_cuda-12
+RUNTIME_STAGE_PER_NODE label=db het_group=1 host=n23g0018.hpc.itc.rwth-aachen.de runtime=/tmp/ro092286/smartsim_runtime/smartsim_cuda-12
+RUNTIME_STAGE_PER_NODE label=db het_group=1 host=n23g0009.hpc.itc.rwth-aachen.de runtime=/tmp/ro092286/smartsim_runtime/smartsim_cuda-12
+RUNTIME_STAGE_PER_NODE label=db het_group=1 host=n23g0016.hpc.itc.rwth-aachen.de runtime=/tmp/ro092286/smartsim_runtime/smartsim_cuda-12

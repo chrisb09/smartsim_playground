@@ -1,0 +1,6 @@
+RUNTIME_STAGE_PER_NODE label=solver het_group=0 host=n23m0377.hpc.itc.rwth-aachen.de runtime=/tmp/ro092286/smartsim_runtime/smartsim_cuda-12
+[2026-04-16T20:53:05.430] error: Detected 1 oom_kill event in StepId=66831562.1. Some of the step tasks have been OOM Killed.
+srun: error: n23g0004: task 0: Out Of Memory
+RUNTIME_STAGE_PER_NODE label=db het_group=1 host=n23g0010.hpc.itc.rwth-aachen.de runtime=/tmp/ro092286/smartsim_runtime/smartsim_cuda-12
+RUNTIME_STAGE_PER_NODE label=db het_group=1 host=n23g0007.hpc.itc.rwth-aachen.de runtime=/tmp/ro092286/smartsim_runtime/smartsim_cuda-12
+Error: Runtime staging/unpack failed on db group 1.
