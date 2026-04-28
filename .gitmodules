@@ -7,6 +7,3 @@
 [submodule "CPP-ML-Interface"]
 	path = CPP-ML-Interface
 	url = git@github.com:chrisb09/CPP-ML-Interface.git
-[submodule "AIxeleratorService"]
-	path = AIxeleratorService
-	url = https://github.com/RWTH-HPC/AIxeleratorService.git
