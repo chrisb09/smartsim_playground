@@ -1,0 +1,4 @@
+/hpcwork/ro092286/smartsim/module_test/build/CMakeFiles/module_test_registry.dir
+/hpcwork/ro092286/smartsim/module_test/build/CMakeFiles/module_test_solver.dir
+/hpcwork/ro092286/smartsim/module_test/build/CMakeFiles/edit_cache.dir
+/hpcwork/ro092286/smartsim/module_test/build/CMakeFiles/rebuild_cache.dir

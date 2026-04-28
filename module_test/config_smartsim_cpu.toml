@@ -1,0 +1,27 @@
+[provider]
+class = "Smartsim"
+device = "CPU"
+model_backend = "TORCH"
+model_path = "/hpcwork/ro092286/smartsim/mini_app/train_models/model_a/real_function_jit.pt"
+model_name = "real_function_jit"
+nodes = 1
+host = "localhost"
+port = 6780
+num_gpus = 0
+first_gpu = 0
+batch_size = 0
+min_batch_size = 0
+min_batch_timeout = 0
+
+[normalization]
+class = "MinMax"
+input_min = 0.0
+input_max = 1.0
+output_min = 0.0
+output_max = 1.0
+
+[behavior]
+class = "Default"
+
+[application]
+class = "ModuleTestApplication"
