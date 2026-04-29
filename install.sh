@@ -13,6 +13,7 @@ RUNTIME_TAR_DIR="${SMARTSIM_RUNTIME_TAR_DIR:-$RUNTIME_ROOT}"
 CREATE_RUNTIME_TARS="${SMARTSIM_CREATE_RUNTIME_TARS:-1}"
 CREATE_RUNTIME_SYMLINK="${SMARTSIM_CREATE_RUNTIME_SYMLINK:-1}"
 FORCE_RUNTIME_TAR_REBUILD="${SMARTSIM_FORCE_RUNTIME_TAR_REBUILD:-0}"
+VERIFY_RUNTIME_TAR_FRESHNESS="${SMARTSIM_VERIFY_RUNTIME_TAR_FRESHNESS:-0}"
 RUNTIME_LIBSTDCPP_GCCCORE_VERSION="${SMARTSIM_RUNTIME_LIBSTDCPP_GCCCORE_VERSION:-13.2.0}"
 RUNTIME_LIBSTDCPP_SOURCE="/cvmfs/software.hpc.rwth.de/Linux/RH9/x86_64/intel/sapphirerapids/software/GCCcore/${RUNTIME_LIBSTDCPP_GCCCORE_VERSION}/lib64/libstdc++.so.6"
 RUNTIME_LIBGCC_SOURCE="/cvmfs/software.hpc.rwth.de/Linux/RH9/x86_64/intel/sapphirerapids/software/GCCcore/${RUNTIME_LIBSTDCPP_GCCCORE_VERSION}/lib64/libgcc_s.so.1"
@@ -53,6 +54,8 @@ fi
 
 # options: torch tensorflow onnxruntime
 backends="torch tensorflow onnxruntime"
+
+CHANGED_RUNTIME_DEVICES=""
 
 for device in $devices; do
 
@@ -96,11 +99,13 @@ for device in $devices; do
     echo "Base directory for SmartSim installation: $base_dir"
 
     env_created=false
+    runtime_changed=false
 
     if [ ! -d "$python_env" ]; then
         echo "Creating Python virtual environment at $python_env"
         python -m venv $python_env
         env_created=true
+        runtime_changed=true
     else
         echo "Python virtual environment already exists at $python_env"
     fi
@@ -126,6 +131,7 @@ for device in $devices; do
         # Installing smartsim python package
         echo "Installing smartsim python package..."
         pip install smartsim
+        runtime_changed=true
     fi
 
     echo "Checking SmartSim build status..."
@@ -165,6 +171,7 @@ for device in $devices; do
         #smart clean
         echo "Building full SmartSim installation"
         $smartsim_build_cmd
+        runtime_changed=true
 
         # Verify the build
         echo "Verifying SmartSim build..."
@@ -181,6 +188,7 @@ for device in $devices; do
             pip install torch==2.4.0 torchvision==0.19.0 torchaudio==2.4.0 --index-url https://download.pytorch.org/whl/cu124 && \
             echo "PyTorch installation for CUDA 12.4 complete." && \
             smart info
+            runtime_changed=true
         elif [ "$device" = "cpu" ]; then
             echo "No custom command defined for device $device. Skipping."
         else
@@ -201,6 +209,7 @@ for device in $devices; do
         if [ ! -f "$runtime_lib_dir/libstdc++.so.6" ] || ! cmp -s "$RUNTIME_LIBSTDCPP_SOURCE" "$runtime_lib_dir/libstdc++.so.6"; then
             cp -f "$RUNTIME_LIBSTDCPP_SOURCE" "$runtime_lib_dir/libstdc++.so.6"
             echo "Bundled runtime libstdc++ from GCCcore/${RUNTIME_LIBSTDCPP_GCCCORE_VERSION} into $runtime_lib_dir"
+            runtime_changed=true
         else
             echo "Runtime libstdc++ already up-to-date in $runtime_lib_dir"
         fi
@@ -211,7 +220,12 @@ for device in $devices; do
         if [ ! -f "$runtime_lib_dir/libgcc_s.so.1" ] || ! cmp -s "$RUNTIME_LIBGCC_SOURCE" "$runtime_lib_dir/libgcc_s.so.1"; then
             cp -f "$RUNTIME_LIBGCC_SOURCE" "$runtime_lib_dir/libgcc_s.so.1"
             echo "Bundled runtime libgcc_s from GCCcore/${RUNTIME_LIBSTDCPP_GCCCORE_VERSION} into $runtime_lib_dir"
+            runtime_changed=true
         fi
+    fi
+
+    if [ "$runtime_changed" = true ]; then
+        CHANGED_RUNTIME_DEVICES="$CHANGED_RUNTIME_DEVICES $device"
     fi
 
 done
@@ -230,9 +244,12 @@ if [ "$CREATE_RUNTIME_TARS" = "1" ]; then
             elif [ ! -f "$runtime_tar" ]; then
                 rebuild_tar=1
                 echo "Creating missing runtime tar: $runtime_tar"
-            elif find "$runtime_dir" -type f -newer "$runtime_tar" -print -quit | grep -q .; then
+            elif echo " $CHANGED_RUNTIME_DEVICES " | grep -qw "$device"; then
                 rebuild_tar=1
-                echo "Runtime changed since last tar; rebuilding: $runtime_tar"
+                echo "Runtime for '$device' changed during this run; rebuilding: $runtime_tar"
+            elif [ "$VERIFY_RUNTIME_TAR_FRESHNESS" = "1" ] && find "$runtime_dir" -type f -newer "$runtime_tar" -print -quit | grep -q .; then
+                rebuild_tar=1
+                echo "Runtime changed since last tar (freshness scan enabled); rebuilding: $runtime_tar"
             fi
 
             if [ "$rebuild_tar" = "1" ]; then
