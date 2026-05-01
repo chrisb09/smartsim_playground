@@ -307,7 +307,8 @@ if [ -d "SmartRedis" ]; then
         echo "Already at the correct commit: $current_commit"
     fi
 else
-    echo "Cloning SmartRedis repository (${smartsim_branch} branch, commit ${echo $smartsim_commit | head -c 8})..."
+    short_commit=$(echo "$smartsim_commit" | head -c 8)
+    echo "Cloning SmartRedis repository (${smartsim_branch} branch, commit ${short_commit})..."
 
     git clone "${smartsim_repo}" && \
     cd SmartRedis && \
