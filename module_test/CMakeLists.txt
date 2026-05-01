@@ -13,8 +13,8 @@ else()
 endif()
 
 set(CPP_MODULE_DIR "/hpcwork/ro092286/smartsim/CPP-ML-Interface")
-set(SMARTREDIS_DIR "/hpcwork/ro092286/smartsim/SmartRedis")
-set(SMARTSIM_PYTHON "/hpcwork/ro092286/smartsim/python/smartsim_cuda-12/bin/python"
+set(SMARTREDIS_DIR "${CPP_MODULE_DIR}/extern/SmartRedis")
+set(SMARTSIM_PYTHON "${CPP_MODULE_DIR}/extern/python/smartsim_cuda-12/bin/python"
 	CACHE FILEPATH "Python interpreter with clang module available")
 
 if(NOT EXISTS "${SMARTSIM_PYTHON}")
@@ -53,6 +53,18 @@ add_custom_target(module_test_registry DEPENDS "${GENERATED_REGISTRY}")
 add_executable(module_test_solver solver.cpp)
 add_dependencies(module_test_solver module_test_registry)
 
+# Use CPP-ML-Interface's exported include paths (including SmartRedis extern headers).
+set(CPPML_DISABLE_REGISTRY_GEN ON CACHE BOOL "Disable CPP-ML-Interface registry generation" FORCE)
+add_subdirectory("${CPP_MODULE_DIR}" "${CMAKE_CURRENT_BINARY_DIR}/cpp-ml-interface-build")
+target_link_libraries(module_test_solver PRIVATE cpp_ml_interface_headers)
+add_dependencies(cpp_ml_interface_library module_test_registry)
+target_include_directories(cpp_ml_interface_library PRIVATE
+	"${CMAKE_CURRENT_SOURCE_DIR}/include"
+)
+target_include_directories(cpp_ml_interface_executable PRIVATE
+	"${CMAKE_CURRENT_SOURCE_DIR}/include"
+)
+
 target_include_directories(module_test_solver PRIVATE
 	"${CPP_MODULE_DIR}/include"
 	"${CMAKE_CURRENT_SOURCE_DIR}/include"
@@ -63,5 +75,11 @@ target_include_directories(module_test_solver PRIVATE
 
 target_compile_definitions(module_test_solver PRIVATE SMARTSIM_ENABLED WITH_SMARTSIM)
 
-target_link_directories(module_test_solver PRIVATE "${SMARTREDIS_DIR}/install/lib64")
+if(EXISTS "${SMARTREDIS_DIR}/build/Release/libsmartredis.so")
+	set(SMARTREDIS_LIB_DIR "${SMARTREDIS_DIR}/build/Release")
+else()
+	set(SMARTREDIS_LIB_DIR "${SMARTREDIS_DIR}/install/lib64")
+endif()
+
+target_link_directories(module_test_solver PRIVATE "${SMARTREDIS_LIB_DIR}")
 target_link_libraries(module_test_solver PRIVATE smartredis)

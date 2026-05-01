@@ -85,10 +85,11 @@ int main(int argc, char** argv)
 	// Create coupling object
 	// *************************************
 
-	MLCoupling<float, float>* coupling = MLCoupling<float, float>::create_from_config(config_path, std::move(input_data), output_data, ConfigOverrides{
+	MLCoupling<float, float>* coupling = MLCoupling<float, float>::create_from_config(config_path, std::move(input_data), output_data
+	/*,ConfigOverrides{
 		{"provider.device", std::string("GPU")},
 		{"provider.num_gpus", 1}
-	});
+	}*/);
 
 	if (coupling == nullptr) {
 		std::cerr << "Failed to create MLCoupling from config.\n";

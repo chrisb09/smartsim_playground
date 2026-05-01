@@ -2,6 +2,7 @@
 
 import argparse
 import os
+import shutil
 import time
 from pathlib import Path
 
@@ -58,8 +59,12 @@ def main() -> int:
     
     print("Solver done. Clean up experiment.", flush=True)
   
-    if (os.path.exists(exp_name)):
-        os.rmdir(exp_name)
+    if False:
+        if (os.path.exists(exp_name)):
+            try:
+                shutil.rmtree(exp_name)
+            except Exception as e:
+                print(f"Failed to remove experiment directory {exp_name}: {e}", flush=True)
 
     return 0
 

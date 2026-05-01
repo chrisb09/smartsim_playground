@@ -8,9 +8,9 @@ PYTHON_RUNTIME_ROOT="/home/thes2181/python"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 if (( USE_GPU == 1 )); then
-    SMARTSIM_PYTHON="${SMARTSIM_PYTHON:-/hpcwork/ro092286/smartsim/python/smartsim_cuda-12/bin/python}"
+    SMARTSIM_PYTHON="${SMARTSIM_PYTHON:-${PYTHON_RUNTIME_ROOT}/smartsim_cuda-12/bin/python}"
 else
-    SMARTSIM_PYTHON="${SMARTSIM_PYTHON:-/hpcwork/ro092286/smartsim/python/smartsim_cpu/bin/python}"
+    SMARTSIM_PYTHON="${SMARTSIM_PYTHON:-${PYTHON_RUNTIME_ROOT}/smartsim_cpu/bin/python}"
 fi
 
 
@@ -35,7 +35,7 @@ fi
 
 
 # For SmartSim
-if [[ PROVIDER == "SMARTSIM" ]]; then
+if [[ $PROVIDER == "SMARTSIM" ]]; then
 	ENDPOINT_FILE="${SCRIPT_DIR}/.ssdb_endpoint"
 	DONE_FILE="${SCRIPT_DIR}/.solver_done"
 
@@ -79,9 +79,12 @@ if [[ PROVIDER == "SMARTSIM" ]]; then
 
 	touch "${DONE_FILE}"
 	wait "${DRIVER_PID}"
-elif [[ PROVIDER == "AIX" ]]; then
+elif [[ $PROVIDER == "AIX" ]]; then
 	
 	# srun --export=ALL --het-group=0 --mpi=pmi2 --preserve-env --cpus-per-task=1 /home/thes1961/MAIA/build_interface_aix_scorep_23b/bin/maia ./"$(basename $TOML_FILE)" : --export=ALL --het-group=1 --mpi=pmi2 --preserve-env --cpus-per-task=1 /home/thes1961/MAIA/build_interface_aix_scorep_23b/bin/maia ./"$(basename $TOML_FILE)"
 	
 	mpirun -n 2 "${SCRIPT_DIR}/build/module_test_solver" "${CONFIG_FILE}"
+else
+	echo "Unsupported provider: ${PROVIDER}" >&2
+	exit 1
 fi

@@ -1,17 +1,6 @@
 [provider]
-class = "Smartsim"
-device = "CPU"
-model_backend = "TORCH"
-model_path = "/hpcwork/ro092286/smartsim/mini_app/train_models/model_a/real_function_jit.pt"
-model_name = "real_function_jit"
-nodes = 1
-host = "localhost"
-port = 6780
-num_gpus = 0
-first_gpu = 0
-batch_size = 0
-min_batch_size = 0
-min_batch_timeout = 0
+class = "AIX"
+model_file = "/hpcwork/ro092286/smartsim/mini_app/train_models/model_a/best_model_jit_perfect_model_flat.pt"
 
 [normalization]
 class = "MinMax"
