@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <mpi.h>
 
 #include "../CPP-ML-Interface/include/ml_coupling.hpp"
 
@@ -9,56 +10,61 @@ int main(int argc, char** argv)
 {
 	const std::string config_path = (argc > 1) ? argv[1] : "config.toml";
 
-	const char* ssdb = std::getenv("SSDB");
-	if (ssdb == nullptr || std::string(ssdb).empty()) {
-		std::cerr << "SSDB is not set. Aborting.\n";
+	const char* provider = std::getenv("PROVIDER");
+	
+	if (provider == nullptr || std::string(provider).empty()) {
+		std::cerr << "PROVIDER is not set. Aborting.\n";
 		return 1;
 	}
 
-	std::cout << "Using SSDB=" << ssdb << "\n";
-	std::cout << "Loading config from " << config_path << "\n";
+	bool use_mpi = (std::string(provider) == "AIX");
+	if (use_mpi) {
+		MPI_Init(&argc, &argv);
+	}
+
+	if (std::string(provider) == "SMARTSIM") {
+		std::cout << "Running with SmartSim provider\n";
+		std::cout << "Checking SSDB environment variable...\n";
+		const char* ssdb = std::getenv("SSDB");
+		if (ssdb == nullptr || std::string(ssdb).empty()) {
+			std::cerr << "SSDB is not set. Aborting.\n";
+			if (use_mpi) MPI_Finalize();
+			return 1;
+		}
+
+		std::cout << "Using SSDB=" << ssdb << "\n";
+		std::cout << "Loading config from " << config_path << "\n";
+	} else if (std::string(provider) == "AIX") {
+		std::cout << "Running with AIX provider\n";
+		std::cout << "Loading config from " << config_path << "\n";
+	} else {
+		std::cerr << "Unsupported provider: " << provider << "\n";
+		if (use_mpi) MPI_Finalize();
+		return 1;
+	}
 
 
 	// ******************************
 	// Create dummy data
 	// ******************************
 
-    //2 inputs a Bx1x3x3
-    float***** data = new float****[2];
-    data[0] = new float***[1];
-    data[0][0] = new float**[1];
-    data[0][0][0] = new float*[3];
-    for (int i = 0; i < 3; ++i) {
-        data[0][0][0][i] = new float[3];
-        for (int j = 0; j < 3; ++j) {
-            data[0][0][0][i][j] = (4 + i * 17 + j *4 ) % 100;
-        }
-    }
-    data[1] = new float***[1];
-    data[1][0] = new float**[1];
-    data[1][0][0] = new float*[3];
-    for (int i = 0; i < 3; ++i) {
-        data[1][0][0][i] = new float[3];
-        for (int j = 0; j < 3; ++j) {
-            data[1][0][0][i][j] = (7 + i * 24 + j * 7 ) % 200;
-        }
-    }
+	// 1 input of size Bx18
+	float* flat_data = new float[18];
+	for (int i = 0; i < 9; ++i) {
+		flat_data[i] = (4 + i * 17) % 100; // First 9 values (water)
+	}
+	for (int i = 0; i < 9; ++i) {
+		flat_data[9 + i] = (7 + i * 24) % 200; // Next 9 values (terrain)
+	}
 
-	MLCouplingTensor<float> input_water_tensor = MLCouplingTensor<float>::wrap_nested(
-		static_cast<void*>(data[0]),
-		std::vector<int>{1, 1, 3, 3},
-		MLCouplingMemLayoutNested,
-		MLCouplingOwnershipExternal);
-
-	MLCouplingTensor<float> input_terrain_tensor = MLCouplingTensor<float>::wrap_nested(
-		static_cast<void*>(data[1]),
-		std::vector<int>{1, 1, 3, 3},
-		MLCouplingMemLayoutNested,
+	MLCouplingTensor<float> input_tensor = MLCouplingTensor<float>::wrap_flat(
+		flat_data,
+		std::vector<int>{1, 18},
+		MLCouplingMemLayoutContiguous,
 		MLCouplingOwnershipExternal);
 
 	MLCouplingData<float> input_data{std::vector<MLCouplingTensor<float>>{
-		input_water_tensor,
-		input_terrain_tensor
+		input_tensor
 	}};
 
 	std::cout << "Input data:\n";
@@ -93,6 +99,7 @@ int main(int argc, char** argv)
 
 	if (coupling == nullptr) {
 		std::cerr << "Failed to create MLCoupling from config.\n";
+		if (use_mpi) MPI_Finalize();
 		return 2;
 	}
 
@@ -107,6 +114,7 @@ int main(int argc, char** argv)
 	} catch (const std::exception& e) {
 		std::cerr << "Inference failed: " << e.what() << "\n";
 		delete coupling;
+		if (use_mpi) MPI_Finalize();
 		return 3;
 	}
 
@@ -121,16 +129,9 @@ int main(int argc, char** argv)
 
 	delete coupling;
 
-	// Clean up the data buffers
-	for (int i = 0; i < 2; ++i) {
-		for (int j = 0; j < 3; ++j) {
-			delete[] data[i][0][0][j];
-		}
-		delete[] data[i][0][0];
-		delete[] data[i][0];
-		delete[] data[i];
-	}
-	delete[] data;
+	delete[] flat_data;
 	delete[] output_buffer;
+	
+	if (use_mpi) MPI_Finalize();
 	return 0;
 }

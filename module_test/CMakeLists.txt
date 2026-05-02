@@ -56,7 +56,7 @@ add_dependencies(module_test_solver module_test_registry)
 # Use CPP-ML-Interface's exported include paths (including SmartRedis extern headers).
 set(CPPML_DISABLE_REGISTRY_GEN ON CACHE BOOL "Disable CPP-ML-Interface registry generation" FORCE)
 add_subdirectory("${CPP_MODULE_DIR}" "${CMAKE_CURRENT_BINARY_DIR}/cpp-ml-interface-build")
-target_link_libraries(module_test_solver PRIVATE cpp_ml_interface_headers)
+target_link_libraries(module_test_solver PRIVATE cpp_ml_interface_headers cpp_ml_interface_library)
 add_dependencies(cpp_ml_interface_library module_test_registry)
 target_include_directories(cpp_ml_interface_library PRIVATE
 	"${CMAKE_CURRENT_SOURCE_DIR}/include"
@@ -73,7 +73,7 @@ target_include_directories(module_test_solver PRIVATE
 	"${CPP_MODULE_DIR}/build/_deps/tomlplusplus-src/include"
 )
 
-target_compile_definitions(module_test_solver PRIVATE SMARTSIM_ENABLED WITH_SMARTSIM)
+target_compile_definitions(module_test_solver PRIVATE SMARTSIM_ENABLED WITH_SMARTSIM WITH_AIX)
 
 if(EXISTS "${SMARTREDIS_DIR}/build/Release/libsmartredis.so")
 	set(SMARTREDIS_LIB_DIR "${SMARTREDIS_DIR}/build/Release")
