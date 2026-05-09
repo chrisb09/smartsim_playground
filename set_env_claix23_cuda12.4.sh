@@ -45,4 +45,5 @@ if [ "$any_load_required" = true ]; then
 fi
 
 # Keep OpenSSL runtime path so Python SSL remains consistent.
-export LD_LIBRARY_PATH="$EBROOTOPENSSL/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$EBROOTOPENSSL/lib:$EBROOTCLANG/lib:$LD_LIBRARY_PATH"
+export LIBCLANG_PATH="${EBROOTCLANG}/lib"
