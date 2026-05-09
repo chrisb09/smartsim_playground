@@ -11,6 +11,8 @@
 - **Python Environment Isolation**: Resolved `ImportError` and `ModuleNotFoundError` issues by explicitly setting `Python3_EXECUTABLE` to the user's Python 3.9 environment and removing global `PYTHONPATH` pollution.
 - **CUPTI Linking**: Fixed missing `cuptiActivityEnableDriverApi` symbols by prioritizing the full CUDA Toolkit paths on `/cvmfs` over the minimal libraries bundled in Python wheels.
 - **Core Build Success**: The main library (`libcpp_ml_interface_library.so`) and the executable (`cpp_ml_interface_executable`) now compile and link successfully with `WITH_AIX=ON`.
+- **MPI Linkage Mismatch Resolved**: Re-sourcing `set_env_claix23_cuda12.4.sh` corrected an issue where the environment defaulted to Intel MPI while the prebuilt AIxelerator library relied on OpenMPI.
+- **Module Test Build Success**: The `module_test` has been successfully compiled with a "merged" registry, correctly merging classes from both `CPP-ML-Interface` and the module test folder itself.
 
 ## Challenges & Insights
 ### 1. The ABI "Tug of War"
@@ -24,11 +26,12 @@
 ### 3. MPI recommendation logic
 - **Insight**: PyTorch includes logic to recommend the MPI implementation it was built with (e.g., OpenMPI). This can cause CMake to switch MPI vendors mid-configuration if not careful.
 
+### 4. python-clang Bindings Library Path
+- **Insight**: The Python `clang` bindings required to parse headers and generate registries may fail to find `libclang.so` if `LD_LIBRARY_PATH` does not include the system/module clang paths, even if `LIBCLANG_PATH` is set.
+- **Solution**: Added `$EBROOTCLANG/lib` to both `LD_LIBRARY_PATH` and `LIBCLANG_PATH` in `set_env_claix23_cuda12.4.sh`.
+
 ## Current Hurdles
-- **MPI Symbol Errors**: Some AIxelerator internal tests (`testAIxeleratorLib.x`, `testAIxeleratorService_interfaceC.x`) are currently failing to link with `undefined reference to ompi_mpi_comm_world`. This indicates a mismatch between the MPI headers used during compilation and the MPI libraries found during linking.
-- **Module Test Build**: We are transitioning to building the `module_test` subdirectory, which requires a "merged" registry generation.
+- Ensure that the execution of `module_test` binary is fully functional.
 
 ## Future Work
-- Align the MPI environment to ensure AIxelerator tests link correctly.
-- Complete the `module_test` build.
 - Verify GPU inference performance on a compute node.
