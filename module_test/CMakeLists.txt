@@ -21,7 +21,7 @@ if(NOT EXISTS "${SMARTSIM_PYTHON}")
 	message(FATAL_ERROR "SMARTSIM_PYTHON not found: ${SMARTSIM_PYTHON}")
 endif()
 
-set(GENERATED_REGISTRY "${CPP_MODULE_DIR}/include/generated_registry.hpp")
+set(GENERATED_REGISTRY "${CMAKE_CURRENT_BINARY_DIR}/cpp-ml-interface-build/generated_registry.hpp")
 set(TEMP_GENERATED_REGISTRY "${CMAKE_CURRENT_BINARY_DIR}/generated_registry.tmp.hpp")
 
 file(GLOB_RECURSE CPP_MODULE_HEADERS

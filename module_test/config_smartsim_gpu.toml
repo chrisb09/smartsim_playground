@@ -1,8 +1,12 @@
+[general]
+coupling_type = "STATIC"
+
 [provider]
 class = "Smartsim"
 device = "GPU"
 model_backend = "TORCH"
-model_path = "/hpcwork/ro092286/smartsim/mini_app/train_models/model_a/real_function_jit.pt"
+#model_path = "/hpcwork/ro092286/smartsim/mini_app/train_models/model_a/real_function_jit.pt"
+model_path = "/hpcwork/ro092286/smartsim/mini_app/train_models/model_a/best_model_jit_perfect_model_flat.pt"
 model_name = "real_function_jit"
 nodes = 1
 host = "localhost"
