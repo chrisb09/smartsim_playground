@@ -17,6 +17,8 @@ set(SMARTREDIS_DIR "${CPP_MODULE_DIR}/extern/SmartRedis")
 set(SMARTSIM_PYTHON "${CPP_MODULE_DIR}/extern/python/smartsim_cuda-12/bin/python"
 	CACHE FILEPATH "Python interpreter with clang module available")
 
+option(WITH_PHYDLL "Enable using phyDLL for physics coupling (requires phyDLL dependencies)" OFF)
+
 if(NOT EXISTS "${SMARTSIM_PYTHON}")
 	message(FATAL_ERROR "SMARTSIM_PYTHON not found: ${SMARTSIM_PYTHON}")
 endif()
@@ -74,6 +76,7 @@ target_include_directories(module_test_solver PRIVATE
 )
 
 target_compile_definitions(module_test_solver PRIVATE SMARTSIM_ENABLED WITH_SMARTSIM WITH_AIX)
+
 
 if(EXISTS "${SMARTREDIS_DIR}/build/Release/libsmartredis.so")
 	set(SMARTREDIS_LIB_DIR "${SMARTREDIS_DIR}/build/Release")

@@ -2,7 +2,8 @@
 set -euo pipefail
 
 #PROVIDER="SMARTSIM" # Alternatives: "AIX", "PHYDLL" or "SMARTSIM"
-PROVIDER="AIX"
+# if PROVIDER is set by the environment, use that value; otherwise default to "AIX"
+PROVIDER=${PROVIDER:-"AIX"}
 export PROVIDER
 
 USE_GPU=1
@@ -39,6 +40,8 @@ elif [[ "$PROVIDER" == "SMARTSIM" ]]; then
 	else
 		echo "Warning: runtime extra lib directory not found: ${RUNTIME_EXTRA_LIB_DIR}"
 	fi
+elif [[ "$PROVIDER" == "PHYDLL" ]]; then
+	CONFIG_FILE="${SCRIPT_DIR}/config_phydll.toml"
 fi
 
 echo "B"
@@ -95,6 +98,66 @@ elif [[ $PROVIDER == "AIX" ]]; then
 	# srun --export=ALL --het-group=0 --mpi=pmi2 --preserve-env --cpus-per-task=1 /home/thes1961/MAIA/build_interface_aix_scorep_23b/bin/maia ./"$(basename $TOML_FILE)" : --export=ALL --het-group=1 --mpi=pmi2 --preserve-env --cpus-per-task=1 /home/thes1961/MAIA/build_interface_aix_scorep_23b/bin/maia ./"$(basename $TOML_FILE)"
 	export CUDA_VISIBLE_DEVICES=3
 	mpirun -n 1 "${SCRIPT_DIR}/build/module_test_solver" "${CONFIG_FILE}"
+elif [[ $PROVIDER == "PHYDLL" ]]; then
+	PHYDLL_DL_CLIENT="${PHYDLL_DL_CLIENT:-${SCRIPT_DIR}/../CPP-ML-Interface/dl_clients/build/phydll_dl_client}"
+	NP_PHY=${NP_PHY:-1}
+	NP_DL=${NP_DL:-1}
+	PHYDLL_REBUILD_DL_CLIENT=${PHYDLL_REBUILD_DL_CLIENT:-1}
+	CUDA_VISIBLE_DEVICES_EXPORT="${CUDA_VISIBLE_DEVICES:-}"
+	PHYDLL_DL_COUNT=${PHYDLL_DL_COUNT:-2}
+	export PHYDLL_DL_COUNT
+	OPENMPI_MPIRUN="/cvmfs/software.hpc.rwth.de/Linux/RH9/x86_64/intel/sapphirerapids/software/OpenMPI/4.1.4-GCC-11.3.0/bin/mpirun"
+	MPIRUN_BIN="${MPIRUN:-}"
+	if [[ -z "${MPIRUN_BIN}" ]]; then
+		if [[ -x "${OPENMPI_MPIRUN}" ]]; then
+			MPIRUN_BIN="${OPENMPI_MPIRUN}"
+		else
+			MPIRUN_BIN="mpirun"
+		fi
+	fi
+
+	echo "USE PHYDLL provider with NP_PHY=${NP_PHY} and NP_DL=${NP_DL}"
+	echo "Using PHYDLL_DL_CLIENT=${PHYDLL_DL_CLIENT}"
+	if command -v readlink >/dev/null 2>&1; then
+		PHYDLL_DL_CLIENT_REALPATH="$(readlink -f "${PHYDLL_DL_CLIENT}" || true)"
+		if [[ -n "${PHYDLL_DL_CLIENT_REALPATH}" ]]; then
+			echo "PHYDLL_DL_CLIENT realpath=${PHYDLL_DL_CLIENT_REALPATH}"
+		fi
+	fi
+
+	cmake -S "${SCRIPT_DIR}" -B "${SCRIPT_DIR}/build"
+	cmake --build "${SCRIPT_DIR}/build" -j
+
+	if [[ "${PHYDLL_REBUILD_DL_CLIENT}" == "1" || ! -x "${PHYDLL_DL_CLIENT}" ]]; then
+		cmake -S "${SCRIPT_DIR}/../CPP-ML-Interface/dl_clients" -B "${SCRIPT_DIR}/../CPP-ML-Interface/dl_clients/build"
+		cmake --build "${SCRIPT_DIR}/../CPP-ML-Interface/dl_clients/build" -j
+	fi
+	if [[ -x "${PHYDLL_DL_CLIENT}" ]]; then
+		ls -l "${PHYDLL_DL_CLIENT}"
+	else
+		echo "PHYDLL_DL_CLIENT not executable: ${PHYDLL_DL_CLIENT}" >&2
+		exit 1
+	fi
+
+	MPIRUN_ENV=()
+	if [[ -n "${CUDA_VISIBLE_DEVICES_EXPORT}" ]]; then
+		MPIRUN_ENV+=(-x CUDA_VISIBLE_DEVICES)
+		MPIRUN_ENV+=(-x CUDA_DEVICE_ORDER)
+	fi
+	if [[ -n "${PHYDLL_OOB_META:-}" ]]; then
+		export PHYDLL_OOB_META
+		MPIRUN_ENV+=(-x PHYDLL_OOB_META)
+	fi
+	MPIRUN_ENV+=(-x PHYDLL_DL_COUNT)
+
+	PHY_APP_ENV=("${MPIRUN_ENV[@]}")
+	DL_APP_ENV=("${MPIRUN_ENV[@]}")
+	if [[ -n "${PHYDLL_OOB_META:-}" ]]; then
+		PHY_APP_ENV+=(-x PHYDLL_OOB_META)
+		DL_APP_ENV+=(-x PHYDLL_OOB_META)
+	fi
+
+	"${MPIRUN_BIN}" "${PHY_APP_ENV[@]}" -n "${NP_PHY}" "${SCRIPT_DIR}/build/module_test_solver" "${CONFIG_FILE}" : "${DL_APP_ENV[@]}" -n "${NP_DL}" "${PHYDLL_DL_CLIENT}"
 else
 	echo "Unsupported provider: ${PROVIDER}" >&2
 	exit 1

@@ -17,12 +17,13 @@ int main(int argc, char** argv)
 		return 1;
 	}
 
-	bool use_mpi = (std::string(provider) == "AIX");
+	const std::string provider_name(provider);
+	bool use_mpi = (provider_name == "AIX" || provider_name == "PHYDLL");
 	if (use_mpi) {
 		MPI_Init(&argc, &argv);
 	}
 
-	if (std::string(provider) == "SMARTSIM") {
+	if (provider_name == "SMARTSIM") {
 		std::cout << "Running with SmartSim provider\n";
 		std::cout << "Checking SSDB environment variable...\n";
 		const char* ssdb = std::getenv("SSDB");
@@ -34,8 +35,11 @@ int main(int argc, char** argv)
 
 		std::cout << "Using SSDB=" << ssdb << "\n";
 		std::cout << "Loading config from " << config_path << "\n";
-	} else if (std::string(provider) == "AIX") {
+	} else if (provider_name == "AIX") {
 		std::cout << "Running with AIX provider\n";
+		std::cout << "Loading config from " << config_path << "\n";
+	} else if (provider_name == "PHYDLL") {
+		std::cout << "Running with PhyDLL provider\n";
 		std::cout << "Loading config from " << config_path << "\n";
 	} else {
 		std::cerr << "Unsupported provider: " << provider << "\n";
