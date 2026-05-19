@@ -75,6 +75,11 @@ target_include_directories(module_test_solver PRIVATE
 	"${CPP_MODULE_DIR}/build/_deps/tomlplusplus-src/include"
 )
 
+find_package(MPI)
+if(MPI_FOUND)
+    add_compile_definitions(MPI_FOUND)
+endif()
+
 target_compile_definitions(module_test_solver PRIVATE SMARTSIM_ENABLED WITH_SMARTSIM WITH_AIX)
 
 

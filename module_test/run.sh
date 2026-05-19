@@ -6,6 +6,8 @@ set -euo pipefail
 PROVIDER=${PROVIDER:-"AIX"}
 export PROVIDER
 
+COMPILE=${COMPILE:-0}
+
 USE_GPU=1
 PYTHON_RUNTIME_ROOT="/home/thes2181/python"
 
@@ -44,7 +46,12 @@ elif [[ "$PROVIDER" == "PHYDLL" ]]; then
 	CONFIG_FILE="${SCRIPT_DIR}/config_phydll.toml"
 fi
 
-echo "B"
+
+if [[ COMPILE -eq 1 ]]; then
+	cmake -S "${SCRIPT_DIR}" -B "${SCRIPT_DIR}/build" \
+		-DAIX_PYTHON="${SMARTSIM_PYTHON}"
+	cmake --build "${SCRIPT_DIR}/build" -j
+fi
 
 # For SmartSim
 if [[ $PROVIDER == "SMARTSIM" ]]; then
@@ -83,17 +90,12 @@ if [[ $PROVIDER == "SMARTSIM" ]]; then
 	SSDB="$(tr -d '\n' < "${ENDPOINT_FILE}")"
 	echo "Using SSDB=${SSDB}"
 
-	cmake -S "${SCRIPT_DIR}" -B "${SCRIPT_DIR}/build" \
-		-DSMARTSIM_PYTHON="${SMARTSIM_PYTHON}"
-	cmake --build "${SCRIPT_DIR}/build" -j
-
 	"${SCRIPT_DIR}/build/module_test_solver" "${CONFIG_FILE}"
 
 	touch "${DONE_FILE}"
 	wait "${DRIVER_PID}"
 elif [[ $PROVIDER == "AIX" ]]; then
 
-	echo "C"
 	
 	# srun --export=ALL --het-group=0 --mpi=pmi2 --preserve-env --cpus-per-task=1 /home/thes1961/MAIA/build_interface_aix_scorep_23b/bin/maia ./"$(basename $TOML_FILE)" : --export=ALL --het-group=1 --mpi=pmi2 --preserve-env --cpus-per-task=1 /home/thes1961/MAIA/build_interface_aix_scorep_23b/bin/maia ./"$(basename $TOML_FILE)"
 	export CUDA_VISIBLE_DEVICES=3
@@ -104,7 +106,7 @@ elif [[ $PROVIDER == "PHYDLL" ]]; then
 	NP_DL=${NP_DL:-1}
 	PHYDLL_REBUILD_DL_CLIENT=${PHYDLL_REBUILD_DL_CLIENT:-1}
 	CUDA_VISIBLE_DEVICES_EXPORT="${CUDA_VISIBLE_DEVICES:-}"
-	PHYDLL_DL_COUNT=${PHYDLL_DL_COUNT:-2}
+	PHYDLL_DL_COUNT=${PHYDLL_DL_COUNT:-1}
 	export PHYDLL_DL_COUNT
 	OPENMPI_MPIRUN="/cvmfs/software.hpc.rwth.de/Linux/RH9/x86_64/intel/sapphirerapids/software/OpenMPI/4.1.4-GCC-11.3.0/bin/mpirun"
 	MPIRUN_BIN="${MPIRUN:-}"
@@ -125,9 +127,6 @@ elif [[ $PROVIDER == "PHYDLL" ]]; then
 		fi
 	fi
 
-	cmake -S "${SCRIPT_DIR}" -B "${SCRIPT_DIR}/build"
-	cmake --build "${SCRIPT_DIR}/build" -j
-
 	if [[ "${PHYDLL_REBUILD_DL_CLIENT}" == "1" || ! -x "${PHYDLL_DL_CLIENT}" ]]; then
 		cmake -S "${SCRIPT_DIR}/../CPP-ML-Interface/dl_clients" -B "${SCRIPT_DIR}/../CPP-ML-Interface/dl_clients/build"
 		cmake --build "${SCRIPT_DIR}/../CPP-ML-Interface/dl_clients/build" -j
@@ -144,18 +143,10 @@ elif [[ $PROVIDER == "PHYDLL" ]]; then
 		MPIRUN_ENV+=(-x CUDA_VISIBLE_DEVICES)
 		MPIRUN_ENV+=(-x CUDA_DEVICE_ORDER)
 	fi
-	if [[ -n "${PHYDLL_OOB_META:-}" ]]; then
-		export PHYDLL_OOB_META
-		MPIRUN_ENV+=(-x PHYDLL_OOB_META)
-	fi
 	MPIRUN_ENV+=(-x PHYDLL_DL_COUNT)
 
 	PHY_APP_ENV=("${MPIRUN_ENV[@]}")
 	DL_APP_ENV=("${MPIRUN_ENV[@]}")
-	if [[ -n "${PHYDLL_OOB_META:-}" ]]; then
-		PHY_APP_ENV+=(-x PHYDLL_OOB_META)
-		DL_APP_ENV+=(-x PHYDLL_OOB_META)
-	fi
 
 	"${MPIRUN_BIN}" "${PHY_APP_ENV[@]}" -n "${NP_PHY}" "${SCRIPT_DIR}/build/module_test_solver" "${CONFIG_FILE}" : "${DL_APP_ENV[@]}" -n "${NP_DL}" "${PHYDLL_DL_CLIENT}"
 else
