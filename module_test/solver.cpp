@@ -4,6 +4,8 @@
 #include <vector>
 #include <mpi.h>
 
+#include <iomanip> // formatting stuff
+
 #include "../CPP-ML-Interface/include/ml_coupling.hpp"
 
 int main(int argc, char** argv)
@@ -18,32 +20,52 @@ int main(int argc, char** argv)
 	}
 
 	const std::string provider_name(provider);
-	bool use_mpi = (provider_name == "AIX" || provider_name == "PHYDLL");
-	if (use_mpi) {
-		MPI_Init(&argc, &argv);
-	}
+	MPI_Init(&argc, &argv);
+
+	int world_rank = 0;
+	MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
+
+
+	int* appnum_ptr;
+    int flag;
+    MPI_Comm_get_attr(MPI_COMM_WORLD, MPI_APPNUM, &appnum_ptr, &flag);
+
+    // Default to 0 if not running in an MPMD environment
+    int app_id = flag ? *appnum_ptr : 0;
+
+	// 2. Split MPI_COMM_WORLD using the app_id as the "color"
+	int color = (app_id == 0) ? 0 : MPI_UNDEFINED;
+	MPI_Comm local_comm = MPI_COMM_NULL;
+	MPI_Comm_split(MPI_COMM_WORLD, color, world_rank, &local_comm);
+
+	std::cout << "Hello from rank " << world_rank << " of app_id " << app_id << "!\n";
 
 	if (provider_name == "SMARTSIM") {
-		std::cout << "Running with SmartSim provider\n";
-		std::cout << "Checking SSDB environment variable...\n";
+		if (world_rank == 0) std::cout << "Running with SmartSim provider\n";
 		const char* ssdb = std::getenv("SSDB");
 		if (ssdb == nullptr || std::string(ssdb).empty()) {
 			std::cerr << "SSDB is not set. Aborting.\n";
-			if (use_mpi) MPI_Finalize();
+			MPI_Finalize();
 			return 1;
 		}
 
-		std::cout << "Using SSDB=" << ssdb << "\n";
-		std::cout << "Loading config from " << config_path << "\n";
+		if (world_rank == 0) {
+			std::cout << "Using SSDB=" << ssdb << "\n";
+			std::cout << "Loading config from " << config_path << "\n";
+		}
 	} else if (provider_name == "AIX") {
-		std::cout << "Running with AIX provider\n";
-		std::cout << "Loading config from " << config_path << "\n";
+		if (world_rank == 0) {
+			std::cout << "Running with AIX provider\n";
+			std::cout << "Loading config from " << config_path << "\n";
+		}
 	} else if (provider_name == "PHYDLL") {
-		std::cout << "Running with PhyDLL provider\n";
-		std::cout << "Loading config from " << config_path << "\n";
+		if (world_rank == 0) {
+			std::cout << "Running with PhyDLL provider\n";
+			std::cout << "Loading config from " << config_path << "\n";
+		}
 	} else {
 		std::cerr << "Unsupported provider: " << provider << "\n";
-		if (use_mpi) MPI_Finalize();
+		MPI_Finalize();
 		return 1;
 	}
 
@@ -59,6 +81,10 @@ int main(int argc, char** argv)
 	}
 	for (int i = 0; i < 9; ++i) {
 		flat_data[9 + i] = (7 + i * 24) % 200; // Next 9 values (terrain)
+	}
+
+	for (int i = 0; i < 18; ++i) {
+		flat_data[i] *= world_rank;
 	}
 
 	MLCouplingTensor<float> input_tensor = MLCouplingTensor<float>::wrap_flat(
@@ -103,39 +129,89 @@ int main(int argc, char** argv)
 
 	if (coupling == nullptr) {
 		std::cerr << "Failed to create MLCoupling from config.\n";
-		if (use_mpi) MPI_Finalize();
+		MPI_Finalize();
 		return 2;
 	}
 
 
 
 	// *************************************
-	// Perform a single model call
+	// Perform model calls
 	// *************************************
 
-	try {
-		coupling->ml_step();
-	} catch (const std::exception& e) {
-		std::cerr << "Inference failed: " << e.what() << "\n";
-		delete coupling;
-		if (use_mpi) MPI_Finalize();
-		return 3;
+	const char* steps_env = std::getenv("STEPS");
+	int num_steps = (steps_env != nullptr) ? std::atoi(steps_env) : 1;
+	if (num_steps < 1) num_steps = 1;
+
+	float* outputs = new float[num_steps];
+
+	for (int step = 0; step < num_steps; ++step) {
+		if (num_steps > 1) {
+			std::cout << "--- Coupling Step " << step << " ---\n";
+		}
+		// Increase the input data's values by step number to simulate changing input across steps
+		for (size_t i = 0; i < 18; ++i) {
+			flat_data[i] += step;
+		}
+		try {
+			coupling->ml_step();
+		} catch (const std::exception& e) {
+			if (world_rank == 0) std::cerr << "Inference failed at step " << step << ": " << e.what() << "\n";
+			delete coupling;
+			MPI_Finalize();
+			return 3;
+		}
+
+		if (world_rank == 0) {
+			std::cout << "Inference output: [";
+				std::cout << output_buffer[0];
+			std::cout << "]\n";
+		}
+		outputs[step] = output_buffer[0];
 	}
 
+	std::cout << "###########################################################################\n";
 
-	// *************************************
-	// Print output
-	// *************************************
+	std::cout << "All steps completed. Final outputs of rank " << world_rank << ":\n  ";
+	for (int step = 0; step < num_steps; ++step) {
+		std::cout << outputs[step] << "  ";
+	}
+	std::cout << "\n";
 
-	std::cout << "Inference output: [";
-		std::cout << output_buffer[0];
-	std::cout << "]\n";
+	// Let's gather the outputs in rank 0 in a 2D array of shape (num_ranks, num_steps) to see the full picture
+	if (local_comm != MPI_COMM_NULL) {
+		int world_size = 0;
+		MPI_Comm_size(local_comm, &world_size);
+		std::vector<float> all_outputs(world_size * num_steps);
+		MPI_Gather(outputs, num_steps, MPI_FLOAT, all_outputs.data(), num_steps, MPI_FLOAT, 0, local_comm);
+		
+		if (world_rank == 0) {
+			std::cout << "\n###########################################################################\n";
+			std::cout << "Gathered outputs from all ranks:\n";
+			
+			// Force decimal notation and exactly 2 decimal places for all floating-point numbers
+			std::cout << std::fixed << std::setprecision(2);
+
+			for (int rank = 0; rank < world_size; ++rank) {
+				// Aligns the rank text itself (handy if world_size goes into double or triple digits)
+				std::cout << "Rank " << std::setw(2) << rank << ": ";
+				
+				for (int step = 0; step < num_steps; ++step) {
+					// Right-aligns every number within a strict 8-character-wide boundary
+					std::cout << std::setw(8) << std::right << all_outputs[rank * num_steps + step] << "  ";
+				}
+				std::cout << "\n";
+			}
+		}
+	}
+
+	delete[] outputs;
 
 	delete coupling;
 
 	delete[] flat_data;
 	delete[] output_buffer;
 	
-	if (use_mpi) MPI_Finalize();
+	MPI_Finalize();
 	return 0;
 }

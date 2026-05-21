@@ -6,6 +6,12 @@ set -euo pipefail
 PROVIDER=${PROVIDER:-"AIX"}
 export PROVIDER
 
+STEPS=${STEPS:-1}
+export STEPS
+
+CLIENTS=${CLIENTS:-1}
+export CLIENTS
+
 COMPILE=${COMPILE:-0}
 
 USE_GPU=1
@@ -90,24 +96,23 @@ if [[ $PROVIDER == "SMARTSIM" ]]; then
 	SSDB="$(tr -d '\n' < "${ENDPOINT_FILE}")"
 	echo "Using SSDB=${SSDB}"
 
-	"${SCRIPT_DIR}/build/module_test_solver" "${CONFIG_FILE}"
+	mpirun -n "${CLIENTS}" "${SCRIPT_DIR}/build/module_test_solver" "${CONFIG_FILE}"
 
-	touch "${DONE_FILE}"
-	wait "${DRIVER_PID}"
+	touch "${DONE_FILE}"	wait "${DRIVER_PID}"
 elif [[ $PROVIDER == "AIX" ]]; then
 
 	
 	# srun --export=ALL --het-group=0 --mpi=pmi2 --preserve-env --cpus-per-task=1 /home/thes1961/MAIA/build_interface_aix_scorep_23b/bin/maia ./"$(basename $TOML_FILE)" : --export=ALL --het-group=1 --mpi=pmi2 --preserve-env --cpus-per-task=1 /home/thes1961/MAIA/build_interface_aix_scorep_23b/bin/maia ./"$(basename $TOML_FILE)"
 	export CUDA_VISIBLE_DEVICES=3
-	mpirun -n 1 "${SCRIPT_DIR}/build/module_test_solver" "${CONFIG_FILE}"
+	mpirun -n "${CLIENTS}" "${SCRIPT_DIR}/build/module_test_solver" "${CONFIG_FILE}"
 elif [[ $PROVIDER == "PHYDLL" ]]; then
 	PHYDLL_DL_CLIENT="${PHYDLL_DL_CLIENT:-${SCRIPT_DIR}/../CPP-ML-Interface/dl_clients/build/phydll_dl_client}"
-	NP_PHY=${NP_PHY:-1}
-	NP_DL=${NP_DL:-1}
+	NP_PHY=${CLIENTS}
+	NP_DL=1
+	PHYDLL_DL_COUNT=1
+	export PHYDLL_DL_COUNT
 	PHYDLL_REBUILD_DL_CLIENT=${PHYDLL_REBUILD_DL_CLIENT:-1}
 	CUDA_VISIBLE_DEVICES_EXPORT="${CUDA_VISIBLE_DEVICES:-}"
-	PHYDLL_DL_COUNT=${PHYDLL_DL_COUNT:-1}
-	export PHYDLL_DL_COUNT
 	OPENMPI_MPIRUN="/cvmfs/software.hpc.rwth.de/Linux/RH9/x86_64/intel/sapphirerapids/software/OpenMPI/4.1.4-GCC-11.3.0/bin/mpirun"
 	MPIRUN_BIN="${MPIRUN:-}"
 	if [[ -z "${MPIRUN_BIN}" ]]; then
