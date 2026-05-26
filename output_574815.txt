@@ -1,0 +1,2 @@
+sbatch: [I] No output file given, set to: output_%j.txt
+Submitted batch job 574817

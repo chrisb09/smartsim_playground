@@ -1,0 +1,2 @@
+Invalid time specification (pos=0): 23.05.2026
+sbatch: error: Invalid --begin specification

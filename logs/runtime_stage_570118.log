@@ -1,0 +1,6 @@
+Dateisystem    Größe Benutzt Verf. Verw% Eingehängt auf
+/dev/nvme0n1p4  1,5T     59G  1,4T    5% /tmp
+RUNTIME_STAGE_PER_NODE label=solver het_group=0 host=n23m0004.hpc.itc.rwth-aachen.de runtime=/tmp/ro092286/smartsim_runtime/smartsim_cuda-12
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme0n1p4  696G   25G  671G   4% /tmp
+RUNTIME_STAGE_PER_NODE label=db het_group=1 host=n23g0001.hpc.itc.rwth-aachen.de runtime=/tmp/ro092286/smartsim_runtime/smartsim_cuda-12
