@@ -1,172 +1,185 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-#PROVIDER="SMARTSIM" # Alternatives: "AIX", "PHYDLL" or "SMARTSIM"
-# if PROVIDER is set by the environment, use that value; otherwise default to "AIX"
-PROVIDER=${PROVIDER:-"AIX"}
-export PROVIDER
-
+# Configuration parameters
+PROVIDER=${PROVIDER:-"AIX"}      # SMARTSIM, AIX, PHYDLL
+DEVICE=${DEVICE:-"GPU"}          # GPU, CPU
 STEPS=${STEPS:-1}
-export STEPS
-
 CLIENTS=${CLIENTS:-1}
-export CLIENTS
-
 COMPILE=${COMPILE:-0}
 
-USE_GPU=1
+export PROVIDER
+export STEPS
+export CLIENTS
+
+# Paths
 PYTHON_RUNTIME_ROOT="/home/thes2181/python"
-
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-if (( USE_GPU == 1 )); then
-    SMARTSIM_PYTHON="${SMARTSIM_PYTHON:-${PYTHON_RUNTIME_ROOT}/smartsim_cuda-12/bin/python}"
+BASE_DIR="$(realpath "${SCRIPT_DIR}/..")"
+
+# Source environment
+source "${BASE_DIR}/set_env_claix23_cuda12.4.sh"
+
+# Perform model conversion if needed
+if [[ "${DEVICE}" == "CPU" ]]; then
+    MODEL_SRC="/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/train_models/model_a/best_model_jit_benchmark_giant_mlp_flat.pt"
+    MODEL_DST="/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/train_models/model_a/best_model_jit_benchmark_giant_mlp_flat_cpu.pt"
+    # Use the smartsim_cpu python for conversion
+    /home/thes2181/python/smartsim_cpu/bin/python "${SCRIPT_DIR}/convert_to_cpu.py" "${MODEL_SRC}" "${MODEL_DST}"
+fi
+
+# Select Python environment and SmartSim device string
+if [[ "${DEVICE}" == "GPU" ]]; then
+    RUNTIME_DEVICE="smartsim_cuda-12"
+    USE_GPU=1
 else
-    SMARTSIM_PYTHON="${SMARTSIM_PYTHON:-${PYTHON_RUNTIME_ROOT}/smartsim_cpu/bin/python}"
+    RUNTIME_DEVICE="smartsim_cpu"
+    USE_GPU=0
 fi
+SMARTSIM_PYTHON="${SMARTSIM_PYTHON:-${PYTHON_RUNTIME_ROOT}/${RUNTIME_DEVICE}/bin/python}"
+PY_ENV="${PYTHON_RUNTIME_ROOT}/${RUNTIME_DEVICE}"
 
-
-
-
-if (( USE_GPU == 1 )); then
-	RUNTIME_DEVICE="smartsim_cuda-12"
-	PY_ENV="${PYTHON_RUNTIME_ROOT}/${RUNTIME_DEVICE}"
-	CONFIG_FILE="${SCRIPT_DIR}/config_smartsim_gpu.toml"
+# Select appropriate config file
+if [[ "${PROVIDER}" == "SMARTSIM" ]]; then
+    if [[ "${DEVICE}" == "GPU" ]]; then
+        CONFIG_FILE="${SCRIPT_DIR}/config_smartsim_gpu.toml"
+    else
+        CONFIG_FILE="${SCRIPT_DIR}/config_smartsim_cpu.toml"
+    fi
+elif [[ "${PROVIDER}" == "AIX" ]]; then
+    if [[ "${DEVICE}" == "GPU" ]]; then
+        CONFIG_FILE="${SCRIPT_DIR}/config_aix_gpu.toml"
+    else
+        CONFIG_FILE="${SCRIPT_DIR}/config_aix_cpu.toml"
+    fi
+elif [[ "${PROVIDER}" == "PHYDLL" ]]; then
+    if [[ "${DEVICE}" == "GPU" ]]; then
+        CONFIG_FILE="${SCRIPT_DIR}/config_phydll_gpu.toml"
+    else
+        CONFIG_FILE="${SCRIPT_DIR}/config_phydll_cpu.toml"
+    fi
 else
-	RUNTIME_DEVICE="smartsim_cpu"
-	PY_ENV="${PYTHON_RUNTIME_ROOT}/${RUNTIME_DEVICE}"
-	CONFIG_FILE="${SCRIPT_DIR}/config_smartsim_cpu.toml"
+    echo "Unsupported provider: ${PROVIDER}" >&2
+    exit 1
 fi
 
-# Overwrite config file in case of AIX provider
-if [[ "$PROVIDER" == "AIX" ]]; then
-	CONFIG_FILE="${SCRIPT_DIR}/config_aix.toml"
-elif [[ "$PROVIDER" == "SMARTSIM" ]]; then
-	RUNTIME_EXTRA_LIB_DIR="${PY_ENV}/runtime_libs"
-	if [[ -d "${RUNTIME_EXTRA_LIB_DIR}" ]]; then
-		export LD_LIBRARY_PATH="${RUNTIME_EXTRA_LIB_DIR}:${LD_LIBRARY_PATH:-}"
-		echo "Using runtime extra libs from ${RUNTIME_EXTRA_LIB_DIR}"
-	else
-		echo "Warning: runtime extra lib directory not found: ${RUNTIME_EXTRA_LIB_DIR}"
-	fi
-elif [[ "$PROVIDER" == "PHYDLL" ]]; then
-	CONFIG_FILE="${SCRIPT_DIR}/config_phydll.toml"
+echo "--- Run Configuration ---"
+echo "Provider: ${PROVIDER}"
+echo "Device:   ${DEVICE}"
+echo "Clients:  ${CLIENTS}"
+echo "Steps:    ${STEPS}"
+echo "Config:   $(basename "${CONFIG_FILE}")"
+echo "Python:   ${SMARTSIM_PYTHON}"
+echo "--------------------------"
+
+# Compile if requested
+if [[ "${COMPILE}" -eq 1 ]]; then
+    cmake -S "${SCRIPT_DIR}" -B "${SCRIPT_DIR}/build" \
+            -DSMARTSIM_PYTHON="${SMARTSIM_PYTHON}"
+    cmake --build "${SCRIPT_DIR}/build" -j
 fi
 
+# 1. SMARTSIM Provider
+if [[ "${PROVIDER}" == "SMARTSIM" ]]; then
+    # Staging runtime libs if they exist
+    RUNTIME_EXTRA_LIB_DIR="${PY_ENV}/runtime_libs"
+    if [[ -d "${RUNTIME_EXTRA_LIB_DIR}" ]]; then
+            export LD_LIBRARY_PATH="${RUNTIME_EXTRA_LIB_DIR}:${LD_LIBRARY_PATH:-}"
+            echo "Using runtime extra libs from ${RUNTIME_EXTRA_LIB_DIR}"
+    fi
 
-if [[ COMPILE -eq 1 ]]; then
-	cmake -S "${SCRIPT_DIR}" -B "${SCRIPT_DIR}/build" \
-		-DAIX_PYTHON="${SMARTSIM_PYTHON}"
-	cmake --build "${SCRIPT_DIR}/build" -j
-fi
+    ENDPOINT_FILE="${SCRIPT_DIR}/.ssdb_endpoint"
+    DONE_FILE="${SCRIPT_DIR}/.solver_done"
 
-# For SmartSim
-if [[ $PROVIDER == "SMARTSIM" ]]; then
-	ENDPOINT_FILE="${SCRIPT_DIR}/.ssdb_endpoint"
-	DONE_FILE="${SCRIPT_DIR}/.solver_done"
+    rm -f "${ENDPOINT_FILE}" "${DONE_FILE}"
 
-	rm -f "${ENDPOINT_FILE}" "${DONE_FILE}"
+    "${SMARTSIM_PYTHON}" "${SCRIPT_DIR}/driver.py" \
+            --endpoint-file "${ENDPOINT_FILE}" \
+            --done-file "${DONE_FILE}" &
+    DRIVER_PID=$!
 
-	"${SMARTSIM_PYTHON}" "${SCRIPT_DIR}/driver.py" \
-		--endpoint-file "${ENDPOINT_FILE}" \
-		--done-file "${DONE_FILE}" &
-	DRIVER_PID=$!
+    cleanup() {
+            if [[ -n "${DRIVER_PID:-}" ]] && kill -0 "${DRIVER_PID}" 2>/dev/null; then
+                    touch "${DONE_FILE}" || true
+                    wait "${DRIVER_PID}" || true
+            fi
+    }
+    trap cleanup EXIT
 
-	cleanup() {
-		if [[ -n "${DRIVER_PID:-}" ]] && kill -0 "${DRIVER_PID}" 2>/dev/null; then
-			touch "${DONE_FILE}" || true
-			wait "${DRIVER_PID}" || true
-		fi
-	}
-	trap cleanup EXIT
+    echo "Waiting for SmartSim database to start..."
+    for _ in {1..120}; do
+            if [[ -s "${ENDPOINT_FILE}" ]]; then
+                    break
+            fi
+            sleep 0.5
+    done
 
-	for _ in {1..120}; do
-		if [[ -s "${ENDPOINT_FILE}" ]]; then
-			break
-		fi
-		sleep 0.5
-	done
+    if [[ ! -s "${ENDPOINT_FILE}" ]]; then
+            echo "Timed out waiting for SmartSim endpoint file: ${ENDPOINT_FILE}" >&2
+            exit 1
+    fi
 
-	if [[ ! -s "${ENDPOINT_FILE}" ]]; then
-		echo "Timed out waiting for SmartSim endpoint file: ${ENDPOINT_FILE}" >&2
-		exit 1
-	fi
+    export SSDB
+    SSDB="$(tr -d '\n' < "${ENDPOINT_FILE}")"
+    echo "Using SSDB=${SSDB}"
 
+    mpirun -n "${CLIENTS}" "${SCRIPT_DIR}/build/module_test_solver" "${CONFIG_FILE}"
 
-	export SSDB
-	SSDB="$(tr -d '\n' < "${ENDPOINT_FILE}")"
-	echo "Using SSDB=${SSDB}"
+    touch "${DONE_FILE}"
+    wait "${DRIVER_PID}"
 
-	mpirun -n "${CLIENTS}" "${SCRIPT_DIR}/build/module_test_solver" "${CONFIG_FILE}"
+# 2. AIX Provider
+elif [[ "${PROVIDER}" == "AIX" ]]; then
+    # Force visibility for GPU if requested, but respect CUDA_VISIBLE_DEVICES if already set
+    if [[ "${DEVICE}" == "GPU" ]]; then
+        export CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-3}
+    fi
+    mpirun -n "${CLIENTS}" "${SCRIPT_DIR}/build/module_test_solver" "${CONFIG_FILE}"
 
-	touch "${DONE_FILE}"	wait "${DRIVER_PID}"
-elif [[ $PROVIDER == "AIX" ]]; then
+# 3. PHYDLL Provider
+elif [[ "${PROVIDER}" == "PHYDLL" ]]; then
+    USE_PYTHON_DL_CLIENT=${USE_PYTHON_DL_CLIENT:-0}
+    DL_CLIENT_CMD=()
+    if [[ "${USE_PYTHON_DL_CLIENT}" == "1" ]]; then
+            DL_CLIENT_CMD=("${SMARTSIM_PYTHON}" "${SCRIPT_DIR}/../CPP-ML-Interface/dl_clients/phydll_dl_client.py")
+            PHYDLL_REBUILD_DL_CLIENT=0
+    else
+            PHYDLL_DL_CLIENT="${PHYDLL_DL_CLIENT:-${SCRIPT_DIR}/../CPP-ML-Interface/dl_clients/build/phydll_dl_client}"
+            DL_CLIENT_CMD=("${PHYDLL_DL_CLIENT}")
+            PHYDLL_REBUILD_DL_CLIENT=${PHYDLL_REBUILD_DL_CLIENT:-1}
+    fi
+    
+    NP_PHY=${CLIENTS}
+    NP_DL=1
+    PHYDLL_DL_COUNT=1
+    export PHYDLL_DL_COUNT
 
-	
-	# srun --export=ALL --het-group=0 --mpi=pmi2 --preserve-env --cpus-per-task=1 /home/thes1961/MAIA/build_interface_aix_scorep_23b/bin/maia ./"$(basename $TOML_FILE)" : --export=ALL --het-group=1 --mpi=pmi2 --preserve-env --cpus-per-task=1 /home/thes1961/MAIA/build_interface_aix_scorep_23b/bin/maia ./"$(basename $TOML_FILE)"
-	export CUDA_VISIBLE_DEVICES=3
-	mpirun -n "${CLIENTS}" "${SCRIPT_DIR}/build/module_test_solver" "${CONFIG_FILE}"
-elif [[ $PROVIDER == "PHYDLL" ]]; then
-	USE_PYTHON_DL_CLIENT=${USE_PYTHON_DL_CLIENT:-0}
-	DL_CLIENT_CMD=()
-	if [[ "${USE_PYTHON_DL_CLIENT}" == "1" ]]; then
-		DL_CLIENT_CMD=("${SMARTSIM_PYTHON}" "${SCRIPT_DIR}/../CPP-ML-Interface/dl_clients/phydll_dl_client.py")
-		PHYDLL_REBUILD_DL_CLIENT=0
-	else
-		PHYDLL_DL_CLIENT="${PHYDLL_DL_CLIENT:-${SCRIPT_DIR}/../CPP-ML-Interface/dl_clients/build/phydll_dl_client}"
-		DL_CLIENT_CMD=("${PHYDLL_DL_CLIENT}")
-		PHYDLL_REBUILD_DL_CLIENT=${PHYDLL_REBUILD_DL_CLIENT:-1}
-	fi
-	NP_PHY=${CLIENTS}
-	NP_DL=1
-	PHYDLL_DL_COUNT=1
-	export PHYDLL_DL_COUNT
-	CUDA_VISIBLE_DEVICES_EXPORT="${CUDA_VISIBLE_DEVICES:-}"
-	OPENMPI_MPIRUN="/cvmfs/software.hpc.rwth.de/Linux/RH9/x86_64/intel/sapphirerapids/software/OpenMPI/4.1.4-GCC-11.3.0/bin/mpirun"
-	MPIRUN_BIN="${MPIRUN:-}"
-	if [[ -z "${MPIRUN_BIN}" ]]; then
-		if [[ -x "${OPENMPI_MPIRUN}" ]]; then
-			MPIRUN_BIN="${OPENMPI_MPIRUN}"
-		else
-			MPIRUN_BIN="mpirun"
-		fi
-	fi
+    # Rebuild DL client if requested
+    if [[ "${USE_PYTHON_DL_CLIENT}" == "0" ]]; then
+            if [[ "${PHYDLL_REBUILD_DL_CLIENT}" == "1" || ! -x "${PHYDLL_DL_CLIENT}" ]]; then
+                    cmake -S "${SCRIPT_DIR}/../CPP-ML-Interface/dl_clients" -B "${SCRIPT_DIR}/../CPP-ML-Interface/dl_clients/build"
+                    cmake --build "${SCRIPT_DIR}/../CPP-ML-Interface/dl_clients/build" -j
+            fi
+            if [[ ! -x "${PHYDLL_DL_CLIENT}" ]]; then
+                    echo "PHYDLL_DL_CLIENT not executable: ${PHYDLL_DL_CLIENT}" >&2
+                    exit 1
+            fi
+    fi
 
-	echo "USE PHYDLL provider with NP_PHY=${NP_PHY} and NP_DL=${NP_DL}"
-	echo "Using PHYDLL_DL_CLIENT=${DL_CLIENT_CMD[*]}"
-	if [[ "${USE_PYTHON_DL_CLIENT}" == "0" ]]; then
-		if command -v readlink >/dev/null 2>&1; then
-			PHYDLL_DL_CLIENT_REALPATH="$(readlink -f "${PHYDLL_DL_CLIENT}" || true)"
-			if [[ -n "${PHYDLL_DL_CLIENT_REALPATH}" ]]; then
-				echo "PHYDLL_DL_CLIENT realpath=${PHYDLL_DL_CLIENT_REALPATH}"
-			fi
-		fi
+    MPIRUN_ENV=()
+    if [[ "${DEVICE}" == "GPU" ]]; then
+        MPIRUN_ENV+=(-x CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0})
+        MPIRUN_ENV+=(-x CUDA_DEVICE_ORDER)
+    fi
+    MPIRUN_ENV+=(-x PHYDLL_DL_COUNT)
 
-		if [[ "${PHYDLL_REBUILD_DL_CLIENT}" == "1" || ! -x "${PHYDLL_DL_CLIENT}" ]]; then
-			cmake -S "${SCRIPT_DIR}/../CPP-ML-Interface/dl_clients" -B "${SCRIPT_DIR}/../CPP-ML-Interface/dl_clients/build"
-			cmake --build "${SCRIPT_DIR}/../CPP-ML-Interface/dl_clients/build" -j
-		fi
-		if [[ ! -x "${PHYDLL_DL_CLIENT}" ]]; then
-			echo "PHYDLL_DL_CLIENT not executable: ${PHYDLL_DL_CLIENT}" >&2
-			exit 1
-		fi
-	fi
+    PHY_APP_ENV=("${MPIRUN_ENV[@]}")
+    DL_APP_ENV=("${MPIRUN_ENV[@]}")
 
-	MPIRUN_ENV=()
-	if [[ -n "${CUDA_VISIBLE_DEVICES_EXPORT}" ]]; then
-		MPIRUN_ENV+=(-x CUDA_VISIBLE_DEVICES)
-		MPIRUN_ENV+=(-x CUDA_DEVICE_ORDER)
-	fi
-	MPIRUN_ENV+=(-x PHYDLL_DL_COUNT)
+    # Add libphydll.so to LD_LIBRARY_PATH for the DL client
+    PHYDLL_LIB_DIR=$(realpath "${SCRIPT_DIR}/../CPP-ML-Interface/extern/phydll/build/lib")
+    DL_APP_ENV+=(-x LD_LIBRARY_PATH="${PHYDLL_LIB_DIR}:${LD_LIBRARY_PATH:-}")
 
-	PHY_APP_ENV=("${MPIRUN_ENV[@]}")
-	DL_APP_ENV=("${MPIRUN_ENV[@]}")
-
-	# Add libphydll.so to LD_LIBRARY_PATH for the DL client
-	PHYDLL_LIB_DIR=$(realpath "${SCRIPT_DIR}/../CPP-ML-Interface/extern/phydll/build/lib")
-	DL_APP_ENV+=(-x LD_LIBRARY_PATH="${PHYDLL_LIB_DIR}:${LD_LIBRARY_PATH:-}")
-
-	"${MPIRUN_BIN}" "${PHY_APP_ENV[@]}" -n "${NP_PHY}" "${SCRIPT_DIR}/build/module_test_solver" "${CONFIG_FILE}" : "${DL_APP_ENV[@]}" -n "${NP_DL}" "${DL_CLIENT_CMD[@]}"
-else
-	echo "Unsupported provider: ${PROVIDER}" >&2
-	exit 1
+    echo "Launching PhyDLL with NP_PHY=${NP_PHY}, NP_DL=${NP_DL}, using ${DEVICE}"
+    mpirun "${PHY_APP_ENV[@]}" -n "${NP_PHY}" "${SCRIPT_DIR}/build/module_test_solver" "${CONFIG_FILE}" : "${DL_APP_ENV[@]}" -n "${NP_DL}" "${DL_CLIENT_CMD[@]}"
 fi

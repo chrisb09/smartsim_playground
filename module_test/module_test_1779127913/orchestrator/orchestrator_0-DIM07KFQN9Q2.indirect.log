@@ -1,4 +1,0 @@
-20:11:54 login23-g-1.hpc.itc.rwth-aachen.de __main__.orchestrator_0-DIM07KFQN9Q2[396325:MainThread] INFO Indirect proxy 396325 child process 396462 started
-20:11:54 login23-g-1.hpc.itc.rwth-aachen.de __main__.orchestrator_0-DIM07KFQN9Q2[396325:MainThread] INFO Waiting for child process 396462 to complete
-20:12:11 login23-g-1.hpc.itc.rwth-aachen.de __main__.orchestrator_0-DIM07KFQN9Q2[396325:MainThread] INFO Indirect proxy 396325 child process 396462 complete. return code: 0
-20:12:11 login23-g-1.hpc.itc.rwth-aachen.de __main__.orchestrator_0-DIM07KFQN9Q2[396325:MainThread] INFO Performing cleanup

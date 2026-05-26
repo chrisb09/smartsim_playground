@@ -12,6 +12,8 @@ phydll*.log
 
 # We don't use a submodule for SmartRedis, as the install.sh script clones and installs it
 SmartRedis/
+MMCP_TOM/
+MMCP_TOM
 
 build/
 module_test/build

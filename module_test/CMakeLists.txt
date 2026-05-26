@@ -15,7 +15,7 @@ endif()
 set(CPP_MODULE_DIR "/hpcwork/ro092286/smartsim/CPP-ML-Interface")
 set(SMARTREDIS_DIR "${CPP_MODULE_DIR}/extern/SmartRedis")
 set(SMARTSIM_PYTHON "${CPP_MODULE_DIR}/extern/python/smartsim_cuda-12/bin/python"
-	CACHE FILEPATH "Python interpreter with clang module available")
+    CACHE FILEPATH "Python interpreter with clang module available")
 
 option(WITH_PHYDLL "Enable using phyDLL for physics coupling (requires phyDLL dependencies)" OFF)
 
