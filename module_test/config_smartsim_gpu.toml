@@ -5,11 +5,15 @@ level = "debug"
 class = "Smartsim"
 device = "GPU"
 model_backend = "TORCH"
-model_path = "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/train_models/model_a/best_model_jit_benchmark_giant_mlp.pt"
+model_path = "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/train_models/model_a/transformer_cuda.pt"
 model_name = "module_test_model"
 nodes = 1
 num_gpus = 1
 batch_size = 1
+command_timeout = 900
+socket_timeout = 900
+model_timeout = 900000
+
 
 [normalization]
 class = "MinMax"

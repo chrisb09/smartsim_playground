@@ -26,19 +26,19 @@ int main(int argc, char** argv)
 	MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
 
 
-	int* appnum_ptr;
-    int flag;
-    MPI_Comm_get_attr(MPI_COMM_WORLD, MPI_APPNUM, &appnum_ptr, &flag);
-
-    // Default to 0 if not running in an MPMD environment
-    int app_id = flag ? *appnum_ptr : 0;
-
-	// 2. Split MPI_COMM_WORLD using the app_id as the "color"
-	int color = (app_id == 0) ? 0 : MPI_UNDEFINED;
+	// Hardcode solver color to avoid OpenMPI 5 + Slurm PMIx MPI_APPNUM issues
+	const int color = 0;
 	MPI_Comm local_comm = MPI_COMM_NULL;
 	MPI_Comm_split(MPI_COMM_WORLD, color, world_rank, &local_comm);
+	if (local_comm == MPI_COMM_NULL) {
+		if (world_rank == 0) {
+			std::cerr << "Solver communicator is null; check MPMD split logic. Aborting.\n";
+		}
+		MPI_Finalize();
+		return 1;
+	}
 
-	std::cout << "Hello from rank " << world_rank << " of app_id " << app_id << "!\n";
+	std::cout << "Hello from rank " << world_rank << "!\n";
 
 	if (provider_name == "SMARTSIM") {
 		if (world_rank == 0) std::cout << "Running with SmartSim provider\n";

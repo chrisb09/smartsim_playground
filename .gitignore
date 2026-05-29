@@ -1,6 +1,8 @@
 python/
 tmp/
 tmp*/
+logs/
+module_test/module_test_*
 
 .*
 !.gitignore

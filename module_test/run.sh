@@ -7,26 +7,32 @@ DEVICE=${DEVICE:-"GPU"}          # GPU, CPU
 STEPS=${STEPS:-1}
 CLIENTS=${CLIENTS:-1}
 COMPILE=${COMPILE:-0}
+MODEL=${MODEL:-"giant"}
 
 export PROVIDER
 export STEPS
 export CLIENTS
 
 # Paths
-PYTHON_RUNTIME_ROOT="/home/thes2181/python"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BASE_DIR="$(realpath "${SCRIPT_DIR}/..")"
+PYTHON_RUNTIME_ROOT="${BASE_DIR}/CPP-ML-Interface/extern/python"
 
 # Source environment
 source "${BASE_DIR}/set_env_claix23_cuda12.4.sh"
 
 # Perform model conversion if needed
 if [[ "${DEVICE}" == "CPU" ]]; then
-    MODEL_SRC="/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/train_models/model_a/best_model_jit_benchmark_giant_mlp_flat.pt"
-    MODEL_DST="/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/train_models/model_a/best_model_jit_benchmark_giant_mlp_flat_cpu.pt"
+    MODEL_SRC="${BASE_DIR}/mini_app/train_models/model_a/${MODEL}_cuda.pt"
+    MODEL_DST="${BASE_DIR}/mini_app/train_models/model_a/${MODEL}_cpu.pt"
     # Use the smartsim_cpu python for conversion
-    /home/thes2181/python/smartsim_cpu/bin/python "${SCRIPT_DIR}/convert_to_cpu.py" "${MODEL_SRC}" "${MODEL_DST}"
+    "${PYTHON_RUNTIME_ROOT}/smartsim_cpu/bin/python" "${SCRIPT_DIR}/convert_to_cpu.py" "${MODEL_SRC}" "${MODEL_DST}"
 fi
+
+# Set SmartRedis timeouts for large models (matching smoke test logic)
+export SR_MODEL_TIMEOUT=900000
+export SR_CMD_TIMEOUT=900000
+export SR_SOCKET_TIMEOUT=900000
 
 # Select Python environment and SmartSim device string
 if [[ "${DEVICE}" == "GPU" ]]; then
@@ -90,12 +96,14 @@ if [[ "${PROVIDER}" == "SMARTSIM" ]]; then
 
     ENDPOINT_FILE="${SCRIPT_DIR}/.ssdb_endpoint"
     DONE_FILE="${SCRIPT_DIR}/.solver_done"
+    SS_PORT=${SS_PORT:-6780}
 
     rm -f "${ENDPOINT_FILE}" "${DONE_FILE}"
 
     "${SMARTSIM_PYTHON}" "${SCRIPT_DIR}/driver.py" \
             --endpoint-file "${ENDPOINT_FILE}" \
-            --done-file "${DONE_FILE}" &
+            --done-file "${DONE_FILE}" \
+            --port "${SS_PORT}" &
     DRIVER_PID=$!
 
     cleanup() {
@@ -180,6 +188,7 @@ elif [[ "${PROVIDER}" == "PHYDLL" ]]; then
     PHYDLL_LIB_DIR=$(realpath "${SCRIPT_DIR}/../CPP-ML-Interface/extern/phydll/build/lib")
     DL_APP_ENV+=(-x LD_LIBRARY_PATH="${PHYDLL_LIB_DIR}:${LD_LIBRARY_PATH:-}")
 
+    # MPMD split: solver uses color=0; DL client uses MPI_UNDEFINED (no MPI_APPNUM reliance).
     echo "Launching PhyDLL with NP_PHY=${NP_PHY}, NP_DL=${NP_DL}, using ${DEVICE}"
     mpirun "${PHY_APP_ENV[@]}" -n "${NP_PHY}" "${SCRIPT_DIR}/build/module_test_solver" "${CONFIG_FILE}" : "${DL_APP_ENV[@]}" -n "${NP_DL}" "${DL_CLIENT_CMD[@]}"
 fi
