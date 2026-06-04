@@ -7,3 +7,6 @@
 [submodule "CPP-ML-Interface"]
 	path = CPP-ML-Interface
 	url = git@github.com:chrisb09/CPP-ML-Interface.git
+[submodule "cpu_benchmark"]
+	path = cpu_benchmark
+	url = git@github.com:chrisb09/cpu_benchmark.git
