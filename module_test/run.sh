@@ -131,7 +131,7 @@ if [[ "${PROVIDER}" == "SMARTSIM" ]]; then
     SSDB="$(tr -d '\n' < "${ENDPOINT_FILE}")"
     echo "Using SSDB=${SSDB}"
 
-    mpirun -n "${CLIENTS}" "${SCRIPT_DIR}/build/module_test_solver" "${CONFIG_FILE}"
+    mpirun -x MODULE_TEST_RUN_ID -n "${CLIENTS}" "${SCRIPT_DIR}/build/module_test_solver" "${CONFIG_FILE}"
 
     touch "${DONE_FILE}"
     wait "${DRIVER_PID}"
@@ -142,7 +142,7 @@ elif [[ "${PROVIDER}" == "AIX" ]]; then
     if [[ "${DEVICE}" == "GPU" ]]; then
         export CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-3}
     fi
-    mpirun -n "${CLIENTS}" "${SCRIPT_DIR}/build/module_test_solver" "${CONFIG_FILE}"
+    mpirun -x MODULE_TEST_RUN_ID -n "${CLIENTS}" "${SCRIPT_DIR}/build/module_test_solver" "${CONFIG_FILE}"
 
 # 3. PHYDLL Provider
 elif [[ "${PROVIDER}" == "PHYDLL" ]]; then
@@ -174,7 +174,7 @@ elif [[ "${PROVIDER}" == "PHYDLL" ]]; then
             fi
     fi
 
-    MPIRUN_ENV=()
+    MPIRUN_ENV=(-x MODULE_TEST_RUN_ID)
     if [[ "${DEVICE}" == "GPU" ]]; then
         MPIRUN_ENV+=(-x CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0})
         MPIRUN_ENV+=(-x CUDA_DEVICE_ORDER)

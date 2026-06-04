@@ -27,8 +27,12 @@ def main() -> int:
         done_file.unlink()
 
     exp_name = f"module_test_{int(time.time())}"
+    module_tests_dir = Path(__file__).resolve().parent / "module_tests"
+    module_tests_dir.mkdir(parents=True, exist_ok=True)
+    exp_path = module_tests_dir / exp_name
+    exp_path.mkdir(parents=True, exist_ok=True)
 
-    exp = Experiment(name=exp_name, launcher="local")
+    exp = Experiment(name=exp_name, launcher="local", exp_path=str(exp_path))
     db = exp.create_database(port=args.port, interface=args.interface, db_nodes=1, single_cmd=False, batch=False)
 
     exp.start(db, block=False, summary=True)
