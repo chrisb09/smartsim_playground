@@ -3,13 +3,7 @@
 #include <vector>
 #include <string>
 
-extern "C" {
-#include "phydll.h"
-}
-
-// We use the raw phydll C-API to precisely control the sizes sent over the handshake,
-// which mimics the CPP-ML-Interface Phydll provider behavior without the overhead of
-// configuring the entire interface. The bug is in the DL client side anyway.
+#include "ml_coupling.hpp"
 
 int main(int argc, char** argv) {
     MPI_Init(&argc, &argv);
@@ -19,60 +13,83 @@ int main(int argc, char** argv) {
         mode = argv[1];
     }
 
-    int hc_rank; 
-    MPI_Comm_rank(MPI_COMM_WORLD, &hc_rank);
+    int rank, size;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &size);
 
-    phydll_init("physical");
-    MPI_Comm comm = phydll_get_local_mpi_comm();
-    int size, rank; 
-    MPI_Comm_size(comm, &size);
-    MPI_Comm_rank(comm, &rank);
+    int field_size = 10;
+    std::string model_path = "minimal_model.pt";
 
-    phydll_opt_enable_cpl_loop();
-
-    int field_size = 10; // default 10 elements per rank
     if (mode == "imperfect") {
-        // e.g. rank 0 gets 11, rank 1 gets 10. Total 21. Not divisible by 2.
         if (rank == 0) {
             field_size = 11;
         } else {
             field_size = 10;
         }
     } else if (mode == "shape_mismatch") {
-        field_size = 18; // this should trigger the mismatch since dl_client reshapes it based on batch size! Wait, if total is 36, batch size is 2, features is 18. This actually fits! To mismatch we need total to be divisible but not 18 features, e.g. 10 features!
-        if (rank == 0) field_size = 10;
-        else field_size = 10;
+        field_size = 10;
+        model_path = "shape_mismatch_model.pt";
     }
 
-    phydll_define_phy(1, field_size); // 1 field, field_size elements
+    // Prepare configuration TOML
+    std::string config_str = 
+        "[general]\n"
+        "coupling_type = \"STATIC\"\n"
+        "[logging]\n"
+        "level = \"debug\"\n"
+        "error_separate = false\n"
+        "[provider]\n"
+        "class = \"Phydll\"\n"
+        "model_backend = \"TORCH\"\n"
+        "model_path = \"" + model_path + "\"\n"
+        "device = \"CPU\"\n"
+        "[behavior]\n"
+        "class=\"periodic\"\n"
+        "inference_interval = 1\n"
+        "[normalization]\n"
+        "class=\"minmax\"\n"
+        "input_min=-10.0\n"
+        "input_max=10.0\n"
+        "output_min=-10.0\n"
+        "output_max=10.0\n"
+        "[application]\n"
+        "class=\"TurbulenceClosure\"\n";
 
-    std::vector<double> phy_field(field_size, rank + 1.0);
-    std::vector<double> dl_field(field_size, 0.0);
+    std::vector<double> input_raw(field_size, rank + 1.0);
+    std::vector<double> output_raw(field_size, 0.0);
 
-    // Sync handshake
-    if (rank == 0) std::cout << "Starting loop for mode: " << mode << std::endl;
+    MLCouplingData<double> input_data;
+    input_data.add_tensor(MLCouplingTensor<double>::wrap_flat(input_raw.data(), std::vector<int>{field_size}));
 
-    for (int iter = 1; iter <= 2; iter++) {
-        char label[] = "FIELD0";
-        double* p_phy = phy_field.data();
-        phydll_set_field(&p_phy, label);
+    MLCouplingData<double> output_data;
+    output_data.add_tensor(MLCouplingTensor<double>::wrap_flat(output_raw.data(), std::vector<int>{field_size}));
 
-        phydll_isend();
-        phydll_wait_isend();
-        phydll_recv();
+    if (rank == 0) {
+        std::cout << "Initializing MLCoupling for mode: " << mode << "..." << std::endl;
+    }
 
-        double* p_dl = dl_field.data();
-        phydll_get_field(&p_dl, label);
+    try {
+        MLCoupling<double, double>* coupling = create_mlcoupling_from_config<double, double>(
+            config_str, input_data, output_data
+        );
 
-        int rcv_size = 0;
-        phydll_get_field_size(&rcv_size);
-        
         if (rank == 0) {
-            std::cout << "Iter " << iter << " Rank 0 Received " << rcv_size << " elements." << std::endl;
+            std::cout << "Starting C++ ML Coupling step for mode: " << mode << std::endl;
         }
+
+        // Run 2 steps
+        for (int iter = 1; iter <= 2; ++iter) {
+            coupling->step();
+            if (rank == 0) {
+                std::cout << "Iter " << iter << " Completed. Output sample [0]: " << output_raw[0] << std::endl;
+            }
+        }
+
+        delete coupling;
+    } catch (const std::exception& e) {
+        std::cerr << "Exception on rank " << rank << ": " << e.what() << std::endl;
     }
 
-    phydll_finalize();
     MPI_Finalize();
     return 0;
 }

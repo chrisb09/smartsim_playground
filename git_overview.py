@@ -25,7 +25,7 @@ def run_git(args, cwd=None):
             text=True,
             check=True
         )
-        return result.stdout.strip()
+        return result.stdout.rstrip('\n')
     except Exception:
         return None
 
