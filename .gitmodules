@@ -10,3 +10,6 @@
 [submodule "cpu_benchmark"]
 	path = cpu_benchmark
 	url = git@github.com:chrisb09/cpu_benchmark.git
+[submodule "module_test"]
+	path = module_test
+	url = git@github.com:chrisb09/module_test.git

@@ -19,3 +19,7 @@ MMCP_TOM
 
 build/
 module_test/build
+
+# Ignore core dumps
+core.*
+
