@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
         "[provider]\n"
         "class = \"Phydll\"\n"
         "model_backend = \"TORCH\"\n"
-        "model_path = \"" + model_path + "\"\n"
+        "model_file = \"" + model_path + "\"\n"
         "device = \"CPU\"\n"
         "[behavior]\n"
         "class=\"periodic\"\n"
@@ -53,7 +53,7 @@ int main(int argc, char** argv) {
         "output_min=-10.0\n"
         "output_max=10.0\n"
         "[application]\n"
-        "class=\"TurbulenceClosure\"\n";
+        "class=\"MLCouplingApplicationTurbulenceClosure\"\n";
 
     std::vector<double> input_raw(field_size, rank + 1.0);
     std::vector<double> output_raw(field_size, 0.0);
