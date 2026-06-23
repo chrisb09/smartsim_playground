@@ -28,6 +28,11 @@ When deploying on HPC hardware (e.g. running across 96 MPI ranks on Slurm), seve
 
 Compiling complex C++ code across different sub-projects (`mini_app`, `CPP-ML-Interface`) requires a highly coordinated build environment inside Slurm.
 
-- **Dynamic Resource Utilization**: The `cmake --build` scripts dynamically scale thread limits up to `96` inside Slurm jobs using `$SLURM_CPUS_ON_NODE`.
-- **Self-Submitting Jobs**: The scripts detect if they run on login nodes and automatically re-wrap themselves into an `srun --partition=devel` command to compile instantly on compute nodes.
+- **Dynamic Resource Utilization**: The `cmake --build` scripts dynamically scale thread limits up to `96` inside Slurm jobs using `$SLURM_CPUS_ON_NODE`. The same scripts fall back to a safe thread limit (4 or 8) when run on a login shell or developer workstation.
+- **Self-Submitting Jobs (`slurm_build.sh`)**: Every C++ sub-project ships a `slurm_build.sh` entry point that detects if it is running inside an existing Slurm job. If not, it re-executes itself under `srun --partition=devel --cpus-per-task=96` so the actual build runs on a 96-core compute node. The same script is also compatible with `sbatch` for asynchronous submission. The four copies of this wrapper live at:
+  * `CPP-ML-Interface/slurm_build.sh`
+  * `cpu_benchmark/provider_bench/slurm_build.sh`
+  * `mini_app/slurm_build.sh`
+  * `module_test/slurm_build.sh`
 - **Script Sandboxing Bug**: Previously, executing `source install.sh` inside `mini_app/slurm_build.sh` unintentionally overwrote the `SCRIPT_DIR` environment variable, silently skipping the main executable's compilation. Always scope shell variables tightly (e.g., `MINI_APP_DIR` instead of generic `SCRIPT_DIR`) when sourcing scripts from dependent submodules.
+- **GPU-Less H100 Targeting**: The `devel` partition has no GPUs, so `TORCH_CUDA_ARCH_LIST=9.0` is hardcoded in every `build.sh` to force H100-compatible SM_90 code generation. Without this, PyTorch's host auto-detection defaults to older capabilities and the build hangs or produces binaries that don't load on compute nodes.
