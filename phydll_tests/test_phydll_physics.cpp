@@ -40,7 +40,7 @@ int main(int argc, char** argv) {
         "error_separate = false\n"
         "[provider]\n"
         "class = \"Phydll\"\n"
-        "model_backend = \"TORCH\"\n"
+        "backend = \"TORCH\"\n"
         "model_file = \"" + model_path + "\"\n"
         "device = \"CPU\"\n"
         "[behavior]\n"
