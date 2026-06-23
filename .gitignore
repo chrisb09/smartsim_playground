@@ -23,3 +23,4 @@ module_test/build
 # Ignore core dumps
 core.*
 
+mmcp_model_wrapper/*.pt
