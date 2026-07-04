@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Initialize Lmod module command for non-interactive shells
-if [ -f /etc/profile.d/modules.sh ]; then
-    source /etc/profile.d/modules.sh
+if [ -f /opt/lmod/lmod/init/bash ]; then
+    source /opt/lmod/lmod/init/bash
 fi
 
 # Disable Lmod pagination and interactive warning prompts
@@ -25,10 +25,13 @@ module_names="OpenSSL/1.1 CUDA/12.4.0 GCCcore/11.3.0 Clang/15.0.5 GCC/11.3.0 Ope
 if [[ "${USE_SCOREP:-}" == "1" ]]; then
     module_names="$module_names Score-P/8.4 PAPI/7.0.0"
 fi
+echo "DEBUG: USE_SCOREP = ${USE_SCOREP}"
+echo "DEBUG: module_names = ${module_names}"
 
 echo "Loading required modules..."
+rm -f /tmp/module_load.log
 for module in $module_names; do
-    module load "$module" >/dev/null 2>&1 || true
+    module load "$module" >/dev/null 2>>/tmp/module_load.log || true
 done
 
 # Keep OpenSSL runtime path so Python SSL remains consistent.
