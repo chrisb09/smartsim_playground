@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# Disable Lmod pagination and interactive warning prompts
-export TERM=dumb
-export LMOD_PAGER=none
-export PAGER=cat
-
 # Initialize Lmod module command for non-interactive shells
 if [ -f /etc/profile.d/modules.sh ]; then
     source /etc/profile.d/modules.sh
 fi
+
+# Disable Lmod pagination and interactive warning prompts
+export TERM=dumb
+export LMOD_PAGER=cat
+export PAGER=cat
 
 # SmartSim requirements:
 # - Python 3.9-3.11, pip
