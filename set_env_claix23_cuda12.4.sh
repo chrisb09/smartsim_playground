@@ -28,7 +28,7 @@ fi
 
 echo "Loading required modules..."
 for module in $module_names; do
-    module load "$module" >/dev/null 2>&1 || module load "$module"
+    module load "$module" >/dev/null 2>&1 || true
 done
 
 # Keep OpenSSL runtime path so Python SSL remains consistent.
