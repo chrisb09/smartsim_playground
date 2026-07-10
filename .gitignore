@@ -2,6 +2,7 @@ python/
 tmp/
 tmp*/
 logs/
+scorep_runs/
 module_test/module_test_*
 
 .*
@@ -10,6 +11,9 @@ module_test/module_test_*
 !.gitattributes
 
 phydll*.log
+scorep_papi_*.out
+scorep_papi_*.err
+scorep_papi_hwctr_smoke_*/
 
 
 # We don't use a submodule for SmartRedis, as the install.sh script clones and installs it
