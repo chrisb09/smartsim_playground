@@ -41,9 +41,9 @@ if [[ "${USE_SCOREP:-}" == "1" ]]; then
     fi
     _scorep_job_name="${SLURM_JOB_NAME:-scorep_job}"
     _scorep_job_name="${_scorep_job_name//[^A-Za-z0-9_.-]/_}"
-    export SCOREP_EXPERIMENT_DIRECTORY="${SCOREP_EXPERIMENT_DIRECTORY:-scorep_runs/${_scorep_job_name}_${SLURM_JOB_ID:-$$}}"
+    export SCOREP_EXPERIMENT_DIRECTORY="${SCOREP_EXPERIMENT_DIRECTORY:-${SMARTSIM_ROOT_DIR}/scorep_runs/${_scorep_job_name}_${SLURM_JOB_ID:-$$}}"
     export SCOREP_OVERWRITE_EXPERIMENT_DIRECTORY="${SCOREP_OVERWRITE_EXPERIMENT_DIRECTORY:-true}"
-    mkdir -p "${SCOREP_EXPERIMENT_DIRECTORY}"
+    mkdir -p "$(dirname "${SCOREP_EXPERIMENT_DIRECTORY}")"
 fi
 
 # Keep OpenSSL runtime path so Python SSL remains consistent.
