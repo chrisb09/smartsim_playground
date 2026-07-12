@@ -14,6 +14,7 @@ phydll*.log
 scorep_papi_*.out
 scorep_papi_*.err
 scorep_papi_hwctr_smoke_*/
+scorep-*/
 
 
 # We don't use a submodule for SmartRedis, as the install.sh script clones and installs it
