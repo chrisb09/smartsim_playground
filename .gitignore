@@ -31,3 +31,11 @@ core.*
 mmcp_model_wrapper/*.pt
 mmcp_model_wrapper/*.py
 test_model.py
+
+# npm artifacts (unrelated to project)
+node_modules/
+package.json
+package-lock.json
+
+# Empty placeholder dir (AIxeleratorService worktrees are registered as submodules)
+AIxeleratorService/

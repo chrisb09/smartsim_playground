@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SMARTSIM_ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SMARTSIM_ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-}")" && pwd)"
 
 # Initialize Lmod module command for non-interactive shells
 if [ -f /opt/lmod/lmod/init/bash ]; then

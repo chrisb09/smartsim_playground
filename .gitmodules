@@ -13,3 +13,23 @@
 [submodule "module_test"]
 	path = module_test
 	url = git@github.com:chrisb09/module_test.git
+[submodule "affinity_test"]
+	path = affinity_test
+	url = git@github.com:chrisb09/affinity_test.git
+	branch = master
+[submodule "aix_p2p_benchmark"]
+	path = aix_p2p_benchmark
+	url = git@github.com:chrisb09/aix_p2p_benchmark.git
+	branch = master
+[submodule "key_loadbalancing"]
+	path = key_loadbalancing
+	url = git@github.com:chrisb09/key_loadbalancing.git
+	branch = master
+[submodule "AIxeleratorService-p2p"]
+	path = AIxeleratorService-p2p
+	url = git@github.com:chrisb09/AIxeleratorService.git
+	branch = feature/p2p-instrumented-baseline
+[submodule "AIxeleratorService-pipelined"]
+	path = AIxeleratorService-pipelined
+	url = git@github.com:chrisb09/AIxeleratorService.git
+	branch = feature/pipelined-p2p
