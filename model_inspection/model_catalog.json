@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "description": "Canonical catalog of all models used in the smartsim coupling experiments. Each entry defines the artifact path(s), input/output schema, and optional analytical FLOPs hint for models where torch FlopCounterMode cannot instrument scripted artifacts.",
+  "models": [
+    {
+      "id": "watercnn",
+      "display_name": "WaterCNN",
+      "family": "local_surrogate",
+      "description": "Three-branch CNN for 3x3 local water-height forecasting. Trained, deployable, smallest local model.",
+      "artifact_cpu": "../mini_app/train_models/model_a/watercnn_split_cpu.pt",
+      "artifact_cuda": "../mini_app/train_models/model_a/watercnn_split_cuda.pt",
+      "io_layout": "split_3x3",
+      "backend": "torchscript",
+      "inputs": [
+        {"name": "x_water",   "shape": [null, 1, 3, 3], "dtype": "float32"},
+        {"name": "x_terrain", "shape": [null, 1, 3, 3], "dtype": "float32"}
+      ],
+      "outputs": [
+        {"name": "y", "shape": [null], "dtype": "float32"}
+      ],
+      "flops_mode": "eager_reimplementation",
+      "notes": "Using split_3x3 artifact (two [B,1,3,3] inputs). Also available as flat_contiguous (watercnn_cpu.pt) and split_flat."
+    },
+    {
+      "id": "perfect",
+      "display_name": "PerfectModel (RealFunctionModel)",
+      "family": "local_surrogate",
+      "description": "Exact analytical solver for the 3x3 local patch. No learnable parameters; one fp32 buffer (0.25 constant).",
+      "artifact_cpu": "../mini_app/train_models/model_a/perfect_split_flat_cpu.pt",
+      "artifact_cuda": "../mini_app/train_models/model_a/perfect_split_flat_cuda.pt",
+      "io_layout": "split_flat",
+      "backend": "torchscript",
+      "inputs": [
+        {"name": "x_water",   "shape": [null, 9], "dtype": "float32"},
+        {"name": "x_terrain", "shape": [null, 9], "dtype": "float32"}
+      ],
+      "outputs": [
+        {"name": "y", "shape": [null], "dtype": "float32"}
+      ],
+      "flops_mode": "eager_reimplementation",
+      "notes": "Using split_flat artifact (two [B,9] inputs); no split_3x3 artifact was exported. Zero trainable parameters; one scalar fp32 buffer (0.25)."
+    },
+    {
+      "id": "transformer",
+      "display_name": "WaterTransformerMLP",
+      "family": "local_surrogate",
+      "description": "Transformer encoder (3 layers, 4 heads, d_model=64) fused with global MLP. Treats each 3x3 cell pair as a 2-feature token.",
+      "artifact_cpu": "../mini_app/train_models/model_a/transformer_split_cpu.pt",
+      "artifact_cuda": "../mini_app/train_models/model_a/transformer_split_cuda.pt",
+      "io_layout": "split_3x3",
+      "backend": "torchscript",
+      "inputs": [
+        {"name": "x_water",   "shape": [null, 1, 3, 3], "dtype": "float32"},
+        {"name": "x_terrain", "shape": [null, 1, 3, 3], "dtype": "float32"}
+      ],
+      "outputs": [
+        {"name": "y", "shape": [null], "dtype": "float32"}
+      ],
+      "flops_mode": "eager_reimplementation",
+      "notes": "Scripted with conservative (non-flash) attention for RedisAI compatibility. Known to hang on some CPU login nodes; GPU run is the reference."
+    },
+    {
+      "id": "giant_mlp",
+      "display_name": "BenchmarkGiantMLP",
+      "family": "local_surrogate",
+      "description": "Deliberately oversized 18->4096->...->4096->1 MLP with 12 residual blocks. Export-only benchmark model.",
+      "artifact_cpu": "../mini_app/train_models/model_a/giant_split_cpu.pt",
+      "artifact_cuda": "../mini_app/train_models/model_a/giant_split_cuda.pt",
+      "io_layout": "split_3x3",
+      "backend": "torchscript",
+      "inputs": [
+        {"name": "x_water",   "shape": [null, 1, 3, 3], "dtype": "float32"},
+        {"name": "x_terrain", "shape": [null, 1, 3, 3], "dtype": "float32"}
+      ],
+      "outputs": [
+        {"name": "y", "shape": [null], "dtype": "float32"}
+      ],
+      "flops_mode": "eager_reimplementation",
+      "notes": "width=4096, depth=12 residual blocks. ~419.6M parameters, ~1.56 GiB fp32 payload. Large batch sizes will OOM on CPU."
+    },
+    {
+      "id": "mmcp_transformer_core",
+      "display_name": "MMCP Transformer (core, single-tensor input)",
+      "family": "mmcp",
+      "description": "Opaque production TorchScript artifact. Autoregressive transformer for 3D flow-field cubes. Input: [B,5,512] packed sequence of 5 history steps; output: [B,2,512] (2 forecast steps).",
+      "artifact_cpu": "../../MMCP_2026_Artifact_Hybrid_Inference/input/transformer_inference_scripted_fw2.pt",
+      "artifact_cuda": null,
+      "backend": "torchscript",
+      "inputs": [
+        {"name": "src", "shape": [null, 5, 512], "dtype": "float32"}
+      ],
+      "outputs": [
+        {"name": "out", "shape": [null, 2, 512], "dtype": "float32"}
+      ],
+      "flops_mode": "analytical_estimate",
+      "notes": "Opaque scripted artifact; FLOPs are analytically estimated from known architecture (~transformer_tbl). FlopCounterMode returns 0 for scripted modules."
+    },
+    {
+      "id": "mmcp_transformer_5input",
+      "display_name": "MMCP Transformer (5-input wrapper)",
+      "family": "mmcp",
+      "description": "Thin wrapper over the core MMCP artifact that accepts 5 separate [B,512] tensors (one per history step) instead of the packed [B,5,512]. Scripted and compatible with the C++ coupling path.",
+      "artifact_cpu": "../mmcp_model_wrapper/mmcp_transformer_5_input.pt",
+      "artifact_cuda": null,
+      "backend": "torchscript",
+      "inputs": [
+        {"name": "t0", "shape": [null, 512], "dtype": "float32"},
+        {"name": "t1", "shape": [null, 512], "dtype": "float32"},
+        {"name": "t2", "shape": [null, 512], "dtype": "float32"},
+        {"name": "t3", "shape": [null, 512], "dtype": "float32"},
+        {"name": "t4", "shape": [null, 512], "dtype": "float32"}
+      ],
+      "outputs": [
+        {"name": "out", "shape": [null, 2, 512], "dtype": "float32"}
+      ],
+      "flops_mode": "analytical_estimate",
+      "notes": "Parameter count includes the entire core model. Identical compute to mmcp_transformer_core."
+    },
+    {
+      "id": "mmcp_test_mlp_m5",
+      "display_name": "MMCP Test MLP (m=5, test-only)",
+      "family": "mmcp_test",
+      "description": "Small test-only MLP matching the MMCP output contract. Input: [B,5,512]; output: [B,2,512]. Shared temporal encoder: Linear(512,64)->GELU per step, flatten [B,5,64], then Linear(320,1024)->reshape to [B,2,512]. Not trained; use for compute/bandwidth profiling only.",
+      "artifact_cpu": "artifacts/mmcp_test_mlp_m5_cpu.pt",
+      "artifact_cuda": "artifacts/mmcp_test_mlp_m5_cuda.pt",
+      "backend": "torchscript",
+      "inputs": [
+        {"name": "src", "shape": [null, 5, 512], "dtype": "float32"}
+      ],
+      "outputs": [
+        {"name": "out", "shape": [null, 2, 512], "dtype": "float32"}
+      ],
+      "flops_mode": "eager_reimplementation",
+      "notes": "Test-only. Not trained. Payload: ~1.38 MiB (361,536 fp32 params). The MMCP transformer has 177.9M params (~698 MiB) because it is a full encoder-decoder transformer; this MLP replaces that with a simple shared linear projection, which requires orders of magnitude fewer weights to express the same I/O mapping (though obviously without the transformer's representational power)."
+    },
+    {
+      "id": "mmcp_test_mlp_m10",
+      "display_name": "MMCP Test MLP (m=10, test-only)",
+      "family": "mmcp_test",
+      "description": "As mmcp_test_mlp_m5 but with m=10 history steps. Input: [B,10,512]; output: [B,2,512]. Flatten [B,10,64] -> Linear(640,1024).",
+      "artifact_cpu": "artifacts/mmcp_test_mlp_m10_cpu.pt",
+      "artifact_cuda": "artifacts/mmcp_test_mlp_m10_cuda.pt",
+      "backend": "torchscript",
+      "inputs": [
+        {"name": "src", "shape": [null, 10, 512], "dtype": "float32"}
+      ],
+      "outputs": [
+        {"name": "out", "shape": [null, 2, 512], "dtype": "float32"}
+      ],
+      "flops_mode": "eager_reimplementation",
+      "notes": "Test-only. Not trained. Payload: ~2.63 MiB (689,216 fp32 params). Larger decoder (640->1024) vs m=5 because the flattened encoder output grows with m."
+    }
+  ]
+}

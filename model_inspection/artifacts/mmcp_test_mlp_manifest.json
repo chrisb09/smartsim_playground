@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "artifacts": [
+    {
+      "path": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/model_inspection/artifacts/mmcp_test_mlp_m5_cpu.pt",
+      "size_bytes": 1452392,
+      "param_count": 361536,
+      "payload_bytes": 1446144,
+      "device": "cpu",
+      "m": 5,
+      "hidden": 64,
+      "model_id": "mmcp_test_mlp_m5"
+    },
+    {
+      "path": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/model_inspection/artifacts/mmcp_test_mlp_m10_cpu.pt",
+      "size_bytes": 2763227,
+      "param_count": 689216,
+      "payload_bytes": 2756864,
+      "device": "cpu",
+      "m": 10,
+      "hidden": 64,
+      "model_id": "mmcp_test_mlp_m10"
+    }
+  ]
+}

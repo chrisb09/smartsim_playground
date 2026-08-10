@@ -1,0 +1,12 @@
+# Large binary artifacts — never commit to git.
+# The build_test_mlp_artifacts.py script regenerates these.
+artifacts/*.pt
+
+# Inspection results (timestamped JSON + Markdown) — machine-generated, not source.
+# Commit only deliberately curated reports if needed.
+results/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
