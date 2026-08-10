@@ -1,0 +1,260 @@
+# NVIDIA H100 hardware inventory
+
+Collected (UTC): 2026-08-10T12:37:26+00:00
+Hostname: login23-g-1.hpc.itc.rwth-aachen.de
+Kernel: Linux 5.14.0-570.58.1.p20260709.1.el9.x86_64 x86_64 GNU/Linux
+SLURM_JOB_ID: not-set
+SLURM_JOB_NODELIST: not-set
+Target physical GPU index: 3
+Target GPU UUID: GPU-89dc5e46-87b5-dd46-00a9-9eb9179c29ee
+Target PCI bus ID: 00000000:AD:00.0
+
+## Driver Summary
+
+Mon Aug 10 14:37:27 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.211.01             Driver Version: 570.211.01     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100                    On  |   00000000:1B:00.0 Off |                    0 |
+| N/A   43C    P0            132W /  500W |   93685MiB /  95830MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA H100                    On  |   00000000:2C:00.0 Off |                    0 |
+| N/A   42C    P0             71W /  500W |       0MiB /  95830MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA H100                    On  |   00000000:9D:00.0 Off |                   On |
+| N/A   41C    P0             71W /  500W |      60MiB /  95830MiB |     N/A   E. Process |
+|                                         |                        |              Enabled |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA H100                    On  |   00000000:AD:00.0 Off |                    0 |
+| N/A   43C    P0             71W /  500W |       0MiB /  95830MiB |      0%   E. Process |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| MIG devices:                                                                            |
++------------------+----------------------------------+-----------+-----------------------+
+| GPU  GI  CI  MIG |                     Memory-Usage |        Vol|        Shared         |
+|      ID  ID  Dev |                       BAR1-Usage | SM     Unc| CE ENC  DEC  OFA  JPG |
+|                  |                                  |        ECC|                       |
+|==================+==================================+===========+=======================|
+|  2    7   0   0  |               9MiB / 11008MiB    | 16      0 |  1   0    1    0    1 |
+|                  |                 0MiB / 16383MiB  |           |                       |
++------------------+----------------------------------+-----------+-----------------------+
+|  2    8   0   1  |               9MiB / 11008MiB    | 16      0 |  1   0    1    0    1 |
+|                  |                 0MiB / 16383MiB  |           |                       |
++------------------+----------------------------------+-----------+-----------------------+
+|  2    9   0   2  |               9MiB / 11008MiB    | 16      0 |  1   0    1    0    1 |
+|                  |                 0MiB / 16383MiB  |           |                       |
++------------------+----------------------------------+-----------+-----------------------+
+|  2   10   0   3  |               9MiB / 11008MiB    | 16      0 |  1   0    1    0    1 |
+|                  |                 0MiB / 16383MiB  |           |                       |
++------------------+----------------------------------+-----------+-----------------------+
+|  2   11   0   4  |               9MiB / 11008MiB    | 16      0 |  1   0    1    0    1 |
+|                  |                 0MiB / 16383MiB  |           |                       |
++------------------+----------------------------------+-----------+-----------------------+
+|  2   12   0   5  |               9MiB / 11008MiB    | 16      0 |  1   0    1    0    1 |
+|                  |                 0MiB / 16383MiB  |           |                       |
++------------------+----------------------------------+-----------+-----------------------+
+|  2   13   0   6  |               9MiB / 11008MiB    | 16      0 |  1   0    1    0    1 |
+|                  |                 0MiB / 16383MiB  |           |                       |
++------------------+----------------------------------+-----------+-----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          300420      C   ...vs/py3.12-torch2.7/bin/python      93674MiB |
++-----------------------------------------------------------------------------------------+
+
+## All Physical GPUs
+
+index, uuid, name, pci.bus_id, pci.device_id, pci.sub_device_id, vbios_version, memory.total [MiB], clocks.current.graphics [MHz], clocks.max.graphics [MHz], clocks.current.memory [MHz], clocks.max.memory [MHz], pstate, mig.mode.current
+0, GPU-8ff8d0c7-8d30-8e55-0980-ac69fc03a6b8, NVIDIA H100, 00000000:1B:00.0, 0x233910DE, 0x17FC10DE, 96.00.A5.00.18, 95830 MiB, 1980 MHz, 1980 MHz, 1593 MHz, 1593 MHz, P0, Disabled
+1, GPU-0911978f-7989-96a8-6350-0b3543c82ba0, NVIDIA H100, 00000000:2C:00.0, 0x233910DE, 0x17FC10DE, 96.00.A5.00.18, 95830 MiB, 345 MHz, 1980 MHz, 1593 MHz, 1593 MHz, P0, Disabled
+2, GPU-26a9a2b1-d42f-0ae0-3faa-c754b310ad3a, NVIDIA H100, 00000000:9D:00.0, 0x233910DE, 0x17FC10DE, 96.00.A5.00.18, 95830 MiB, 345 MHz, 1980 MHz, 1593 MHz, 1593 MHz, P0, Enabled
+3, GPU-89dc5e46-87b5-dd46-00a9-9eb9179c29ee, NVIDIA H100, 00000000:AD:00.0, 0x233910DE, 0x17FC10DE, 96.00.A5.00.18, 95830 MiB, 345 MHz, 1980 MHz, 1593 MHz, 1593 MHz, P0, Disabled
+
+## MIG Inventory
+
+GPU 0: NVIDIA H100 (UUID: GPU-8ff8d0c7-8d30-8e55-0980-ac69fc03a6b8)
+GPU 1: NVIDIA H100 (UUID: GPU-0911978f-7989-96a8-6350-0b3543c82ba0)
+GPU 2: NVIDIA H100 (UUID: GPU-26a9a2b1-d42f-0ae0-3faa-c754b310ad3a)
+  MIG 1g.12gb     Device  0: (UUID: MIG-00bef7c5-ff1a-58ae-bed5-c967918ff268)
+  MIG 1g.12gb     Device  1: (UUID: MIG-31e9b0f0-783c-5b0c-8ac1-f68ab5426bd4)
+  MIG 1g.12gb     Device  2: (UUID: MIG-ac0fc86e-1af0-54f1-92d5-07205556c557)
+  MIG 1g.12gb     Device  3: (UUID: MIG-2b496cc2-c856-5c12-ac5f-5c1fbaaf9164)
+  MIG 1g.12gb     Device  4: (UUID: MIG-d40b8c9c-c00c-5388-bdc0-22a2110a5c19)
+  MIG 1g.12gb     Device  5: (UUID: MIG-b0dfe651-7f17-552f-b32a-0a6cc4f0bf43)
+  MIG 1g.12gb     Device  6: (UUID: MIG-743ac046-c090-5b3c-b06e-f2833771a4af)
+GPU 3: NVIDIA H100 (UUID: GPU-89dc5e46-87b5-dd46-00a9-9eb9179c29ee)
+
+## GPU Topology
+
+	[4mGPU0	GPU1	GPU2	GPU3	NIC0	NIC1	CPU Affinity	NUMA Affinity	GPU NUMA ID[0m
+GPU0	 X 	NV6	NV6	NV6	SYS	SYS	0-11	0		N/A
+GPU1	NV6	 X 	NV6	NV6	PIX	SYS	24-35	2		N/A
+GPU2	SYS	SYS	 X 	SYS	SYS	SYS	48-59	4		N/A
+GPU3	NV6	NV6	NV6	 X 	SYS	PIX	72-83	6		N/A
+NIC0	SYS	PIX	SYS	SYS	 X 	SYS				
+NIC1	SYS	SYS	SYS	PIX	SYS	 X 				
+
+Legend:
+
+  X    = Self
+  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)
+  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node
+  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)
+  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)
+  PIX  = Connection traversing at most a single PCIe bridge
+  NV#  = Connection traversing a bonded set of # NVLinks
+
+NIC Legend:
+
+  NIC0: mlx5_0
+  NIC1: mlx5_1
+
+
+## Target PCI Identification
+
+ad:00.0 3D controller [0302]: NVIDIA Corporation GH100 [H100 SXM5 94GB] [10de:2339] (rev a1)
+
+## Target Supported Clocks
+
+
+==============NVSMI LOG==============
+
+Timestamp                                 : Mon Aug 10 14:37:29 2026
+Driver Version                            : 570.211.01
+CUDA Version                              : 12.8
+
+Attached GPUs                             : 4
+GPU 00000000:AD:00.0
+    Supported Clocks
+        Memory                            : 1593 MHz
+            Graphics                      : 1980 MHz
+            Graphics                      : 1965 MHz
+            Graphics                      : 1950 MHz
+            Graphics                      : 1935 MHz
+            Graphics                      : 1920 MHz
+            Graphics                      : 1905 MHz
+            Graphics                      : 1890 MHz
+            Graphics                      : 1875 MHz
+            Graphics                      : 1860 MHz
+            Graphics                      : 1845 MHz
+            Graphics                      : 1830 MHz
+            Graphics                      : 1815 MHz
+            Graphics                      : 1800 MHz
+            Graphics                      : 1785 MHz
+            Graphics                      : 1770 MHz
+            Graphics                      : 1755 MHz
+            Graphics                      : 1740 MHz
+            Graphics                      : 1725 MHz
+            Graphics                      : 1710 MHz
+            Graphics                      : 1695 MHz
+            Graphics                      : 1680 MHz
+            Graphics                      : 1665 MHz
+            Graphics                      : 1650 MHz
+            Graphics                      : 1635 MHz
+            Graphics                      : 1620 MHz
+            Graphics                      : 1605 MHz
+            Graphics                      : 1590 MHz
+            Graphics                      : 1575 MHz
+            Graphics                      : 1560 MHz
+            Graphics                      : 1545 MHz
+            Graphics                      : 1530 MHz
+            Graphics                      : 1515 MHz
+            Graphics                      : 1500 MHz
+            Graphics                      : 1485 MHz
+            Graphics                      : 1470 MHz
+            Graphics                      : 1455 MHz
+            Graphics                      : 1440 MHz
+            Graphics                      : 1425 MHz
+            Graphics                      : 1410 MHz
+            Graphics                      : 1395 MHz
+            Graphics                      : 1380 MHz
+            Graphics                      : 1365 MHz
+            Graphics                      : 1350 MHz
+            Graphics                      : 1335 MHz
+            Graphics                      : 1320 MHz
+            Graphics                      : 1305 MHz
+            Graphics                      : 1290 MHz
+            Graphics                      : 1275 MHz
+            Graphics                      : 1260 MHz
+            Graphics                      : 1245 MHz
+            Graphics                      : 1230 MHz
+            Graphics                      : 1215 MHz
+            Graphics                      : 1200 MHz
+            Graphics                      : 1185 MHz
+            Graphics                      : 1170 MHz
+            Graphics                      : 1155 MHz
+            Graphics                      : 1140 MHz
+            Graphics                      : 1125 MHz
+            Graphics                      : 1110 MHz
+            Graphics                      : 1095 MHz
+            Graphics                      : 1080 MHz
+            Graphics                      : 1065 MHz
+            Graphics                      : 1050 MHz
+            Graphics                      : 1035 MHz
+            Graphics                      : 1020 MHz
+            Graphics                      : 1005 MHz
+            Graphics                      : 990 MHz
+            Graphics                      : 975 MHz
+            Graphics                      : 960 MHz
+            Graphics                      : 945 MHz
+            Graphics                      : 930 MHz
+            Graphics                      : 915 MHz
+            Graphics                      : 900 MHz
+            Graphics                      : 885 MHz
+            Graphics                      : 870 MHz
+            Graphics                      : 855 MHz
+            Graphics                      : 840 MHz
+            Graphics                      : 825 MHz
+            Graphics                      : 810 MHz
+            Graphics                      : 795 MHz
+            Graphics                      : 780 MHz
+            Graphics                      : 765 MHz
+            Graphics                      : 750 MHz
+            Graphics                      : 735 MHz
+            Graphics                      : 720 MHz
+            Graphics                      : 705 MHz
+            Graphics                      : 690 MHz
+            Graphics                      : 675 MHz
+            Graphics                      : 660 MHz
+            Graphics                      : 645 MHz
+            Graphics                      : 630 MHz
+            Graphics                      : 615 MHz
+            Graphics                      : 600 MHz
+            Graphics                      : 585 MHz
+            Graphics                      : 570 MHz
+            Graphics                      : 555 MHz
+            Graphics                      : 540 MHz
+            Graphics                      : 525 MHz
+            Graphics                      : 510 MHz
+            Graphics                      : 495 MHz
+            Graphics                      : 480 MHz
+            Graphics                      : 465 MHz
+            Graphics                      : 450 MHz
+            Graphics                      : 435 MHz
+            Graphics                      : 420 MHz
+            Graphics                      : 405 MHz
+            Graphics                      : 390 MHz
+            Graphics                      : 375 MHz
+            Graphics                      : 360 MHz
+            Graphics                      : 345 MHz
+
+
+## CUDA Device Attributes
+
+SM count: 132
+Global memory bus width: 6144 bits
+Compute capability: 9.0
+Derived Hopper CUDA cores: 16896
+Derived Hopper Tensor Cores: 528
+Derived Hopper TMUs: 528
