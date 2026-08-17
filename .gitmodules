@@ -25,11 +25,3 @@
 	path = key_loadbalancing
 	url = git@github.com:chrisb09/key_loadbalancing.git
 	branch = master
-[submodule "AIxeleratorService-p2p"]
-	path = AIxeleratorService-p2p
-	url = git@github.com:chrisb09/AIxeleratorService.git
-	branch = feature/p2p-instrumented-baseline
-[submodule "AIxeleratorService-pipelined"]
-	path = AIxeleratorService-pipelined
-	url = git@github.com:chrisb09/AIxeleratorService.git
-	branch = feature/pipelined-p2p
