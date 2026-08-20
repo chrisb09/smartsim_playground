@@ -38,7 +38,7 @@ int main(int argc, char** argv) {
         "[logging]\n"
         "level = \"debug\"\n"
         "error_separate = false\n"
-        "[provider]\n"
+        "[library]\n"
         "class = \"Phydll\"\n"
         "backend = \"TORCH\"\n"
         "model_file = \"" + model_path + "\"\n"
