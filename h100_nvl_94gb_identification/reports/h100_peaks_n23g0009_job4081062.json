@@ -1,0 +1,236 @@
+{
+  "metadata": {
+    "timestamp_utc": "2026-09-13T20:03:42.564527+00:00",
+    "hostname": "n23g0009.hpc.itc.rwth-aachen.de",
+    "kernel": "5.14.0-687.41.1.el9_8.x86_64",
+    "slurm_job_id": "4081062",
+    "slurm_job_nodelist": "n23g0009",
+    "slurm_job_partition": "c23g",
+    "slurm_job_account": "rwth0792",
+    "pytorch_version": "2.4.0+cu124",
+    "cuda_runtime_version": "12.4",
+    "gpu_devices_smi": [
+      [
+        "0",
+        "NVIDIA H100",
+        "00000000:1B:00.0",
+        "580.178.04",
+        "P0",
+        "600.00 W",
+        "1980 MHz",
+        "1980 MHz",
+        "1593 MHz"
+      ],
+      [
+        "1",
+        "NVIDIA H100",
+        "00000000:2C:00.0",
+        "580.178.04",
+        "P0",
+        "600.00 W",
+        "1980 MHz",
+        "1980 MHz",
+        "1593 MHz"
+      ],
+      [
+        "2",
+        "NVIDIA H100",
+        "00000000:9D:00.0",
+        "580.178.04",
+        "P0",
+        "600.00 W",
+        "1980 MHz",
+        "1980 MHz",
+        "1593 MHz"
+      ],
+      [
+        "3",
+        "NVIDIA H100",
+        "00000000:AD:00.0",
+        "580.178.04",
+        "P0",
+        "600.00 W",
+        "1980 MHz",
+        "1980 MHz",
+        "1593 MHz"
+      ]
+    ]
+  },
+  "target_gpu_idx": 0,
+  "dense_fp32": {
+    "mode": "FP32",
+    "allow_tf32": false,
+    "sweeps": [
+      {
+        "N": 4096,
+        "time_ms": 2.67020320892334,
+        "tflops": 51.4713460805918
+      },
+      {
+        "N": 8192,
+        "time_ms": 21.783590698242186,
+        "tflops": 50.47430623385356
+      },
+      {
+        "N": 12288,
+        "time_ms": 76.963525390625,
+        "tflops": 48.215719393176634
+      },
+      {
+        "N": 16384,
+        "time_ms": 177.7810302734375,
+        "tflops": 49.47711805179158
+      },
+      {
+        "N": 20480,
+        "time_ms": 369.186328125,
+        "tflops": 46.5344133171237
+      }
+    ],
+    "peak_tflops": 51.4713460805918,
+    "peak_matrix_dim": 4096
+  },
+  "dense_tf32": {
+    "mode": "TF32",
+    "allow_tf32": true,
+    "sweeps": [
+      {
+        "N": 4096,
+        "time_ms": 0.372216010093689,
+        "tflops": 369.2451419201602
+      },
+      {
+        "N": 8192,
+        "time_ms": 3.003950309753418,
+        "tflops": 366.0219092859277
+      },
+      {
+        "N": 12288,
+        "time_ms": 10.771953582763672,
+        "tflops": 344.49199165523487
+      },
+      {
+        "N": 16384,
+        "time_ms": 31.073666381835938,
+        "tflops": 283.0722617061288
+      },
+      {
+        "N": 20480,
+        "time_ms": 70.00748901367187,
+        "tflops": 245.40044823840086
+      },
+      {
+        "N": 24576,
+        "time_ms": 89.101318359375,
+        "tflops": 333.18041187915185
+      }
+    ],
+    "peak_tflops": 369.2451419201602,
+    "peak_matrix_dim": 4096
+  },
+  "hbm3_bandwidth": {
+    "results": [
+      {
+        "tensor_gb": 8,
+        "elements": 2147483648,
+        "d2d_copy_time_ms": 7.948464202880859,
+        "d2d_copy_tb_s": 2.161407379525379,
+        "d2d_copy_gb_s": 2161.4073795253794,
+        "read_time_ms": 9.084185791015624,
+        "read_tb_s": 0.9455921300614035,
+        "read_gb_s": 945.5921300614035
+      },
+      {
+        "tensor_gb": 16,
+        "elements": 4294967296,
+        "d2d_copy_time_ms": 15.850357055664062,
+        "d2d_copy_tb_s": 2.1677580036420494,
+        "d2d_copy_gb_s": 2167.7580036420495,
+        "read_time_ms": 7.537474822998047,
+        "read_tb_s": 2.279260572994746,
+        "read_gb_s": 2279.260572994746
+      },
+      {
+        "tensor_gb": 32,
+        "elements": 8589934592,
+        "d2d_copy_time_ms": 31.556607055664063,
+        "d2d_copy_tb_s": 2.1776573322595407,
+        "d2d_copy_gb_s": 2177.6573322595405,
+        "read_time_ms": 15.065467834472656,
+        "read_tb_s": 2.280695080001325,
+        "read_gb_s": 2280.6950800013246
+      }
+    ],
+    "peak_copy_tb_s": 2.1776573322595407,
+    "peak_read_tb_s": 2.280695080001325
+  },
+  "nvlink_p2p": [
+    {
+      "src": 0,
+      "dst": 1,
+      "can_p2p": true,
+      "transfer_gb": 4.0,
+      "unidir_time_ms": 32.226889038085936,
+      "unidir_gb_s": 133.27278630351756,
+      "bidir_time_ms": 32.388101196289064,
+      "bidir_gb_s": 265.21883885506105,
+      "status": "OK"
+    },
+    {
+      "src": 0,
+      "dst": 2,
+      "can_p2p": true,
+      "transfer_gb": 4.0,
+      "unidir_time_ms": 32.227099609375,
+      "unidir_gb_s": 133.27191550152952,
+      "bidir_time_ms": 32.391012573242186,
+      "bidir_gb_s": 265.19500039020204,
+      "status": "OK"
+    },
+    {
+      "src": 0,
+      "dst": 3,
+      "can_p2p": true,
+      "transfer_gb": 4.0,
+      "unidir_time_ms": 32.223550415039064,
+      "unidir_gb_s": 133.2865944528414,
+      "bidir_time_ms": 32.39168701171875,
+      "bidir_gb_s": 265.18947867371986,
+      "status": "OK"
+    },
+    {
+      "src": 1,
+      "dst": 2,
+      "can_p2p": true,
+      "transfer_gb": 4.0,
+      "unidir_time_ms": 32.22516784667969,
+      "unidir_gb_s": 133.2799045899316,
+      "bidir_time_ms": 32.39239501953125,
+      "bidir_gb_s": 265.1836823680568,
+      "status": "OK"
+    },
+    {
+      "src": 1,
+      "dst": 3,
+      "can_p2p": true,
+      "transfer_gb": 4.0,
+      "unidir_time_ms": 32.227392578125,
+      "unidir_gb_s": 133.27070396986744,
+      "bidir_time_ms": 32.39258728027344,
+      "bidir_gb_s": 265.18210841500553,
+      "status": "OK"
+    },
+    {
+      "src": 2,
+      "dst": 3,
+      "can_p2p": true,
+      "transfer_gb": 4.0,
+      "unidir_time_ms": 32.22630920410156,
+      "unidir_gb_s": 133.275184222876,
+      "bidir_time_ms": 32.39284973144531,
+      "bidir_gb_s": 265.1799598743341,
+      "status": "OK"
+    }
+  ],
+  "bandwidth_test_util_stdout": "[CUDA Bandwidth Test] - Starting...\nRunning on...\n\n Device 0: NVIDIA H100\n Quick Mode\n\n Device to Device Bandwidth, 1 Device(s)\n PINNED Memory Transfers\n   Transfer Size (Bytes)\tBandwidth(MB/s)\n   33554432\t\t\t2325159.0\n\nResult = PASS\n\nNOTE: The CUDA Samples are not meant for performance measurements. Results may vary when GPU Boost is enabled.\n"
+}

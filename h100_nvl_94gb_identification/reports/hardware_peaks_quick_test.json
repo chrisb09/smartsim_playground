@@ -1,0 +1,158 @@
+{
+  "metadata": {
+    "timestamp_utc": "2026-09-13T17:38:52.949670+00:00",
+    "hostname": "login23-g-1.hpc.itc.rwth-aachen.de",
+    "kernel": "5.14.0-687.41.1.el9_8.x86_64",
+    "slurm_job_id": "not-set",
+    "slurm_job_nodelist": "not-set",
+    "slurm_job_partition": "not-set",
+    "slurm_job_account": "not-set",
+    "pytorch_version": "2.4.0+cu124",
+    "cuda_runtime_version": "12.4",
+    "gpu_devices_smi": [
+      [
+        "0",
+        "NVIDIA H100",
+        "00000000:1B:00.0",
+        "580.178.04",
+        "P0",
+        "500.00 W",
+        "1980 MHz",
+        "1980 MHz",
+        "1593 MHz"
+      ],
+      [
+        "1",
+        "NVIDIA H100",
+        "00000000:2C:00.0",
+        "580.178.04",
+        "P0",
+        "500.00 W",
+        "1980 MHz",
+        "1980 MHz",
+        "1593 MHz"
+      ],
+      [
+        "2",
+        "NVIDIA H100",
+        "00000000:9D:00.0",
+        "580.178.04",
+        "P0",
+        "500.00 W",
+        "1980 MHz",
+        "1980 MHz",
+        "1593 MHz"
+      ],
+      [
+        "3",
+        "NVIDIA H100",
+        "00000000:AD:00.0",
+        "580.178.04",
+        "P0",
+        "500.00 W",
+        "1980 MHz",
+        "1980 MHz",
+        "1593 MHz"
+      ]
+    ]
+  },
+  "target_gpu_idx": 2,
+  "dense_fp32": {
+    "mode": "FP32",
+    "allow_tf32": false,
+    "sweeps": [
+      {
+        "N": 4096,
+        "time_ms": 2.6900096893310548,
+        "tflops": 51.09236372534331
+      },
+      {
+        "N": 8192,
+        "time_ms": 23.110118103027343,
+        "tflops": 47.577066585045614
+      }
+    ],
+    "peak_tflops": 51.09236372534331,
+    "peak_matrix_dim": 4096
+  },
+  "dense_tf32": {
+    "mode": "TF32",
+    "allow_tf32": true,
+    "sweeps": [
+      {
+        "N": 4096,
+        "time_ms": 0.40650238990783694,
+        "tflops": 338.1012187976569
+      },
+      {
+        "N": 8192,
+        "time_ms": 3.1373823165893553,
+        "tflops": 350.4550981760099
+      }
+    ],
+    "peak_tflops": 350.4550981760099,
+    "peak_matrix_dim": 8192
+  },
+  "hbm3_bandwidth": {
+    "results": [
+      {
+        "tensor_gb": 8,
+        "elements": 2147483648,
+        "d2d_copy_time_ms": 7.8667457580566404,
+        "d2d_copy_tb_s": 2.183859719427875,
+        "d2d_copy_gb_s": 2183.8597194278755,
+        "read_time_ms": 7.682470703125,
+        "read_tb_s": 1.1181213601642335,
+        "read_gb_s": 1118.1213601642335
+      },
+      {
+        "tensor_gb": 16,
+        "elements": 4294967296,
+        "d2d_copy_time_ms": 16.121881103515626,
+        "d2d_copy_tb_s": 2.1312487139299967,
+        "d2d_copy_gb_s": 2131.248713929997,
+        "read_time_ms": 7.560537719726563,
+        "read_tb_s": 2.272307846461129,
+        "read_gb_s": 2272.307846461129
+      }
+    ],
+    "peak_copy_tb_s": 2.183859719427875,
+    "peak_read_tb_s": 2.272307846461129
+  },
+  "nvlink_p2p": [
+    {
+      "src": 0,
+      "dst": 1,
+      "can_p2p": true,
+      "transfer_gb": 4.0,
+      "unidir_time_ms": 32.24112548828125,
+      "unidir_gb_s": 133.21393812883798,
+      "bidir_time_ms": 32.39702453613281,
+      "bidir_gb_s": 265.1457877688594,
+      "status": "OK"
+    },
+    {
+      "src": 0,
+      "dst": 2,
+      "can_p2p": true,
+      "transfer_gb": 4.0,
+      "unidir_time_ms": 32.240542602539065,
+      "unidir_gb_s": 133.21634654069857,
+      "bidir_time_ms": 32.403994750976565,
+      "bidir_gb_s": 265.08875396423537,
+      "status": "OK"
+    },
+    {
+      "src": 1,
+      "dst": 2,
+      "can_p2p": true,
+      "transfer_gb": 4.0,
+      "unidir_time_ms": 32.2428466796875,
+      "unidir_gb_s": 133.2068268868382,
+      "bidir_time_ms": 32.4188232421875,
+      "bidir_gb_s": 264.9675013749939,
+      "status": "OK"
+    }
+  ],
+  "bandwidth_test_util_stdout": "[CUDA Bandwidth Test] - Starting...\nRunning on...\n\n Device 0: NVIDIA H100\n Quick Mode\n\n Device to Device Bandwidth, 1 Device(s)\n PINNED Memory Transfers\n   Transfer Size (Bytes)\tBandwidth(MB/s)\n   33554432\t\t\t2139126.8\n\nResult = PASS\n\nNOTE: The CUDA Samples are not meant for performance measurements. Results may vary when GPU Boost is enabled.\n"
+}
