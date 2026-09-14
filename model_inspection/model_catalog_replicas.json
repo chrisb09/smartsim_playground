@@ -1,6 +1,6 @@
 {
-  "version": 2,
-  "description": "Canonical catalog of the TorchScript artifacts measured by this pipeline. It defines artifact locations, input/output contracts, and display names. Runtime inspection of the loaded artifact, not this catalog, determines storage and executed behavior.",
+  "version": 3,
+  "description": "Replica catalog: the same contracts as model_catalog.json but backed by untrained, contract-compatible TorchScript replicas. Artifacts are generated on demand by src/build_model_replicas.py into {replica_root} (default /tmp/$USER/model_inspection_replicas, override with MODEL_REPLICA_ROOT). Suitable for workflow and performance-method validation, not for scientific results.",
   "groups": {
     "TS": {
       "long_name": "Terrain Solver",
@@ -18,11 +18,11 @@
       "short_name": "WaterCNN",
       "long_name": "[TS] WaterCNN",
       "group": "TS",
-      "notes": "",
+      "notes": "Untrained replica.",
       "uses_tf32": false,
       "family": "local_surrogate",
-      "artifact_cpu": "../mini_app/train_models/model_a/watercnn_split_cpu.pt",
-      "artifact_cuda": "../mini_app/train_models/model_a/watercnn_split_cuda.pt",
+      "artifact_cpu": "{replica_root}/watercnn_cpu.pt",
+      "artifact_cuda": "{replica_root}/watercnn_cuda.pt",
       "io_layout": "split_3x3",
       "backend": "torchscript",
       "inputs": [
@@ -55,7 +55,8 @@
           ],
           "dtype": "float32"
         }
-      ]
+      ],
+      "replica": "watercnn"
     },
     {
       "id": "giant_mlp",
@@ -63,11 +64,11 @@
       "short_name": "Giant MLP",
       "long_name": "[TS] Giant MLP",
       "group": "TS",
-      "notes": "",
+      "notes": "Untrained replica.",
       "uses_tf32": false,
       "family": "local_surrogate",
-      "artifact_cpu": "../mini_app/train_models/model_a/giant_split_cpu.pt",
-      "artifact_cuda": "../mini_app/train_models/model_a/giant_split_cuda.pt",
+      "artifact_cpu": "{replica_root}/giant_mlp_cpu.pt",
+      "artifact_cuda": "{replica_root}/giant_mlp_cuda.pt",
       "io_layout": "split_3x3",
       "backend": "torchscript",
       "inputs": [
@@ -100,7 +101,8 @@
           ],
           "dtype": "float32"
         }
-      ]
+      ],
+      "replica": "giant_mlp"
     },
     {
       "id": "mmcp_test_mlp_m5",
@@ -108,11 +110,11 @@
       "short_name": "Test MLP",
       "long_name": "[TBL] Test MLP",
       "group": "TBL",
-      "notes": "",
+      "notes": "Untrained replica.",
       "uses_tf32": false,
       "family": "mmcp_test",
-      "artifact_cpu": "artifacts/test_mlp/mmcp_test_mlp_m5_cpu.pt",
-      "artifact_cuda": "artifacts/test_mlp/mmcp_test_mlp_m5_cuda.pt",
+      "artifact_cpu": "{replica_root}/mmcp_test_mlp_m5_cpu.pt",
+      "artifact_cuda": "{replica_root}/mmcp_test_mlp_m5_cuda.pt",
       "backend": "torchscript",
       "inputs": [
         {
@@ -135,7 +137,8 @@
           ],
           "dtype": "float32"
         }
-      ]
+      ],
+      "replica": "mmcp_test_mlp_m5"
     },
     {
       "id": "tbl_transformer",
@@ -143,11 +146,11 @@
       "short_name": "Transformer",
       "long_name": "[TBL] Transformer",
       "group": "TBL",
-      "notes": "Partially executes on tensor cores (TF32 precision).",
+      "notes": "Partially executes on tensor cores (TF32 precision). Untrained replica.",
       "uses_tf32": true,
       "family": "mmcp",
-      "artifact_cpu": "../../MMCP_2026_Artifact_Hybrid_Inference/input/transformer_inference_scripted_fw2.pt",
-      "artifact_cuda": null,
+      "artifact_cpu": "{replica_root}/tbl_transformer_cpu.pt",
+      "artifact_cuda": "{replica_root}/tbl_transformer_cuda.pt",
       "backend": "torchscript",
       "inputs": [
         {
@@ -170,7 +173,8 @@
           ],
           "dtype": "float32"
         }
-      ]
+      ],
+      "replica": "tbl_transformer"
     }
   ]
 }

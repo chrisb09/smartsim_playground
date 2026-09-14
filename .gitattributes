@@ -1,0 +1,2 @@
+model_inspection/generated/**/raw/*.sqlite filter=lfs diff=lfs merge=lfs -text
+model_inspection/generated/**/raw/nsys_*.nsys-rep filter=lfs diff=lfs merge=lfs -text

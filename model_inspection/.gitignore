@@ -1,10 +1,13 @@
 # Large binary artifacts — never commit to git.
-# The build_test_mlp_artifacts.py script regenerates these.
+# The builder scripts regenerate these.
+artifacts/**/*.pt
 artifacts/*.pt
 
-# Inspection results (timestamped JSON + Markdown) — machine-generated, not source.
-# Commit only deliberately curated reports if needed.
-results/
+# Generated run outputs (tables, figures, reports, raw traces).
+generated/
+
+# Archived legacy material.
+.old/
 
 # Python cache
 __pycache__/

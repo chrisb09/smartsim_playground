@@ -1,0 +1,19 @@
+{
+  "schema_version": 2,
+  "name": "NVIDIA H100 NVL 94 GB reference",
+  "hbm_gbps": 3938.0,
+  "compute_gflops": {
+    "fp32": 60320.0,
+    "tf32": 482600.0
+  },
+  "compute_gflops_dense": true,
+  "compute_gflops_sparsity": "none",
+  "compute_gflops_source": "TechPowerUp GPU database, NVIDIA H100 NVL 94 GB; TF32 value is the dense rate without 2:4 sparsity (sparse would be ~965 TFLOP/s).",
+  "compute_gflops_note": "TechPowerUp reference values for the H100 NVL 94 GB at its reference clock. The login allocation reports 132 SMs and a 1980 MHz max SM clock via nvidia-smi; clock-scaling those peaks gives ~66.9 TFLOP/s FP32 and ~535 TFLOP/s dense TF32, so the reference lines used here are conservative. Values are datasheet references, not measurements on the target allocation.",
+  "link_gbps": {
+    "h2d": 55.06,
+    "d2h": 20.39,
+    "source": "Pinned-memory login-node preflight; recalibrate on each target allocation."
+  },
+  "notes": "HBM and compute values are theoretical H100 NVL reference ceilings. Link values are allocation-specific empirical measurements, not hardware specifications."
+}
