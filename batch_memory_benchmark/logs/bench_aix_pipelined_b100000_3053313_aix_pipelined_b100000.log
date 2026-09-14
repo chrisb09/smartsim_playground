@@ -1,0 +1,160 @@
+=================================================================
+=== CMI Batch & Memory Calibration Benchmark Harness          ===
+=================================================================
+Provider:           aix
+Config:             /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/configs/aix.toml
+Model Path:         /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/../mini_app/train_models/model_a/watercnn_cuda.pt
+Solver Ranks:       20 (World size: 20)
+Samples per Rank:   100000
+Total Work/Step:    2000000 samples
+Target Batch Size:  100000
+SmartSim Min Batch: 0 (timeout=0 ms)
+Total Steps:        12 (Warmup: 2)
+=================================================================
+
+AIxeleratorService: suffix = .pt
+AIxeleratorService: suffix = .pt
+AIxeleratorService: suffix = .pt
+AIxeleratorService: suffix = .pt
+AIxeleratorService: suffix = .pt
+AIxeleratorService: suffix = .pt
+AIxeleratorService: suffix = .pt
+AIxeleratorService: suffix = .pt
+AIxeleratorService: suffix = .pt
+AIxeleratorService: suffix = .pt
+AIxeleratorService: suffix = .pt
+AIxeleratorService: suffix = .pt
+AIxeleratorService: suffix = .pt
+AIxeleratorService: suffix = .pt
+AIxeleratorService: suffix = .pt
+AIxeleratorService: suffix = .pt
+AIxeleratorService: suffix = .pt
+AIxeleratorService: suffix = .pt
+AIxeleratorService: suffix = .pt
+AIxeleratorService: suffix = .pt
+Rank 15/20 on its local machine is 15/20
+Rank 17/20 on its local machine is 17/20
+Rank 10/20 on its local machine is 10/20
+Rank 16/20 on its local machine is 16/20
+Rank 14/20 on its local machine is 14/20
+Rank 9/20 on its local machine is 9/20
+Rank 3/20 on its local machine is 3/20
+Rank 1/20 on its local machine is 1/20
+Rank 12/20 on its local machine is 12/20
+Rank 13/20 on its local machine is 13/20
+Rank 8/20 on its local machine is 8/20
+Rank 18/20 on its local machine is 18/20
+Rank 19/20 on its local machine is 19/20
+Rank 11/20 on its local machine is 11/20
+Rank 5/20 on its local machine is 5/20
+Rank 7/20 on its local machine is 7/20
+Rank 6/20 on its local machine is 6/20
+Rank 2/20 on its local machine is 2/20
+Rank 0/20 on its local machine is 0/20
+Rank 4/20 on its local machine is 4/20
+Rank 19/20 on its local machine is 19/20 and has access to 1 devices!
+Rank 11/20 on its local machine is 11/20 and has access to 1 devices!
+Rank 10/20 on its local machine is 10/20 and has access to 1 devices!
+Rank 6/20 on its local machine is 6/20 and has access to 1 devices!
+Rank 1/20 on its local machine is 1/20 and has access to 1 devices!
+Rank 9/20 on its local machine is 9/20 and has access to 1 devices!
+Rank 18/20 on its local machine is 18/20 and has access to 1 devices!
+Rank 3/20 on its local machine is 3/20 and has access to 1 devices!
+Rank 14/20 on its local machine is 14/20 and has access to 1 devices!
+Rank 16/20 on its local machine is 16/20 and has access to 1 devices!
+Rank 5/20 on its local machine is 5/20 and has access to 1 devices!
+Rank 17/20 on its local machine is 17/20 and has access to 1 devices!
+Rank 15/20 on its local machine is 15/20 and has access to 1 devices!
+Rank 7/20 on its local machine is 7/20 and has access to 1 devices!
+Rank 13/20 on its local machine is 13/20 and has access to 1 devices!
+Rank 2/20 on its local machine is 2/20 and has access to 1 devices!
+Rank 4/20 on its local machine is 4/20 and has access to 1 devices!
+Rank 12/20 on its local machine is 12/20 and has access to 1 devices!
+Rank 0/20 on its local machine is 0/20 and has access to 1 devices!
+Rank 0/20 on its local machine is 0/20 is the GPU controller!
+Rank 8/20 on its local machine is 8/20 and has access to 1 devices!
+Rank 9/20 knows that there is a total of 1 GPUs across all systems
+Rank 2/20 knows that there is a total of 1 GPUs across all systems
+Rank 8/20 knows that there is a total of 1 GPUs across all systems
+Rank 16/20 knows that there is a total of 1 GPUs across all systems
+Rank 15/20 knows that there is a total of 1 GPUs across all systems
+Rank 10/20 knows that there is a total of 1 GPUs across all systems
+Rank 13/20 knows that there is a total of 1 GPUs across all systems
+Rank 12/20 knows that there is a total of 1 GPUs across all systems
+Rank 19/20 knows that there is a total of 1 GPUs across all systems
+Rank 17/20 knows that there is a total of 1 GPUs across all systems
+Rank 5/20 knows that there is a total of 1 GPUs across all systems
+Rank 11/20 knows that there is a total of 1 GPUs across all systems
+Rank 14/20 knows that there is a total of 1 GPUs across all systems
+Rank 3/20 knows that there is a total of 1 GPUs across all systems
+Rank 1/20 knows that there is a total of 1 GPUs across all systems
+Rank 18/20 knows that there is a total of 1 GPUs across all systems
+Rank 6/20 knows that there is a total of 1 GPUs across all systems
+Rank 4/20 knows that there is a total of 1 GPUs across all systems
+Rank 7/20 knows that there is a total of 1 GPUs across all systems
+Rank 0/20 knows that there is a total of 1 GPUs across all systems
+Rank 8/20 will be in group 0 order 9
+Rank 16/20 will be in group 0 order 17
+Rank 15/20 will be in group 0 order 16
+Rank 10/20 will be in group 0 order 11
+Rank 13/20 will be in group 0 order 14
+Rank 12/20 will be in group 0 order 13
+Rank 19/20 will be in group 0 order 20
+Rank 17/20 will be in group 0 order 18
+Rank 5/20 will be in group 0 order 6
+Rank 14/20 will be in group 0 order 15
+Rank 3/20 will be in group 0 order 4
+Rank 1/20 will be in group 0 order 2
+Rank 18/20 will be in group 0 order 19
+Rank 6/20 will be in group 0 order 7
+Rank 4/20 will be in group 0 order 5
+Rank 7/20 will be in group 0 order 8
+Rank 2/20 will be in group 0 order 3
+Rank 9/20 will be in group 0 order 10
+Rank 0/20 will be in group 0 order 0
+Rank 11/20 will be in group 0 order 12
+Rank 9/20 got id of 9/20
+Rank 8/20 got id of 8/20
+Rank 16/20 got id of 16/20
+Rank 15/20 got id of 15/20
+Rank 10/20 got id of 10/20
+Rank 13/20 got id of 13/20
+Rank 12/20 got id of 12/20
+Rank 19/20 got id of 19/20
+Rank 17/20 got id of 17/20
+Rank 0/20 got id of 0/20
+Rank 5/20 got id of 5/20
+Rank 14/20 got id of 14/20
+Rank 3/20 got id of 3/20
+Rank 1/20 got id of 1/20
+Rank 18/20 got id of 18/20
+Rank 6/20 got id of 6/20
+Rank 4/20 got id of 4/20
+Rank 7/20 got id of 7/20
+Rank 2/20 got id of 2/20
+Rank 11/20 got id of 11/20
+CMI initialized successfully. Starting benchmark steps...
+
+STEP_TIMING step=1 latency_ms=268.60 min_ms=267.24 avg_ms=267.67 total_samples=2000000 throughput_samples_sec=7446049
+STEP_TIMING step=2 latency_ms=33.96 min_ms=32.98 avg_ms=33.28 total_samples=2000000 throughput_samples_sec=58884598
+STEP_TIMING step=3 latency_ms=32.96 min_ms=31.89 avg_ms=32.21 total_samples=2000000 throughput_samples_sec=60686969
+STEP_TIMING step=4 latency_ms=31.18 min_ms=30.08 avg_ms=30.39 total_samples=2000000 throughput_samples_sec=64140185
+STEP_TIMING step=5 latency_ms=31.64 min_ms=30.55 avg_ms=30.86 total_samples=2000000 throughput_samples_sec=63203842
+STEP_TIMING step=6 latency_ms=30.26 min_ms=29.13 avg_ms=29.45 total_samples=2000000 throughput_samples_sec=66096990
+STEP_TIMING step=7 latency_ms=30.18 min_ms=29.06 avg_ms=29.37 total_samples=2000000 throughput_samples_sec=66268879
+STEP_TIMING step=8 latency_ms=29.98 min_ms=28.81 avg_ms=29.14 total_samples=2000000 throughput_samples_sec=66721489
+STEP_TIMING step=9 latency_ms=29.93 min_ms=28.79 avg_ms=29.10 total_samples=2000000 throughput_samples_sec=66816599
+STEP_TIMING step=10 latency_ms=29.79 min_ms=28.64 avg_ms=28.96 total_samples=2000000 throughput_samples_sec=67133396
+STEP_TIMING step=11 latency_ms=29.92 min_ms=28.78 avg_ms=29.11 total_samples=2000000 throughput_samples_sec=66834140
+STEP_TIMING step=12 latency_ms=30.15 min_ms=29.00 avg_ms=29.33 total_samples=2000000 throughput_samples_sec=66344220
+
+=================================================================
+=== Benchmark Summary (Steady-State Steps 3 to 12) ===
+=================================================================
+Steady Step Count:   10
+Median Latency:      30.18 ms
+Mean Latency:        30.60 ms
+Min Latency:         29.79 ms
+Max Latency:         32.96 ms
+Median Throughput:   66268879 samples/sec
+=================================================================

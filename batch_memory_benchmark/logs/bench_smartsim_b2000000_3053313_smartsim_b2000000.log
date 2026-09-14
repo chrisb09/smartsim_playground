@@ -1,0 +1,46 @@
+=================================================================
+=== CMI Batch & Memory Calibration Benchmark Harness          ===
+=================================================================
+Provider:           smartsim
+Config:             /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/configs/smartsim.toml
+Model Path:         /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/../mini_app/train_models/model_a/watercnn_cuda.pt
+Solver Ranks:       20 (World size: 20)
+Samples per Rank:   100000
+Total Work/Step:    2000000 samples
+Target Batch Size:  2000000
+SmartSim Min Batch: 2000000 (timeout=1000 ms)
+Total Steps:        12 (Warmup: 2)
+=================================================================
+
+Assertion failed: nodes must be greater than 0
+Assertion failed: nodes must be greater than 0
+Assertion failed: nodes must be greater than 0
+Assertion failed: nodes must be greater than 0
+Assertion failed: nodes must be greater than 0
+Assertion failed: nodes must be greater than 0
+Assertion failed: nodes must be greater than 0
+Assertion failed: nodes must be greater than 0
+Assertion failed: nodes must be greater than 0
+Assertion failed: nodes must be greater than 0
+[WARNING] nodes not configured; set nodes explicitly or MLCOUPLING_SMARTSIM_NODES.
+Assertion failed: nodes must be greater than 0
+Assertion failed: nodes must be greater than 0
+Assertion failed: nodes must be greater than 0
+Assertion failed: nodes must be greater than 0
+Assertion failed: nodes must be greater than 0
+Assertion failed: nodes must be greater than 0
+Assertion failed: nodes must be greater than 0
+Assertion failed: nodes must be greater than 0
+Assertion failed: nodes must be greater than 0
+Assertion failed: nodes must be greater than 0
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[29855,1],11]
+  Exit code:    1
+--------------------------------------------------------------------------

@@ -1,0 +1,636 @@
+=================================================================
+=== CMI Batch & Memory Calibration Benchmark Harness          ===
+=================================================================
+Provider:           smartsim
+Config:             /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/configs/smartsim.toml
+Model Path:         /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/../mini_app/train_models/model_a/watercnn_cuda.pt
+Solver Ranks:       20 (World size: 20)
+Samples per Rank:   100000
+Total Work/Step:    2000000 samples
+Target Batch Size:  100000
+SmartSim Min Batch: 100000 (timeout=1000 ms)
+Total Steps:        12 (Warmup: 2)
+=================================================================
+
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-18-48:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+solver_0@19-18-48:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-18-49:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-18-51:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-18-52:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-18-53:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-18-54:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-18-56:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-18-57:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-18-58:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-18-59:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-01:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-02:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-03:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-04:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-06:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-07:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-08:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-10:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-11:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-12:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-13:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+CMI initialized successfully. Starting benchmark steps...
+
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+solver_0@19-19-15:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_16@19-19-15:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_15@19-19-15:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-19-15:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_5@19-19-15:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_18@19-19-15:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_12@19-19-15:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_19@19-19-15:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_14@19-19-15:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_7@19-19-15:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_9@19-19-15:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_3@19-19-15:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_1@19-19-15:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_10@19-19-15:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_17@19-19-15:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_6@19-19-15:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_11@19-19-15:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_8@19-19-15:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_13@19-19-15:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_2@19-19-15:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_16@19-19-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_15@19-19-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_5@19-19-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-19-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_18@19-19-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_19@19-19-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_14@19-19-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_12@19-19-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_9@19-19-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_1@19-19-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_3@19-19-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_7@19-19-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_11@19-19-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_8@19-19-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_10@19-19-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_17@19-19-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_2@19-19-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_13@19-19-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_6@19-19-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_16@19-19-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_15@19-19-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-19-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_5@19-19-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_18@19-19-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_12@19-19-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_19@19-19-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_14@19-19-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_9@19-19-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_3@19-19-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_7@19-19-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_1@19-19-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_13@19-19-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_11@19-19-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_8@19-19-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_10@19-19-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_17@19-19-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_2@19-19-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_6@19-19-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_16@19-19-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_15@19-19-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_5@19-19-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-19-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_18@19-19-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_12@19-19-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_19@19-19-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_14@19-19-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_7@19-19-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_9@19-19-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_1@19-19-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_3@19-19-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_11@19-19-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_8@19-19-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_10@19-19-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_17@19-19-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_2@19-19-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_6@19-19-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_13@19-19-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-20:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_16@19-19-20:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_15@19-19-20:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_5@19-19-20:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-19-20:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_9@19-19-20:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_18@19-19-20:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_12@19-19-20:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_14@19-19-20:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_7@19-19-20:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_3@19-19-20:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_19@19-19-20:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_1@19-19-20:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_8@19-19-20:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_10@19-19-20:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_13@19-19-20:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_17@19-19-20:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_11@19-19-20:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_2@19-19-20:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_6@19-19-20:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_16@19-19-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_15@19-19-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_5@19-19-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-19-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_9@19-19-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_18@19-19-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_3@19-19-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_12@19-19-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_19@19-19-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_14@19-19-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_7@19-19-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_1@19-19-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_8@19-19-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_10@19-19-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_13@19-19-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_11@19-19-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_6@19-19-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_2@19-19-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_17@19-19-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_16@19-19-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_15@19-19-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_5@19-19-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-19-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_9@19-19-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_18@19-19-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_3@19-19-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_12@19-19-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_19@19-19-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_14@19-19-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_7@19-19-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_1@19-19-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_11@19-19-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_2@19-19-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_17@19-19-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_8@19-19-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_10@19-19-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_13@19-19-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_6@19-19-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_16@19-19-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_15@19-19-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_5@19-19-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-19-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_12@19-19-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_19@19-19-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_9@19-19-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_3@19-19-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_7@19-19-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_1@19-19-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_18@19-19-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_14@19-19-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_11@19-19-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_2@19-19-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_17@19-19-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_8@19-19-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_10@19-19-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_6@19-19-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_13@19-19-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-25:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_16@19-19-25:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_15@19-19-25:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_5@19-19-25:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-19-25:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_12@19-19-25:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_14@19-19-25:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_19@19-19-25:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_1@19-19-25:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_9@19-19-25:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_7@19-19-25:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_3@19-19-25:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_18@19-19-25:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_11@19-19-25:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_10@19-19-25:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_17@19-19-25:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_8@19-19-25:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_2@19-19-25:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_13@19-19-25:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_6@19-19-25:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_16@19-19-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_15@19-19-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-19-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_5@19-19-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_14@19-19-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_19@19-19-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_7@19-19-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_3@19-19-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_12@19-19-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_1@19-19-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_9@19-19-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_18@19-19-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_8@19-19-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_11@19-19-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_10@19-19-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_2@19-19-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_17@19-19-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_13@19-19-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_6@19-19-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=1 latency_ms=12709.61 min_ms=12597.81 avg_ms=12678.29 total_samples=2000000 throughput_samples_sec=157361
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=2 latency_ms=119.92 min_ms=58.46 avg_ms=103.90 total_samples=2000000 throughput_samples_sec=16678386
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=3 latency_ms=110.12 min_ms=82.35 avg_ms=92.55 total_samples=2000000 throughput_samples_sec=18162055
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=4 latency_ms=105.07 min_ms=75.74 avg_ms=90.33 total_samples=2000000 throughput_samples_sec=19035577
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=5 latency_ms=85.59 min_ms=66.50 avg_ms=76.28 total_samples=2000000 throughput_samples_sec=23366838
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=6 latency_ms=95.08 min_ms=55.16 avg_ms=69.17 total_samples=2000000 throughput_samples_sec=21035006
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=7 latency_ms=114.06 min_ms=87.99 avg_ms=99.70 total_samples=2000000 throughput_samples_sec=17534932
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=8 latency_ms=100.25 min_ms=72.64 avg_ms=88.17 total_samples=2000000 throughput_samples_sec=19950443
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=9 latency_ms=107.17 min_ms=77.48 avg_ms=90.89 total_samples=2000000 throughput_samples_sec=18662378
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=10 latency_ms=97.98 min_ms=66.50 avg_ms=85.07 total_samples=2000000 throughput_samples_sec=20413050
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=11 latency_ms=93.54 min_ms=61.47 avg_ms=80.44 total_samples=2000000 throughput_samples_sec=21381196
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=12 latency_ms=81.36 min_ms=50.48 avg_ms=70.17 total_samples=2000000 throughput_samples_sec=24581704
+
+=================================================================
+=== Benchmark Summary (Steady-State Steps 3 to 12) ===
+=================================================================
+Steady Step Count:   10
+Median Latency:      100.25 ms
+Mean Latency:        99.02 ms
+Min Latency:         81.36 ms
+Max Latency:         114.06 ms
+Median Throughput:   19950443 samples/sec
+=================================================================

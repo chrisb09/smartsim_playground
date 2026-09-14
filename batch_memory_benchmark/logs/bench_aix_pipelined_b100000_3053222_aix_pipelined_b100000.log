@@ -1,0 +1,26 @@
+=================================================================
+=== CMI Batch & Memory Calibration Benchmark Harness          ===
+=================================================================
+Provider:           aix
+Config:             /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/configs/aix.toml
+Model Path:         /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/../mini_app/train_models/model_a/watercnn_cuda.pt
+Solver Ranks:       20 (World size: 20)
+Samples per Rank:   100000
+Total Work/Step:    2000000 samples
+Target Batch Size:  100000
+SmartSim Min Batch: 0 (timeout=0 ms)
+Total Steps:        12 (Warmup: 2)
+=================================================================
+
+[ERROR] No application class specified in configuration.
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[27824,1],17]
+  Exit code:    1
+--------------------------------------------------------------------------

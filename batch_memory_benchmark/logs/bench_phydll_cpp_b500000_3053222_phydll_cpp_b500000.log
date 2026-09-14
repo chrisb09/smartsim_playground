@@ -1,0 +1,398 @@
+=================================================================
+=== CMI Batch & Memory Calibration Benchmark Harness          ===
+=================================================================
+Provider:           phydll
+Config:             /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/configs/phydll_uniform.toml
+Model Path:         /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/../mini_app/train_models/model_a/watercnn_cuda.pt
+Solver Ranks:       20 (World size: 21)
+Samples per Rank:   100000
+Total Work/Step:    2000000 samples
+Target Batch Size:  500000
+SmartSim Min Batch: 0 (timeout=0 ms)
+Total Steps:        12 (Warmup: 2)
+=================================================================
+
+[ERROR] Failed to create application instance of class: MLCouplingApplicationBenchmark
+[ERROR] Failed to create instance of class: MLCouplingApplicationBenchmark
+[ERROR] Resolved class name: MLCouplingApplicationBenchmark
+[ERROR] Provided parameters:
+[ERROR]   input_data_after_preprocessing = Unknown type     (config parsed type: unknown)
+[ERROR]   output_data_before_postprocessing = Unknown type  (config parsed type: unknown)
+[ERROR]   output_data = Unknown type                        (config parsed type: unknown)
+[ERROR]   input_data = Unknown type                         (config parsed type: unknown)
+[ERROR] Available module instances that could be used as parameters:
+[ERROR]   MLCouplingMinMaxNormalization
+[ERROR] Note: The config parsing uses types that may be automatically cast to fit the constructor parameters. For example, all integer values in the config are parsed as int64_t, but if the constructor expects an int, it will be cast accordingly. If there is a type mismatch that cannot be resolved, the constructor will fail.
+[INFO] No constructors found for MLCouplingApplicationBenchmark
+CMI initialized successfully. Starting benchmark steps...
+
+[r23g0004:451386:0:451386] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x18)
+[r23g0004:451394:0:451394] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x18)
+[r23g0004:451378:0:451378] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x18)
+[r23g0004:451384:0:451384] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x18)
+[r23g0004:451392:0:451392] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x18)
+[r23g0004:451376:0:451376] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x18)
+[r23g0004:451390:0:451390] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x18)
+[r23g0004:451382:0:451382] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x18)
+[r23g0004:451380:0:451380] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x18)
+[r23g0004:451388:0:451388] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x18)
+[r23g0004:451385:0:451385] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x18)
+[r23g0004:451393:0:451393] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x18)
+[r23g0004:451377:0:451377] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x18)
+[r23g0004:451383:0:451383] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x18)
+[r23g0004:451379:0:451379] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x18)
+[r23g0004:451395:0:451395] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x18)
+[r23g0004:451391:0:451391] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x18)
+[r23g0004:451381:0:451381] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x18)
+[r23g0004:451387:0:451387] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x18)
+[r23g0004:451389:0:451389] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x18)
+[PHYDLL:DL] client started argv0=/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/../CPP-ML-Interface/dl_clients/build-miniapp/phydll_dl_client dl_count=1 torch=on
+[PHYDLL:DL] torch threads: intra=1, inter=96
+[PHYDLL:DL] runtime before phydll_init
+==== backtrace (tid: 451386) ====
+ 0 0x000000000003fb30 __GI___sigaction()  :0
+ 1 0x0000000000410ac7 main()  ???:0
+ 2 0x000000000002a610 __libc_start_call_main()  ???:0
+ 3 0x000000000002a6c0 __libc_start_main_alias_2()  :0
+ 4 0x0000000000411dc5 _start()  ???:0
+=================================
+[r23g0004:451386] *** Process received signal ***
+[r23g0004:451386] Signal: Segmentation fault (11)
+[r23g0004:451386] Signal code:  (-6)
+[r23g0004:451386] Failing at address: 0x8af40006e33a
+[r23g0004:451386] [ 0] /lib64/libc.so.6(+0x3fb30)[0x153fce83fb30]
+[r23g0004:451386] [ 1] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x410ac7]
+[r23g0004:451386] [ 2] /lib64/libc.so.6(+0x2a610)[0x153fce82a610]
+[r23g0004:451386] [ 3] /lib64/libc.so.6(__libc_start_main+0x80)[0x153fce82a6c0]
+[r23g0004:451386] [ 4] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x411dc5]
+[r23g0004:451386] *** End of error message ***
+==== backtrace (tid: 451378) ====
+ 0 0x000000000003fb30 __GI___sigaction()  :0
+ 1 0x0000000000410ac7 main()  ???:0
+ 2 0x000000000002a610 __libc_start_call_main()  ???:0
+ 3 0x000000000002a6c0 __libc_start_main_alias_2()  :0
+ 4 0x0000000000411dc5 _start()  ???:0
+=================================
+[r23g0004:451378] *** Process received signal ***
+[r23g0004:451378] Signal: Segmentation fault (11)
+[r23g0004:451378] Signal code:  (-6)
+[r23g0004:451378] Failing at address: 0x8af40006e332
+[r23g0004:451378] [ 0] /lib64/libc.so.6(+0x3fb30)[0x1529d5a3fb30]
+[r23g0004:451378] [ 1] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x410ac7]
+[r23g0004:451378] [ 2] /lib64/libc.so.6(+0x2a610)[0x1529d5a2a610]
+[r23g0004:451378] [ 3] /lib64/libc.so.6(__libc_start_main+0x80)[0x1529d5a2a6c0]
+[r23g0004:451378] [ 4] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x411dc5]
+[r23g0004:451378] *** End of error message ***
+==== backtrace (tid: 451394) ====
+ 0 0x000000000003fb30 __GI___sigaction()  :0
+ 1 0x0000000000410ac7 main()  ???:0
+ 2 0x000000000002a610 __libc_start_call_main()  ???:0
+ 3 0x000000000002a6c0 __libc_start_main_alias_2()  :0
+ 4 0x0000000000411dc5 _start()  ???:0
+=================================
+[r23g0004:451394] *** Process received signal ***
+[r23g0004:451394] Signal: Segmentation fault (11)
+[r23g0004:451394] Signal code:  (-6)
+[r23g0004:451394] Failing at address: 0x8af40006e342
+[r23g0004:451394] [ 0] /lib64/libc.so.6(+0x3fb30)[0x14616b43fb30]
+[r23g0004:451394] [ 1] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x410ac7]
+[r23g0004:451394] [ 2] /lib64/libc.so.6(+0x2a610)[0x14616b42a610]
+[r23g0004:451394] [ 3] /lib64/libc.so.6(__libc_start_main+0x80)[0x14616b42a6c0]
+[r23g0004:451394] [ 4] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x411dc5]
+[r23g0004:451394] *** End of error message ***
+==== backtrace (tid: 451383) ====
+ 0 0x000000000003fb30 __GI___sigaction()  :0
+ 1 0x0000000000410ac7 main()  ???:0
+ 2 0x000000000002a610 __libc_start_call_main()  ???:0
+ 3 0x000000000002a6c0 __libc_start_main_alias_2()  :0
+ 4 0x0000000000411dc5 _start()  ???:0
+=================================
+[r23g0004:451383] *** Process received signal ***
+[r23g0004:451383] Signal: Segmentation fault (11)
+[r23g0004:451383] Signal code:  (-6)
+[r23g0004:451383] Failing at address: 0x8af40006e337
+[r23g0004:451383] [ 0] /lib64/libc.so.6(+0x3fb30)[0x15489e23fb30]
+[r23g0004:451383] [ 1] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x410ac7]
+[r23g0004:451383] [ 2] /lib64/libc.so.6(+0x2a610)[0x15489e22a610]
+[r23g0004:451383] [ 3] /lib64/libc.so.6(__libc_start_main+0x80)[0x15489e22a6c0]
+[r23g0004:451383] [ 4] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x411dc5]
+[r23g0004:451383] *** End of error message ***
+==== backtrace (tid: 451392) ====
+ 0 0x000000000003fb30 __GI___sigaction()  :0
+ 1 0x0000000000410ac7 main()  ???:0
+ 2 0x000000000002a610 __libc_start_call_main()  ???:0
+ 3 0x000000000002a6c0 __libc_start_main_alias_2()  :0
+ 4 0x0000000000411dc5 _start()  ???:0
+=================================
+[r23g0004:451392] *** Process received signal ***
+[r23g0004:451392] Signal: Segmentation fault (11)
+[r23g0004:451392] Signal code:  (-6)
+[r23g0004:451392] Failing at address: 0x8af40006e340
+[r23g0004:451392] [ 0] /lib64/libc.so.6(+0x3fb30)[0x14a91843fb30]
+[r23g0004:451392] [ 1] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x410ac7]
+[r23g0004:451392] [ 2] /lib64/libc.so.6(+0x2a610)[0x14a91842a610]
+[r23g0004:451392] [ 3] /lib64/libc.so.6(__libc_start_main+0x80)[0x14a91842a6c0]
+[r23g0004:451392] [ 4] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x411dc5]
+[r23g0004:451392] *** End of error message ***
+==== backtrace (tid: 451390) ====
+ 0 0x000000000003fb30 __GI___sigaction()  :0
+ 1 0x0000000000410ac7 main()  ???:0
+ 2 0x000000000002a610 __libc_start_call_main()  ???:0
+ 3 0x000000000002a6c0 __libc_start_main_alias_2()  :0
+ 4 0x0000000000411dc5 _start()  ???:0
+=================================
+[r23g0004:451390] *** Process received signal ***
+[r23g0004:451390] Signal: Segmentation fault (11)
+[r23g0004:451390] Signal code:  (-6)
+[r23g0004:451390] Failing at address: 0x8af40006e33e
+[r23g0004:451390] [ 0] /lib64/libc.so.6(+0x3fb30)[0x147cf323fb30]
+[r23g0004:451390] [ 1] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x410ac7]
+[r23g0004:451390] [ 2] /lib64/libc.so.6(+0x2a610)[0x147cf322a610]
+[r23g0004:451390] [ 3] /lib64/libc.so.6(__libc_start_main+0x80)[0x147cf322a6c0]
+[r23g0004:451390] [ 4] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x411dc5]
+[r23g0004:451390] *** End of error message ***
+==== backtrace (tid: 451388) ====
+ 0 0x000000000003fb30 __GI___sigaction()  :0
+ 1 0x0000000000410ac7 main()  ???:0
+ 2 0x000000000002a610 __libc_start_call_main()  ???:0
+ 3 0x000000000002a6c0 __libc_start_main_alias_2()  :0
+ 4 0x0000000000411dc5 _start()  ???:0
+=================================
+==== backtrace (tid: 451385) ====
+ 0 0x000000000003fb30 __GI___sigaction()  :0
+ 1 0x0000000000410ac7 main()  ???:0
+ 2 0x000000000002a610 __libc_start_call_main()  ???:0
+ 3 0x000000000002a6c0 __libc_start_main_alias_2()  :0
+ 4 0x0000000000411dc5 _start()  ???:0
+=================================
+[r23g0004:451388] *** Process received signal ***
+[r23g0004:451388] Signal: Segmentation fault (11)
+[r23g0004:451388] Signal code:  (-6)
+[r23g0004:451388] Failing at address: 0x8af40006e33c
+[r23g0004:451385] *** Process received signal ***
+[r23g0004:451385] Signal: Segmentation fault (11)
+[r23g0004:451385] Signal code:  (-6)
+[r23g0004:451385] Failing at address: 0x8af40006e339
+[r23g0004:451388] [ 0] [r23g0004:451385] [ 0] /lib64/libc.so.6(+0x3fb30)[0x14f2e943fb30]
+[r23g0004:451388] [ 1] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x410ac7]
+[r23g0004:451388] [ 2] /lib64/libc.so.6(+0x3fb30)[0x14931923fb30]
+[r23g0004:451385] [ 1] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x410ac7]
+[r23g0004:451385] [ 2] /lib64/libc.so.6(+0x2a610)[0x14f2e942a610]
+[r23g0004:451388] [ 3] /lib64/libc.so.6(+0x2a610)[0x14931922a610]
+[r23g0004:451385] [ 3] /lib64/libc.so.6(__libc_start_main+0x80)[0x14f2e942a6c0]
+[r23g0004:451388] [ 4] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x411dc5]
+[r23g0004:451388] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0x80)[0x14931922a6c0]
+[r23g0004:451385] [ 4] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x411dc5]
+[r23g0004:451385] *** End of error message ***
+==== backtrace (tid: 451391) ====
+ 0 0x000000000003fb30 __GI___sigaction()  :0
+ 1 0x0000000000410ac7 main()  ???:0
+ 2 0x000000000002a610 __libc_start_call_main()  ???:0
+ 3 0x000000000002a6c0 __libc_start_main_alias_2()  :0
+ 4 0x0000000000411dc5 _start()  ???:0
+=================================
+[r23g0004:451391] *** Process received signal ***
+[r23g0004:451391] Signal: Segmentation fault (11)
+[r23g0004:451391] Signal code:  (-6)
+[r23g0004:451391] Failing at address: 0x8af40006e33f
+[r23g0004:451391] [ 0] /lib64/libc.so.6(+0x3fb30)[0x14655643fb30]
+[r23g0004:451391] [ 1] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x410ac7]
+[r23g0004:451391] [ 2] /lib64/libc.so.6(+0x2a610)[0x14655642a610]
+[r23g0004:451391] [ 3] /lib64/libc.so.6(__libc_start_main+0x80)[0x14655642a6c0]
+[r23g0004:451391] [ 4] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x411dc5]
+[r23g0004:451391] *** End of error message ***
+==== backtrace (tid: 451384) ====
+ 0 0x000000000003fb30 __GI___sigaction()  :0
+ 1 0x0000000000410ac7 main()  ???:0
+ 2 0x000000000002a610 __libc_start_call_main()  ???:0
+ 3 0x000000000002a6c0 __libc_start_main_alias_2()  :0
+ 4 0x0000000000411dc5 _start()  ???:0
+=================================
+[r23g0004:451384] *** Process received signal ***
+[r23g0004:451384] Signal: Segmentation fault (11)
+[r23g0004:451384] Signal code:  (-6)
+[r23g0004:451384] Failing at address: 0x8af40006e338
+[r23g0004:451384] [ 0] /lib64/libc.so.6(+0x3fb30)[0x1510cf83fb30]
+[r23g0004:451384] [ 1] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x410ac7]
+[r23g0004:451384] [ 2] /lib64/libc.so.6(+0x2a610)[0x1510cf82a610]
+[r23g0004:451384] [ 3] /lib64/libc.so.6(__libc_start_main+0x80)[0x1510cf82a6c0]
+[r23g0004:451384] [ 4] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x411dc5]
+[r23g0004:451384] *** End of error message ***
+==== backtrace (tid: 451376) ====
+ 0 0x000000000003fb30 __GI___sigaction()  :0
+ 1 0x0000000000410ac7 main()  ???:0
+ 2 0x000000000002a610 __libc_start_call_main()  ???:0
+ 3 0x000000000002a6c0 __libc_start_main_alias_2()  :0
+ 4 0x0000000000411dc5 _start()  ???:0
+=================================
+[r23g0004:451376] *** Process received signal ***
+[r23g0004:451376] Signal: Segmentation fault (11)
+[r23g0004:451376] Signal code:  (-6)
+[r23g0004:451376] Failing at address: 0x8af40006e330
+[r23g0004:451376] [ 0] /lib64/libc.so.6(+0x3fb30)[0x14f48983fb30]
+==== backtrace (tid: 451377) ====
+ 0 0x000000000003fb30 __GI___sigaction()  :0
+ 1 0x0000000000410ac7 main()  ???:0
+ 2 0x000000000002a610 __libc_start_call_main()  ???:0
+ 3 0x000000000002a6c0 __libc_start_main_alias_2()  :0
+ 4 0x0000000000411dc5 _start()  ???:0
+=================================
+[r23g0004:451376] [r23g0004:451377] *** Process received signal ***
+[r23g0004:451377] Signal: Segmentation fault (11)
+[r23g0004:451377] Signal code:  (-6)
+[r23g0004:451377] Failing at address: 0x8af40006e331
+[ 1] [r23g0004:451377] [ 0] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x410ac7]
+[r23g0004:451376] [ 2] /lib64/libc.so.6(+0x2a610)[0x14f48982a610]
+[r23g0004:451376] [ 3] /lib64/libc.so.6(+0x3fb30)[0x153631e3fb30]
+[r23g0004:451377] [ 1] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x410ac7]
+[r23g0004:451377] [ 2] /lib64/libc.so.6(+0x2a610)[0x153631e2a610]
+[r23g0004:451377] [ 3] /lib64/libc.so.6(__libc_start_main+0x80)[0x153631e2a6c0]
+[r23g0004:451377] [ 4] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x411dc5]
+[r23g0004:451377] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0x80)[0x14f48982a6c0]
+[r23g0004:451376] [ 4] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x411dc5]
+[r23g0004:451376] *** End of error message ***
+==== backtrace (tid: 451387) ====
+ 0 0x000000000003fb30 __GI___sigaction()  :0
+ 1 0x0000000000410ac7 main()  ???:0
+ 2 0x000000000002a610 __libc_start_call_main()  ???:0
+ 3 0x000000000002a6c0 __libc_start_main_alias_2()  :0
+ 4 0x0000000000411dc5 _start()  ???:0
+=================================
+[r23g0004:451387] *** Process received signal ***
+[r23g0004:451387] Signal: Segmentation fault (11)
+[r23g0004:451387] Signal code:  (-6)
+[r23g0004:451387] Failing at address: 0x8af40006e33b
+[r23g0004:451387] [ 0] /lib64/libc.so.6(+0x3fb30)[0x14a0eb63fb30]
+[r23g0004:451387] [ 1] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x410ac7]
+[r23g0004:451387] [ 2] /lib64/libc.so.6(+0x2a610)[0x14a0eb62a610]
+[r23g0004:451387] [ 3] /lib64/libc.so.6(__libc_start_main+0x80)[0x14a0eb62a6c0]
+[r23g0004:451387] [ 4] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x411dc5]
+[r23g0004:451387] *** End of error message ***
+==== backtrace (tid: 451393) ====
+ 0 0x000000000003fb30 __GI___sigaction()  :0
+ 1 0x0000000000410ac7 main()  ???:0
+ 2 0x000000000002a610 __libc_start_call_main()  ???:0
+ 3 0x000000000002a6c0 __libc_start_main_alias_2()  :0
+ 4 0x0000000000411dc5 _start()  ???:0
+=================================
+[r23g0004:451393] *** Process received signal ***
+[r23g0004:451393] Signal: Segmentation fault (11)
+[r23g0004:451393] Signal code:  (-6)
+[r23g0004:451393] Failing at address: 0x8af40006e341
+[r23g0004:451393] [ 0] /lib64/libc.so.6(+0x3fb30)[0x145ef543fb30]
+[r23g0004:451393] [ 1] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x410ac7]
+[r23g0004:451393] [ 2] /lib64/libc.so.6(+0x2a610)[0x145ef542a610]
+[r23g0004:451393] [ 3] /lib64/libc.so.6(__libc_start_main+0x80)[0x145ef542a6c0]
+[r23g0004:451393] [ 4] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x411dc5]
+[r23g0004:451393] *** End of error message ***
+==== backtrace (tid: 451395) ====
+ 0 0x000000000003fb30 __GI___sigaction()  :0
+ 1 0x0000000000410ac7 main()  ???:0
+ 2 0x000000000002a610 __libc_start_call_main()  ???:0
+ 3 0x000000000002a6c0 __libc_start_main_alias_2()  :0
+ 4 0x0000000000411dc5 _start()  ???:0
+=================================
+[r23g0004:451395] *** Process received signal ***
+[r23g0004:451395] Signal: Segmentation fault (11)
+[r23g0004:451395] Signal code:  (-6)
+[r23g0004:451395] Failing at address: 0x8af40006e343
+[r23g0004:451395] [ 0] /lib64/libc.so.6(+0x3fb30)[0x14ab2123fb30]
+[r23g0004:451395] [ 1] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x410ac7]
+[r23g0004:451395] [ 2] /lib64/libc.so.6(+0x2a610)[0x14ab2122a610]
+[r23g0004:451395] [ 3] /lib64/libc.so.6(__libc_start_main+0x80)[0x14ab2122a6c0]
+[r23g0004:451395] [ 4] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x411dc5]
+[r23g0004:451395] *** End of error message ***
+==== backtrace (tid: 451379) ====
+ 0 0x000000000003fb30 __GI___sigaction()  :0
+ 1 0x0000000000410ac7 main()  ???:0
+ 2 0x000000000002a610 __libc_start_call_main()  ???:0
+ 3 0x000000000002a6c0 __libc_start_main_alias_2()  :0
+ 4 0x0000000000411dc5 _start()  ???:0
+=================================
+[r23g0004:451379] *** Process received signal ***
+[r23g0004:451379] Signal: Segmentation fault (11)
+[r23g0004:451379] Signal code:  (-6)
+[r23g0004:451379] Failing at address: 0x8af40006e333
+[r23g0004:451379] [ 0] /lib64/libc.so.6(+0x3fb30)[0x14b8cfc3fb30]
+[r23g0004:451379] [ 1] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x410ac7]
+[r23g0004:451379] [ 2] /lib64/libc.so.6(+0x2a610)[0x14b8cfc2a610]
+[r23g0004:451379] [ 3] ==== backtrace (tid: 451382) ====
+ 0 0x000000000003fb30 __GI___sigaction()  :0
+ 1 0x0000000000410ac7 main()  ???:0
+ 2 0x000000000002a610 __libc_start_call_main()  ???:0
+ 3 0x000000000002a6c0 __libc_start_main_alias_2()  :0
+ 4 0x0000000000411dc5 _start()  ???:0
+=================================
+[r23g0004:451382] *** Process received signal ***
+[r23g0004:451382] Signal: Segmentation fault (11)
+[r23g0004:451382] Signal code:  (-6)
+[r23g0004:451382] Failing at address: 0x8af40006e336
+/lib64/libc.so.6(__libc_start_main+0x80)[0x14b8cfc2a6c0]
+[r23g0004:451379] [ 4] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x411dc5]
+[r23g0004:451379] *** End of error message ***
+[r23g0004:451382] [ 0] /lib64/libc.so.6(+0x3fb30)[0x147701c3fb30]
+[r23g0004:451382] [ 1] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x410ac7]
+[r23g0004:451382] [ 2] /lib64/libc.so.6(+0x2a610)[0x147701c2a610]
+[r23g0004:451382] [ 3] /lib64/libc.so.6(__libc_start_main+0x80)[0x147701c2a6c0]
+[r23g0004:451382] [ 4] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x411dc5]
+[r23g0004:451382] *** End of error message ***
+==== backtrace (tid: 451380) ====
+ 0 0x000000000003fb30 __GI___sigaction()  :0
+ 1 0x0000000000410ac7 main()  ???:0
+ 2 0x000000000002a610 __libc_start_call_main()  ???:0
+ 3 0x000000000002a6c0 __libc_start_main_alias_2()  :0
+ 4 0x0000000000411dc5 _start()  ???:0
+=================================
+[r23g0004:451380] *** Process received signal ***
+[r23g0004:451380] Signal: Segmentation fault (11)
+[r23g0004:451380] Signal code:  (-6)
+[r23g0004:451380] Failing at address: 0x8af40006e334
+[r23g0004:451380] [ 0] /lib64/libc.so.6(+0x3fb30)[0x1465fb83fb30]
+[r23g0004:451380] [ 1] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x410ac7]
+[r23g0004:451380] [ 2] /lib64/libc.so.6(+0x2a610)[0x1465fb82a610]
+[r23g0004:451380] [ 3] /lib64/libc.so.6(__libc_start_main+0x80)[0x1465fb82a6c0]
+[r23g0004:451380] [ 4] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x411dc5]
+[r23g0004:451380] *** End of error message ***
+==== backtrace (tid: 451381) ====
+ 0 0x000000000003fb30 __GI___sigaction()  :0
+ 1 0x0000000000410ac7 main()  ???:0
+ 2 0x000000000002a610 __libc_start_call_main()  ???:0
+ 3 0x000000000002a6c0 __libc_start_main_alias_2()  :0
+ 4 0x0000000000411dc5 _start()  ???:0
+=================================
+[r23g0004:451381] *** Process received signal ***
+[r23g0004:451381] Signal: Segmentation fault (11)
+[r23g0004:451381] Signal code:  (-6)
+[r23g0004:451381] Failing at address: 0x8af40006e335
+[r23g0004:451381] [ 0] /lib64/libc.so.6(+0x3fb30)[0x152e9723fb30]
+[r23g0004:451381] [ 1] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x410ac7]
+[r23g0004:451381] [ 2] /lib64/libc.so.6(+0x2a610)[0x152e9722a610]
+[r23g0004:451381] [ 3] /lib64/libc.so.6(__libc_start_main+0x80)[0x152e9722a6c0]
+[r23g0004:451381] [ 4] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x411dc5]
+[r23g0004:451381] *** End of error message ***
+==== backtrace (tid: 451389) ====
+ 0 0x000000000003fb30 __GI___sigaction()  :0
+ 1 0x0000000000410ac7 main()  ???:0
+ 2 0x000000000002a610 __libc_start_call_main()  ???:0
+ 3 0x000000000002a6c0 __libc_start_main_alias_2()  :0
+ 4 0x0000000000411dc5 _start()  ???:0
+=================================
+[r23g0004:451389] *** Process received signal ***
+[r23g0004:451389] Signal: Segmentation fault (11)
+[r23g0004:451389] Signal code:  (-6)
+[r23g0004:451389] Failing at address: 0x8af40006e33d
+[r23g0004:451389] [ 0] /lib64/libc.so.6(+0x3fb30)[0x146017c3fb30]
+[r23g0004:451389] [ 1] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x410ac7]
+[r23g0004:451389] [ 2] /lib64/libc.so.6(+0x2a610)[0x146017c2a610]
+[r23g0004:451389] [ 3] /lib64/libc.so.6(__libc_start_main+0x80)[0x146017c2a6c0]
+[r23g0004:451389] [ 4] /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver[0x411dc5]
+[r23g0004:451389] *** End of error message ***
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 10 with PID 451386 on node r23g0004 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------

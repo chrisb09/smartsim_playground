@@ -1,0 +1,24 @@
+[logging]
+level = "debug"
+error_separate = false
+
+[library]
+class = "Phydll"
+model_file = "../mini_app/train_models/model_a/watercnn_cuda.pt"
+backend = "TORCH"
+device = "GPU"
+batch_size = 100000
+transport_layout = "uniform_chunks"
+
+[normalization]
+class = "MinMax"
+input_min = 0.0
+input_max = 1.0
+output_min = 0.0
+output_max = 1.0
+
+[behavior]
+class = "Default"
+
+[application]
+class = "MLCouplingApplicationBenchmark"

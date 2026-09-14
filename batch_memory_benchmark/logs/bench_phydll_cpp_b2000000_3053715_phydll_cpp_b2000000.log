@@ -1,0 +1,1466 @@
+=================================================================
+=== CMI Batch & Memory Calibration Benchmark Harness          ===
+=================================================================
+Provider:           phydll
+Config:             /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/configs/phydll_uniform.toml
+Model Path:         /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/../mini_app/train_models/model_a/watercnn_cuda.pt
+Solver Ranks:       20 (World size: 21)
+Samples per Rank:   100000
+Total Work/Step:    2000000 samples
+Target Batch Size:  2000000
+SmartSim Min Batch: 0 (timeout=0 ms)
+Total Steps:        12 (Warmup: 2)
+=================================================================
+
+[PHYDLL:PHY] before phydll_init
+[PHYDLL:PHY] before phydll_init
+[PHYDLL:PHY] before phydll_init
+[PHYDLL:PHY] before phydll_init
+[PHYDLL:PHY] before phydll_init
+[PHYDLL:PHY] before phydll_init
+[PHYDLL:PHY] before phydll_init
+[PHYDLL:PHY] before phydll_init
+[PHYDLL:PHY] before phydll_init
+[PHYDLL:PHY] before phydll_init
+[PHYDLL:PHY] before phydll_init
+[PHYDLL:PHY] before phydll_init
+[PHYDLL:PHY] before phydll_init
+[PHYDLL:PHY] before phydll_init
+[PHYDLL:PHY] before phydll_init
+[PHYDLL:PHY] before phydll_init
+[PHYDLL:PHY] before phydll_init
+[PHYDLL:PHY] before phydll_init
+[PHYDLL:PHY] before phydll_init
+[PHYDLL:PHY] before phydll_init
+[PHYDLL:DL] client started argv0=/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/../CPP-ML-Interface/dl_clients/build-miniapp/phydll_dl_client dl_count=1 torch=on
+[PHYDLL:DL] torch threads: intra=1, inter=96
+[PHYDLL:DL] runtime before phydll_init
+[PHYDLL:CORE] kernel_init split instance=physical gl_rank=9 gl_size=21 color=0 comm_rank=9 comm_size=20
+[PHYDLL:CORE] phydll_init instance=physical kernel_init complete gl_rank=9 gl_size=21 comm_rank=9 comm_size=20
+[PHYDLL:CORE] kernel_init split instance=physical gl_rank=4 gl_size=21 color=0 comm_rank=4 comm_size=20
+[PHYDLL:CORE] phydll_init instance=physical kernel_init complete gl_rank=4 gl_size=21 comm_rank=4 comm_size=20
+[PHYDLL:CORE] kernel_init split instance=physical gl_rank=11 gl_size=21 color=0 comm_rank=11 comm_size=20
+[PHYDLL:CORE] phydll_init instance=physical kernel_init complete gl_rank=11 gl_size=21 comm_rank=11 comm_size=20
+[PHYDLL:CORE] kernel_init split instance=physical gl_rank=0 gl_size=21 color=0 comm_rank=0 comm_size=20
+[PHYDLL:CORE] phydll_init instance=physical kernel_init complete gl_rank=0 gl_size=21 comm_rank=0 comm_size=20
+[PHYDLL:CORE] kernel_init split instance=physical gl_rank=10 gl_size=21 color=0 comm_rank=10 comm_size=20
+[PHYDLL:CORE] phydll_init instance=physical kernel_init complete gl_rank=10 gl_size=21 comm_rank=10 comm_size=20
+[PHYDLL:CORE] kernel_init split instance=physical gl_rank=16 gl_size=21 color=0 comm_rank=16 comm_size=20
+[PHYDLL:CORE] phydll_init instance=physical kernel_init complete gl_rank=16 gl_size=21 comm_rank=16 comm_size=20
+[PHYDLL:CORE] kernel_init split instance=physical gl_rank=7 gl_size=21 color=0 comm_rank=7 comm_size=20
+[PHYDLL:CORE] phydll_init instance=physical kernel_init complete gl_rank=7 gl_size=21 comm_rank=7 comm_size=20
+[PHYDLL:CORE] kernel_init split instance=physical gl_rank=3 gl_size=21 color=0 comm_rank=3 comm_size=20
+[PHYDLL:CORE] phydll_init instance=physical kernel_init complete gl_rank=3 gl_size=21 comm_rank=3 comm_size=20
+[PHYDLL:CORE] kernel_init split instance=dl gl_rank=20 gl_size=21 color=1 comm_rank=0 comm_size=1
+[PHYDLL:CORE] phydll_init instance=dl kernel_init complete gl_rank=20 gl_size=21 comm_rank=0 comm_size=1
+[PHYDLL:CORE] kernel_init split instance=physical gl_rank=13 gl_size=21 color=0 comm_rank=13 comm_size=20
+[PHYDLL:CORE] phydll_init instance=physical kernel_init complete gl_rank=13 gl_size=21 comm_rank=13 comm_size=20
+[PHYDLL:CORE] kernel_init split instance=physical gl_rank=8 gl_size=21 color=0 comm_rank=8 comm_size=20
+[PHYDLL:CORE] phydll_init instance=physical kernel_init complete gl_rank=8 gl_size=21 comm_rank=8 comm_size=20
+[PHYDLL:CORE] kernel_init split instance=physical gl_rank=5 gl_size=21 color=0 comm_rank=5 comm_size=20
+[PHYDLL:CORE] phydll_init instance=physical kernel_init complete gl_rank=5 gl_size=21 comm_rank=5 comm_size=20
+[PHYDLL:CORE] kernel_init split instance=physical gl_rank=17 gl_size=21 color=0 comm_rank=17 comm_size=20
+[PHYDLL:CORE] phydll_init instance=physical kernel_init complete gl_rank=17 gl_size=21 comm_rank=17 comm_size=20
+[PHYDLL:CORE] kernel_init split instance=physical gl_rank=1 gl_size=21 color=0 comm_rank=1 comm_size=20
+[PHYDLL:CORE] phydll_init instance=physical kernel_init complete gl_rank=1 gl_size=21 comm_rank=1 comm_size=20
+[PHYDLL:CORE] kernel_init split instance=physical gl_rank=15 gl_size=21 color=0 comm_rank=15 comm_size=20
+[PHYDLL:CORE] phydll_init instance=physical kernel_init complete gl_rank=15 gl_size=21 comm_rank=15 comm_size=20
+[PHYDLL:CORE] kernel_init split instance=physical gl_rank=12 gl_size=21 color=0 comm_rank=12 comm_size=20
+[PHYDLL:CORE] phydll_init instance=physical kernel_init complete gl_rank=12 gl_size=21 comm_rank=12 comm_size=20
+[PHYDLL:CORE] kernel_init split instance=physical gl_rank=14 gl_size=21 color=0 comm_rank=14 comm_size=20
+[PHYDLL:CORE] phydll_init instance=physical kernel_init complete gl_rank=14 gl_size=21 comm_rank=14 comm_size=20
+[PHYDLL:CORE] kernel_init split instance=physical gl_rank=2 gl_size=21 color=0 comm_rank=2 comm_size=20
+[PHYDLL:CORE] phydll_init instance=physical kernel_init complete gl_rank=2 gl_size=21 comm_rank=2 comm_size=20
+[PHYDLL:CORE] kernel_init split instance=physical gl_rank=6 gl_size=21 color=0 comm_rank=6 comm_size=20
+[PHYDLL:CORE] phydll_init instance=physical kernel_init complete gl_rank=6 gl_size=21 comm_rank=6 comm_size=20
+[PHYDLL:CORE] kernel_init split instance=physical gl_rank=19 gl_size=21 color=0 comm_rank=19 comm_size=20
+[PHYDLL:CORE] phydll_init instance=physical kernel_init complete gl_rank=19 gl_size=21 comm_rank=19 comm_size=20
+[PHYDLL:CORE] kernel_init split instance=physical gl_rank=18 gl_size=21 color=0 comm_rank=18 comm_size=20
+[PHYDLL:CORE] phydll_init instance=physical kernel_init complete gl_rank=18 gl_size=21 comm_rank=18 comm_size=20
+*******************************************************************************
+************************** <<< Welcome to PhyDLL >>> **************************
+*******************************************************************************
+*******************************************************************************
+************************** <<< Welcome to PhyDLL >>> **************************
+*******************************************************************************
+[PHYDLL:CORE] phydll_init instance=physical logfile complete
+[PHYDLL:CORE] phydll_init instance=physical logfile complete
+[PHYDLL:CORE] phydll_init instance=physical logfile complete
+[PHYDLL:CORE] phydll_init instance=physical logfile complete
+[PHYDLL:CORE] phydll_init instance=physical logfile complete
+[PHYDLL:CORE] phydll_init instance=physical logfile complete
+[PHYDLL:CORE] phydll_init instance=physical logfile complete
+[PHYDLL:CORE] phydll_init instance=physical logfile complete
+[PHYDLL:CORE] phydll_init instance=physical logfile complete
+[PHYDLL:CORE] phydll_init instance=physical logfile complete
+[PHYDLL:CORE] phydll_init instance=physical logfile complete
+[PHYDLL:CORE] phydll_init instance=physical logfile complete
+[PHYDLL:CORE] phydll_init instance=physical logfile complete
+[PHYDLL:CORE] phydll_init instance=physical logfile complete
+[PHYDLL:CORE] phydll_init instance=physical logfile complete
+[PHYDLL:CORE] phydll_init instance=physical logfile complete
+[PHYDLL:CORE] phydll_init instance=physical logfile complete
+[PHYDLL:CORE] phydll_init instance=physical logfile complete
+[PHYDLL:CORE] phydll_init instance=physical logfile complete
+[PHYDLL:CORE] phydll_init instance=physical logfile complete
+[PHYDLL:CORE] phydll_init instance=physical mapping complete ndest=1
+[PHYDLL:PHY] after phydll_init
+[PHYDLL:PHY] uniform_chunks layout: total_input=1800000 total_output=100000 gcd=100000 phy_count=18 dl_count=1
+[PHYDLL:CORE] phydll_init instance=physical mapping complete ndest=1
+[PHYDLL:PHY] after phydll_init
+[PHYDLL:PHY] uniform_chunks layout: total_input=1800000 total_output=100000 gcd=100000 phy_count=18 dl_count=1
+[PHYDLL:CORE] phydll_init instance=physical mapping complete ndest=1
+[PHYDLL:PHY] after phydll_init[PHYDLL:CORE] phydll_init instance=physical mapping complete ndest=1
+[PHYDLL:PHY] after phydll_init
+
+[PHYDLL:CORE] phydll_init instance=physical mapping complete ndest=1
+[PHYDLL:PHY] after phydll_init
+[PHYDLL:CORE] phydll_init instance=physical mapping complete ndest=1
+[PHYDLL:PHY] after phydll_init
+[PHYDLL:CORE] phydll_init instance=physical mapping complete ndest=1
+[PHYDLL:PHY] after phydll_init
+[PHYDLL:PHY] uniform_chunks layout: total_input=1800000 total_output=100000 gcd=100000 phy_count=18 dl_count=1
+[PHYDLL:PHY] uniform_chunks layout: total_input=1800000 total_output=100000 gcd=100000 phy_count=18 dl_count=1[PHYDLL:PHY] uniform_chunks layout: total_input=1800000 total_output=100000 gcd=100000 phy_count=18 dl_count=1
+[PHYDLL:PHY] uniform_chunks layout: total_input=1800000 total_output=100000 gcd=100000 phy_count=18 dl_count=1
+[PHYDLL:CORE] phydll_init instance=physical mapping complete ndest=1
+[PHYDLL:PHY] after phydll_init
+
+[PHYDLL:PHY] uniform_chunks layout: total_input=1800000 total_output=100000 gcd=100000 phy_count=18 dl_count=1
+[PHYDLL:PHY] uniform_chunks layout: total_input=1800000 total_output=100000 gcd=100000 phy_count=18 dl_count=1[PHYDLL:CORE] phydll_init instance=physical mapping complete ndest=1
+[PHYDLL:PHY] after phydll_init
+[PHYDLL:PHY] uniform_chunks layout: total_input=[PHYDLL:CORE] phydll_init instance=physical mapping complete ndest=1
+[PHYDLL:PHY] after phydll_init
+[PHYDLL:CORE] phydll_init instance=physical mapping complete ndest=1
+[PHYDLL:PHY] after phydll_init
+[PHYDLL:CORE] phydll_init instance=physical mapping complete ndest=1
+[PHYDLL:PHY] after phydll_init
+[PHYDLL:CORE] phydll_init instance=physical mapping complete ndest=1
+[PHYDLL:PHY] after phydll_init
+1800000 total_output=100000 gcd=100000 phy_count=18 dl_count=1
+[PHYDLL:CORE] phydll_init instance=physical mapping complete ndest=1
+[PHYDLL:PHY] after phydll_init
+[PHYDLL:CORE] phydll_init instance=physical mapping complete ndest=1
+[PHYDLL:PHY] after phydll_init
+[PHYDLL:CORE] phydll_init instance=physical mapping complete ndest=1
+[PHYDLL:PHY] after phydll_init
+[PHYDLL:CORE] phydll_init instance=physical mapping complete ndest=1
+[PHYDLL:PHY] after phydll_init
+
+[PHYDLL:CORE] phydll_init instance=physical mapping complete ndest=1
+[PHYDLL:PHY] after phydll_init
+[PHYDLL:CORE] phydll_init instance=physical mapping complete ndest=1
+[PHYDLL:PHY] after phydll_init
+[PHYDLL:CORE] phydll_init instance=physical mapping complete ndest=1
+[PHYDLL:PHY] after phydll_init
+[PHYDLL:PHY] uniform_chunks layout: total_input=1800000 total_output=100000 gcd=100000 phy_count=18[PHYDLL:PHY] uniform_chunks layout: total_input=1800000 total_output=100000 gcd=100000 phy_count=18 dl_count=1
+[PHYDLL:PHY] uniform_chunks layout: total_input=1800000 total_output=100000 gcd=100000 phy_count=18 dl_count=1
+ dl_count=1
+[PHYDLL:PHY] uniform_chunks layout: total_input=1800000 total_output=100000 gcd=100000 phy_count=[PHYDLL:PHY] uniform_chunks layout: total_input=1800000 total_output=100000 gcd=100000 phy_count=18 dl_count=1
+18 dl_count=1
+[PHYDLL:PHY] uniform_chunks layout: total_input=1800000 total_output=100000 gcd=100000 phy_count=18 dl_count=1[PHYDLL:PHY] uniform_chunks layout: total_input=[PHYDLL:PHY] uniform_chunks layout: total_input=1800000 total_output=100000 gcd=100000 phy_count=18 dl_count=1
+[PHYDLL:PHY] uniform_chunks layout: total_input=1800000 total_output=100000 gcd=100000 phy_count=18 dl_count=1
+[PHYDLL:PHY] uniform_chunks layout: total_input=1800000 total_output=100000 gcd=100000 phy_count=18 dl_count=1
+[PHYDLL:PHY] uniform_chunks layout: total_input=1800000 total_output=100000 gcd=100000 phy_count=18 dl_count=1
+
+1800000 total_output=100000 gcd=100000 phy_count=18 dl_count=1
+[PHYDLL:PHY] before phydll_define_phy count=18 field_size=100000
+[PHYDLL:PHY] before phydll_define_phy count=18 field_size=100000
+[PHYDLL:PHY] before phydll_define_phy count=18 field_size=100000
+[PHYDLL:PHY] before phydll_define_phy count=18 field_size=100000
+[PHYDLL:PHY] before phydll_define_phy count=18 field_size=100000
+[PHYDLL:PHY] before phydll_define_phy count=18 field_size=100000
+[PHYDLL:PHY] before phydll_define_phy count=18 field_size=100000
+[PHYDLL:PHY] before phydll_define_phy count=18 field_size=100000
+[PHYDLL:PHY] before phydll_define_phy count=18 field_size=100000
+[PHYDLL:PHY] before phydll_define_phy count=18 field_size=100000
+[PHYDLL:PHY] before phydll_define_phy count=18 field_size=100000
+[PHYDLL:PHY] before phydll_define_phy count=18 field_size=100000
+[PHYDLL:PHY] before phydll_define_phy count=18 field_size=100000
+[PHYDLL:PHY] before phydll_define_phy count=18 field_size=100000
+[PHYDLL:PHY] before phydll_define_phy count=18 field_size=100000
+(PhyDLL) ----> OPTION: Coupling with loop = True
+[PHYDLL:PHY] before phydll_define_phy count=18 field_size=100000
+[PHYDLL:PHY] before phydll_define_phy count=18 field_size=100000
+[PHYDLL:PHY] before phydll_define_phy count=18 field_size=100000
+[PHYDLL:PHY] before phydll_define_phy count=18 field_size=100000
+[PHYDLL:PHY] before phydll_define_phy count=18 field_size=100000
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=6 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=0 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=4 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=3 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=7 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=5 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=12 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=18 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=10 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=1 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=14 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=16 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=13 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=9 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=11 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=19 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=8 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=2 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=15 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=17 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] phydll_init instance=dl logfile complete
+[PHYDLL:CORE] kernel_ds_mapping DL before allgather gl_rank=20 comm_rank=0 comm_size=1 ndest=20
+[PHYDLL:CORE] kernel_ds_mapping DL complete gl_rank=20 ndest=20
+[PHYDLL:CORE] phydll_init instance=dl mapping complete ndest=20
+[PHYDLL:DL] runtime after phydll_init
+[PHYDLL:DL] runtime before phydll_define_dl count=1
+[PHYDLL:CORE] kernel_alloc_dl_fields before mesh broadcast gl_rank=20
+[PHYDLL:CORE] kernel_alloc_dl_fields after mesh broadcast gl_rank=20
+[PHYDLL:CORE] kernel_alloc_dl_fields after field-size exchange gl_rank=20
+[PHYDLL:CORE] _kernel_agg_field_sizes ndest=20 gl_rank=20
+[PHYDLL:CORE]   sizes_list[0]=100000 -> accum=100000
+[PHYDLL:CORE]   sizes_list[1]=100000 -> accum=200000
+[PHYDLL:CORE]   sizes_list[2]=100000 -> accum=300000
+[PHYDLL:CORE]   sizes_list[3]=100000 -> accum=400000
+[PHYDLL:CORE]   sizes_list[4]=100000 -> accum=500000
+[PHYDLL:CORE]   sizes_list[5]=100000 -> accum=600000
+[PHYDLL:CORE]   sizes_list[6]=100000 -> accum=700000
+[PHYDLL:CORE]   sizes_list[7]=100000 -> accum=800000
+[PHYDLL:CORE]   sizes_list[8]=100000 -> accum=900000
+[PHYDLL:CORE]   sizes_list[9]=100000 -> accum=1000000
+[PHYDLL:CORE]   sizes_list[10]=100000 -> accum=1100000
+[PHYDLL:CORE]   sizes_list[11]=100000 -> accum=1200000
+[PHYDLL:CORE]   sizes_list[12]=100000 -> accum=1300000
+[PHYDLL:CORE]   sizes_list[13]=100000 -> accum=1400000
+[PHYDLL:CORE]   sizes_list[14]=100000 -> accum=1500000
+[PHYDLL:CORE]   sizes_list[15]=100000 -> accum=1600000
+[PHYDLL:CORE]   sizes_list[16]=100000 -> accum=1700000
+[PHYDLL:CORE]   sizes_list[17]=100000 -> accum=1800000
+[PHYDLL:CORE]   sizes_list[18]=100000 -> accum=1900000
+[PHYDLL:CORE]   sizes_list[19]=100000 -> accum=2000000
+[PHYDLL:CORE] _kernel_alloc_fields begin gl_rank=20 phy_bcast_root=0 dl_bcast_root=20
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=4 phy_count=18 dl_count=1 size=100000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=4 phy_ptr=0x456c380 dl_ptr=0x46dff10
+[PHYDLL:CORE]   allocating phy_field[0] size=100000 bytes=800000
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=13 phy_count=18 dl_count=1 size=100000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=13 phy_ptr=0x47110d0 dl_ptr=0x4295a20
+[PHYDLL:CORE]   allocating phy_field[0] size=100000 bytes=800000
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=5 phy_count=18 dl_count=1 size=100000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=5 phy_ptr=0x46f5890 dl_ptr=0x437f740
+[PHYDLL:CORE]   allocating phy_field[0] size=100000 bytes=800000
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=12 phy_count=18 dl_count=1 size=100000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=12 phy_ptr=0x437f010 dl_ptr=0x46198e0
+[PHYDLL:CORE]   allocating phy_field[0] size=100000 bytes=800000
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=8 phy_count=18 dl_count=1 size=100000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=8 phy_ptr=0x470eb70 dl_ptr=0x437f8e0
+[PHYDLL:CORE]   allocating phy_field[0] size=100000 bytes=800000
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=1 phy_count=18 dl_count=1 size=100000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=1 phy_ptr=0x437f010 dl_ptr=0x46198c0
+[PHYDLL:CORE]   allocating phy_field[0] size=100000 bytes=800000
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=14 phy_count=18 dl_count=1 size=100000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=14 phy_ptr=0x46f8d60 dl_ptr=0x4380030
+[PHYDLL:CORE]   allocating phy_field[0] size=100000 bytes=800000
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=16 phy_count=18 dl_count=1 size=100000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=16 phy_ptr=0x42956a0 dl_ptr=0x4619010
+[PHYDLL:CORE]   allocating phy_field[0] size=100000 bytes=800000
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=7 phy_count=18 dl_count=1 size=100000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=7 phy_ptr=0x437f960 dl_ptr=0x4295b80
+[PHYDLL:CORE]   allocating phy_field[0] size=100000 bytes=800000
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=20 phy_count=18 dl_count=1 size=2000000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=20 phy_ptr=0x44f1d90 dl_ptr=0x4429ef0
+[PHYDLL:CORE]   allocating phy_field[0] size=2000000 bytes=16000000
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=18 phy_count=18 dl_count=1 size=100000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=18 phy_ptr=0x437f010 dl_ptr=0x46dfcd0
+[PHYDLL:CORE]   allocating phy_field[0] size=100000 bytes=800000
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=2 phy_count=18 dl_count=1 size=100000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=2 phy_ptr=0x456c540 dl_ptr=0x4295bf0
+[PHYDLL:CORE]   allocating phy_field[0] size=100000 bytes=800000
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=15 phy_count=18 dl_count=1 size=100000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=15 phy_ptr=0x40e7170 dl_ptr=0x4619c00
+[PHYDLL:CORE]   allocating phy_field[0] size=100000 bytes=800000
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=6 phy_count=18 dl_count=1 size=100000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=6 phy_ptr=0x437f9a0 dl_ptr=0x4295620
+[PHYDLL:CORE]   allocating phy_field[0] size=100000 bytes=800000
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=0 phy_count=18 dl_count=1 size=100000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=0 phy_ptr=0x43806a0 dl_ptr=0x4296010
+[PHYDLL:CORE]   allocating phy_field[0] size=100000 bytes=800000
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=9 phy_count=18 dl_count=1 size=100000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=9 phy_ptr=0x47a56a0 dl_ptr=0x4619470
+[PHYDLL:CORE]   allocating phy_field[0] size=100000 bytes=800000
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=17 phy_count=18 dl_count=1 size=100000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=17 phy_ptr=0x46b8110 dl_ptr=0x456c7c0
+[PHYDLL:CORE]   allocating phy_field[0] size=100000 bytes=800000
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=11 phy_count=18 dl_count=1 size=100000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=11 phy_ptr=0x466b4c0 dl_ptr=0x4669370
+[PHYDLL:CORE]   allocating phy_field[0] size=100000 bytes=800000
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=19 phy_count=18 dl_count=1 size=100000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=19 phy_ptr=0x4295010 dl_ptr=0x4619d90
+[PHYDLL:CORE]   allocating phy_field[0] size=100000 bytes=800000
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=10 phy_count=18 dl_count=1 size=100000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=10 phy_ptr=0x46df6a0 dl_ptr=0x4532090
+[PHYDLL:CORE]   allocating phy_field[0] size=100000 bytes=800000
+[PHYDLL:CORE] _kernel_alloc_fields bcasts done gl_rank=3 phy_count=18 dl_count=1 size=100000
+[PHYDLL:CORE] _kernel_alloc_fields field_t arrays alloc done gl_rank=3 phy_ptr=0x4753150 dl_ptr=0x4295b70
+[PHYDLL:CORE]   allocating phy_field[0] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[2] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[2] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[2] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[2] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[2] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[2] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[2] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[2] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[2] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[2] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[2] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[2] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[2] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[2] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[2] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[2] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[2] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[2] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[2] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[2] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[3] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[3] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[3] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[3] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[3] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[3] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[3] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[3] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[3] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[3] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[3] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[3] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[3] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[3] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[3] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[3] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[3] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[3] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[3] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[3] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[4] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[4] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[4] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[4] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[4] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[4] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[4] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[4] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[4] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[4] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[4] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[4] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[4] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[4] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[4] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[4] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[4] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[4] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[4] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[4] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[5] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[5] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[5] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[5] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[5] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[5] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[5] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[5] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[5] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[5] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[5] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[5] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[5] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[5] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[5] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[5] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[5] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[5] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[5] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[5] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[6] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[6] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[6] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[6] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[6] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[6] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[6] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[6] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[6] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[6] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[6] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[6] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[6] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[6] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[6] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[6] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[6] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[6] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[6] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[6] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[7] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[7] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[7] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[7] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[7] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[7] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[7] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[7] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[7] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[7] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[7] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[7] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[7] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[7] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[7] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[7] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[7] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[7] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[7] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[7] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[8] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[8] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[8] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[8] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[8] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[8] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[8] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[8] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[8] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[8] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[8] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[8] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[8] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[8] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[8] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[8] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[8] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[8] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[8] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[8] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[9] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[9] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[9] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[9] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[9] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[9] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[9] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[9] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[9] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[9] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[9] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[9] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[9] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[9] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[9] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[9] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[9] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[9] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[9] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[10] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[10] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[10] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[9] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[10] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[10] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[10] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[10] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[10] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[10] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[10] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[10] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[10] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[10] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[10] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[10] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[10] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[10] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[10] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[10] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[1] size=2000000 bytes=16000000
+[PHYDLL:CORE]   allocating phy_field[11] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[11] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[11] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[11] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[11] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[11] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[11] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[10] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[11] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[11] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[11] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[11] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[11] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[11] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[11] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[11] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[11] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[11] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[11] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[11] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[12] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[12] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[12] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[12] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[12] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[12] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[12] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[12] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[12] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[12] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[12] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[11] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[12] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[12] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[12] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[12] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[12] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[12] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[12] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[12] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[13] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[13] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[13] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[13] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[13] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[13] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[13] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[13] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[13] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[13] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[13] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[12] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[13] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[13] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[13] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[13] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[13] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[13] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[13] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[13] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[14] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[14] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[14] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[14] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[14] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[14] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[14] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[14] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[13] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[14] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[14] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[14] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[14] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[14] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[14] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[14] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[14] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[14] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[14] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[14] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[15] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[15] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[15] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[15] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[15] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[14] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[15] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[15] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[15] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[15] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[15] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[15] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[15] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[15] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[15] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[15] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[15] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[15] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[15] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[15] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[16] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[16] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[16] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[16] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[16] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[16] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[15] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[16] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[16] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[16] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[16] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[16] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[16] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[16] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[16] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[16] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[16] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[16] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[16] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[16] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[17] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[17] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[17] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[17] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[17] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[16] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[17] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[17] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[17] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[17] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[17] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[17] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[17] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[17] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[17] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[17] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[17] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[17] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[17] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[17] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating dl_field[0] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating dl_field[0] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating dl_field[0] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating dl_field[0] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating dl_field[0] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating dl_field[0] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating dl_field[0] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating phy_field[17] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating dl_field[0] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating dl_field[0] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating dl_field[0] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating dl_field[0] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating dl_field[0] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating dl_field[0] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating dl_field[0] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating dl_field[0] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating dl_field[0] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating dl_field[0] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating dl_field[0] size=100000 bytes=800000
+[PHYDLL:CORE]   allocating dl_field[0] size=100000 bytes=800000
+[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=14
+[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=12
+[PHYDLL:PHY] after phydll_define_phy
+[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=6
+[PHYDLL:PHY] after phydll_define_phy
+[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=2
+[PHYDLL:PHY] after phydll_define_phy
+[PHYDLL:PHY] after phydll_define_phy
+[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=0
+[PHYDLL:PHY] after phydll_define_phy[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=19
+[PHYDLL:PHY] after phydll_define_phy
+
+[PHYDLL:PHY] Rank 0 starting metadata handshake. Synchronizing with DL side...
+[PHYDLL:PHY] Handshake synchronization complete.
+[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=16
+[PHYDLL:PHY] after phydll_define_phy
+[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=10
+[PHYDLL:CORE]   allocating dl_field[0] size=100000 bytes=800000
+[PHYDLL:PHY] after phydll_define_phy[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=8
+[PHYDLL:PHY] after phydll_define_phy
+
+[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=3
+[PHYDLL:PHY] after phydll_define_phy
+[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=18
+[PHYDLL:PHY] after phydll_define_phy
+[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=7
+[PHYDLL:PHY] after phydll_define_phy
+[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=9
+[PHYDLL:PHY] after phydll_define_phy
+[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=11
+[PHYDLL:PHY] after phydll_define_phy
+[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=5
+[PHYDLL:PHY] after phydll_define_phy
+[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=4
+[PHYDLL:PHY] after phydll_define_phy
+[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=13
+[PHYDLL:PHY] after phydll_define_phy[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=1
+[PHYDLL:PHY] after phydll_define_phy
+[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=17
+
+[PHYDLL:PHY] after phydll_define_phy
+[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=15
+[PHYDLL:PHY] after phydll_define_phy
+[PHYDLL:CORE]   allocating phy_field[2] size=2000000 bytes=16000000
+CMI initialized successfully. Starting benchmark steps...
+
+[PHYDLL:CORE]   allocating phy_field[3] size=2000000 bytes=16000000
+[PHYDLL:CORE]   allocating phy_field[4] size=2000000 bytes=16000000
+[PHYDLL:CORE]   allocating phy_field[5] size=2000000 bytes=16000000
+[PHYDLL:CORE]   allocating phy_field[6] size=2000000 bytes=16000000
+[PHYDLL:CORE]   allocating phy_field[7] size=2000000 bytes=16000000
+[PHYDLL:CORE]   allocating phy_field[8] size=2000000 bytes=16000000
+[PHYDLL:CORE]   allocating phy_field[9] size=2000000 bytes=16000000
+[PHYDLL:CORE]   allocating phy_field[10] size=2000000 bytes=16000000
+[PHYDLL:CORE]   allocating phy_field[11] size=2000000 bytes=16000000
+[PHYDLL:CORE]   allocating phy_field[12] size=2000000 bytes=16000000
+[PHYDLL:CORE]   allocating phy_field[13] size=2000000 bytes=16000000
+[PHYDLL:CORE]   allocating phy_field[14] size=2000000 bytes=16000000
+[PHYDLL:CORE]   allocating phy_field[15] size=2000000 bytes=16000000
+[PHYDLL:CORE]   allocating phy_field[16] size=2000000 bytes=16000000
+[PHYDLL:CORE]   allocating phy_field[17] size=2000000 bytes=16000000
+[PHYDLL:CORE]   allocating dl_field[0] size=2000000 bytes=16000000
+[PHYDLL:CORE] _kernel_alloc_fields complete gl_rank=20
+[PHYDLL:DL] runtime after phydll_define_dl
+[PHYDLL:DL] getting ndest
+[PHYDLL:DL] ndest=20, dests=0x453c190
+[PHYDLL:DL] receiving metadata from dests[0] = 0
+[PHYDLL:DL] MPI_Recv header from source_rank=0
+[PHYDLL:DL] MPI_Recv header from source_rank=0 DONE (magic=4d4c434d)
+[PHYDLL:DL] Allocating payload size 165
+[PHYDLL:DL] MPI_Recv payload from source_rank=0
+[PHYDLL:DL] MPI_Recv payload from source_rank=0 DONE
+[PHYDLL:DL] receiving metadata from dests[1] = 1
+[PHYDLL:DL] MPI_Recv header from source_rank=1
+[PHYDLL:DL] MPI_Recv header from source_rank=1 DONE (magic=4d4c434d)
+[PHYDLL:DL] Allocating payload size 165
+[PHYDLL:DL] MPI_Recv payload from source_rank=1
+[PHYDLL:DL] MPI_Recv payload from source_rank=1 DONE
+[PHYDLL:DL] receiving metadata from dests[2] = 2
+[PHYDLL:DL] MPI_Recv header from source_rank=2
+[PHYDLL:DL] MPI_Recv header from source_rank=2 DONE (magic=4d4c434d)
+[PHYDLL:DL] Allocating payload size 165
+[PHYDLL:DL] MPI_Recv payload from source_rank=2
+[PHYDLL:DL] MPI_Recv payload from source_rank=2 DONE
+[PHYDLL:DL] receiving metadata from dests[3] = 3
+[PHYDLL:DL] MPI_Recv header from source_rank=3
+[PHYDLL:DL] MPI_Recv header from source_rank=3 DONE (magic=4d4c434d)
+[PHYDLL:DL] Allocating payload size 165
+[PHYDLL:DL] MPI_Recv payload from source_rank=3
+[PHYDLL:DL] MPI_Recv payload from source_rank=3 DONE
+[PHYDLL:DL] receiving metadata from dests[4] = 4
+[PHYDLL:DL] MPI_Recv header from source_rank=4
+[PHYDLL:DL] MPI_Recv header from source_rank=4 DONE (magic=4d4c434d)
+[PHYDLL:DL] Allocating payload size 165
+[PHYDLL:DL] MPI_Recv payload from source_rank=4
+[PHYDLL:DL] MPI_Recv payload from source_rank=4 DONE
+[PHYDLL:DL] receiving metadata from dests[5] = 5
+[PHYDLL:DL] MPI_Recv header from source_rank=5
+[PHYDLL:DL] MPI_Recv header from source_rank=5 DONE (magic=4d4c434d)
+[PHYDLL:DL] Allocating payload size 165
+[PHYDLL:DL] MPI_Recv payload from source_rank=5
+[PHYDLL:DL] MPI_Recv payload from source_rank=5 DONE
+[PHYDLL:DL] receiving metadata from dests[6] = 6
+[PHYDLL:DL] MPI_Recv header from source_rank=6
+[PHYDLL:DL] MPI_Recv header from source_rank=6 DONE (magic=4d4c434d)
+[PHYDLL:DL] Allocating payload size 165
+[PHYDLL:DL] MPI_Recv payload from source_rank=6
+[PHYDLL:DL] MPI_Recv payload from source_rank=6 DONE
+[PHYDLL:DL] receiving metadata from dests[7] = 7
+[PHYDLL:DL] MPI_Recv header from source_rank=7
+[PHYDLL:DL] MPI_Recv header from source_rank=7 DONE (magic=4d4c434d)
+[PHYDLL:DL] Allocating payload size 165
+[PHYDLL:DL] MPI_Recv payload from source_rank=7
+[PHYDLL:DL] MPI_Recv payload from source_rank=7 DONE
+[PHYDLL:DL] receiving metadata from dests[8] = 8
+[PHYDLL:DL] MPI_Recv header from source_rank=8
+[PHYDLL:DL] MPI_Recv header from source_rank=8 DONE (magic=4d4c434d)
+[PHYDLL:DL] Allocating payload size 165
+[PHYDLL:DL] MPI_Recv payload from source_rank=8
+[PHYDLL:DL] MPI_Recv payload from source_rank=8 DONE
+[PHYDLL:DL] receiving metadata from dests[9] = 9
+[PHYDLL:DL] MPI_Recv header from source_rank=9
+[PHYDLL:DL] MPI_Recv header from source_rank=9 DONE (magic=4d4c434d)
+[PHYDLL:DL] Allocating payload size 165
+[PHYDLL:DL] MPI_Recv payload from source_rank=9
+[PHYDLL:DL] MPI_Recv payload from source_rank=9 DONE
+[PHYDLL:DL] receiving metadata from dests[10] = 10
+[PHYDLL:DL] MPI_Recv header from source_rank=10
+[PHYDLL:DL] MPI_Recv header from source_rank=10 DONE (magic=4d4c434d)
+[PHYDLL:DL] Allocating payload size 165
+[PHYDLL:DL] MPI_Recv payload from source_rank=10
+[PHYDLL:DL] MPI_Recv payload from source_rank=10 DONE
+[PHYDLL:DL] receiving metadata from dests[11] = 11
+[PHYDLL:DL] MPI_Recv header from source_rank=11
+[PHYDLL:DL] MPI_Recv header from source_rank=11 DONE (magic=4d4c434d)
+[PHYDLL:DL] Allocating payload size 165
+[PHYDLL:DL] MPI_Recv payload from source_rank=11
+[PHYDLL:DL] MPI_Recv payload from source_rank=11 DONE
+[PHYDLL:DL] receiving metadata from dests[12] = 12
+[PHYDLL:DL] MPI_Recv header from source_rank=12
+[PHYDLL:DL] MPI_Recv header from source_rank=12 DONE (magic=4d4c434d)
+[PHYDLL:DL] Allocating payload size 165
+[PHYDLL:DL] MPI_Recv payload from source_rank=12
+[PHYDLL:DL] MPI_Recv payload from source_rank=12 DONE
+[PHYDLL:DL] receiving metadata from dests[13] = 13
+[PHYDLL:DL] MPI_Recv header from source_rank=13
+[PHYDLL:DL] MPI_Recv header from source_rank=13 DONE (magic=4d4c434d)
+[PHYDLL:DL] Allocating payload size 165
+[PHYDLL:DL] MPI_Recv payload from source_rank=13
+[PHYDLL:DL] MPI_Recv payload from source_rank=13 DONE
+[PHYDLL:DL] receiving metadata from dests[14] = 14
+[PHYDLL:DL] MPI_Recv header from source_rank=14
+[PHYDLL:DL] MPI_Recv header from source_rank=14 DONE (magic=4d4c434d)
+[PHYDLL:DL] Allocating payload size 165
+[PHYDLL:DL] MPI_Recv payload from source_rank=14
+[PHYDLL:DL] MPI_Recv payload from source_rank=14 DONE
+[PHYDLL:DL] receiving metadata from dests[15] = 15
+[PHYDLL:DL] MPI_Recv header from source_rank=15
+[PHYDLL:DL] MPI_Recv header from source_rank=15 DONE (magic=4d4c434d)
+[PHYDLL:DL] Allocating payload size 165
+[PHYDLL:DL] MPI_Recv payload from source_rank=15
+[PHYDLL:DL] MPI_Recv payload from source_rank=15 DONE
+[PHYDLL:DL] receiving metadata from dests[16] = 16
+[PHYDLL:DL] MPI_Recv header from source_rank=16
+[PHYDLL:DL] MPI_Recv header from source_rank=16 DONE (magic=4d4c434d)
+[PHYDLL:DL] Allocating payload size 165
+[PHYDLL:DL] MPI_Recv payload from source_rank=16
+[PHYDLL:DL] MPI_Recv payload from source_rank=16 DONE
+[PHYDLL:DL] receiving metadata from dests[17] = 17
+[PHYDLL:DL] MPI_Recv header from source_rank=17
+[PHYDLL:DL] MPI_Recv header from source_rank=17 DONE (magic=4d4c434d)
+[PHYDLL:DL] Allocating payload size 165
+[PHYDLL:DL] MPI_Recv payload from source_rank=17
+[PHYDLL:DL] MPI_Recv payload from source_rank=17 DONE
+[PHYDLL:DL] receiving metadata from dests[18] = 18
+[PHYDLL:DL] MPI_Recv header from source_rank=18
+[PHYDLL:DL] MPI_Recv header from source_rank=18 DONE (magic=4d4c434d)
+[PHYDLL:DL] Allocating payload size 165
+[PHYDLL:DL] MPI_Recv payload from source_rank=18
+[PHYDLL:DL] MPI_Recv payload from source_rank=18 DONE
+[PHYDLL:DL] receiving metadata from dests[19] = 19
+[PHYDLL:DL] MPI_Recv header from source_rank=19
+[PHYDLL:DL] MPI_Recv header from source_rank=19 DONE (magic=4d4c434d)
+[PHYDLL:DL] Allocating payload size 165
+[PHYDLL:DL] MPI_Recv payload from source_rank=19
+[PHYDLL:DL] MPI_Recv payload from source_rank=19 DONE
+[PHYDLL:DL] Finished receiving metadata from all 20 sources
+(PhyDLL:PHY) ----> SET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (17) 'PHY-IN-017' ...done
+(PhyDLL:DL) ----> ITE (PHY ITE) = 1 (1)
+(PhyDLL:PHY) ----> ITE (PHY ITE) = 1 (1)
+[PHYDLL:DL] Waiting for frame 0
+(PhyDLL:PHY) ----> SEND...>>>... Physical fields ...done
+(PhyDLL:DL) ----> RECV...<<<... Physical fields ...done
+(PhyDLL:DL) ----> GET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:DL) ----> GET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:DL) ----> GET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:DL) ----> GET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:DL) ----> GET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:DL) ----> GET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:DL) ----> GET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:DL) ----> GET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:DL) ----> GET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:DL) ----> GET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:DL) ----> GET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:DL) ----> GET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:DL) ----> GET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:DL) ----> GET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:DL) ----> GET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:DL) ----> GET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:DL) ----> GET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:DL) ----> GET... Physical field: (17) 'PHY-IN-017' ...done
+[PHYDLL:DL] Received frame 0 (has_meta=0, data_size=36000000)
+[PHYDLL:DL] Using local DL rank 0 mapped to GPU device index: 0
+[PHYDLL:DL] model loaded
+[PHYDLL:DL] meta init model_path='/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/../mini_app/train_models/model_a/watercnn_cuda.pt' total_input=36000000 total_output=2000000
+[PHYDLL:DL] Frame 0 extracting data: total_input_size=36000000, batch=2000000, field/rank=100000, used/rank=18
+[PHYDLL:DL] Frame 0 running inference
+(PhyDLL:DL) ----> SET... DL field: (0) 'DL-OUT' ...done
+(PhyDLL:DL) ----> SEND...>>>... DL fields ...done
+[PHYDLL:DL] sent output for frame 0
+(PhyDLL:PHY) ----> RECV...<<<... DL fields ...done
+(PhyDLL:PHY) ----> GET... DL field: (0) 'DL-OUT' ...done
+STEP_TIMING step=1 latency_ms=1498.93 min_ms=1498.65 avg_ms=1498.71 total_samples=2000000 throughput_samples_sec=1334289
+(PhyDLL:PHY) ----> SET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (17) 'PHY-IN-017' ...done
+[PHYDLL:DL] Waiting for frame 1
+(PhyDLL:PHY) ----> ITE (PHY ITE) = 2 (2)
+(PhyDLL:DL) ----> ITE (PHY ITE) = 2 (2)
+(PhyDLL:PHY) ----> SEND...>>>... Physical fields ...done
+(PhyDLL:DL) ----> RECV...<<<... Physical fields ...done
+(PhyDLL:DL) ----> GET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:DL) ----> GET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:DL) ----> GET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:DL) ----> GET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:DL) ----> GET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:DL) ----> GET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:DL) ----> GET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:DL) ----> GET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:DL) ----> GET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:DL) ----> GET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:DL) ----> GET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:DL) ----> GET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:DL) ----> GET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:DL) ----> GET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:DL) ----> GET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:DL) ----> GET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:DL) ----> GET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:DL) ----> GET... Physical field: (17) 'PHY-IN-017' ...done
+[PHYDLL:DL] Received frame 1 (has_meta=0, data_size=36000000)
+[PHYDLL:DL] Frame 1 extracting data: total_input_size=36000000, batch=2000000, field/rank=100000, used/rank=18
+[PHYDLL:DL] Frame 1 running inference
+(PhyDLL:DL) ----> SET... DL field: (0) 'DL-OUT' ...done
+(PhyDLL:DL) ----> SEND...>>>... DL fields ...done
+(PhyDLL:PHY) ----> RECV...<<<... DL fields ...done
+[PHYDLL:DL] sent output for frame 1
+(PhyDLL:PHY) ----> GET... DL field: (0) 'DL-OUT' ...done
+STEP_TIMING step=2 latency_ms=534.28 min_ms=533.95 avg_ms=533.98 total_samples=2000000 throughput_samples_sec=3743363
+(PhyDLL:PHY) ----> SET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (17) 'PHY-IN-017' ...done
+(PhyDLL:DL) ----> ITE (PHY ITE) = 3 (3)
+(PhyDLL:PHY) ----> ITE (PHY ITE) = 3 (3)
+[PHYDLL:DL] Waiting for frame 2
+(PhyDLL:PHY) ----> SEND...>>>... Physical fields ...done
+(PhyDLL:DL) ----> RECV...<<<... Physical fields ...done
+(PhyDLL:DL) ----> GET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:DL) ----> GET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:DL) ----> GET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:DL) ----> GET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:DL) ----> GET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:DL) ----> GET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:DL) ----> GET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:DL) ----> GET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:DL) ----> GET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:DL) ----> GET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:DL) ----> GET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:DL) ----> GET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:DL) ----> GET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:DL) ----> GET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:DL) ----> GET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:DL) ----> GET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:DL) ----> GET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:DL) ----> GET... Physical field: (17) 'PHY-IN-017' ...done
+[PHYDLL:DL] Received frame 2 (has_meta=0, data_size=36000000)
+[PHYDLL:DL] Frame 2 extracting data: total_input_size=36000000, batch=2000000, field/rank=100000, used/rank=18
+[PHYDLL:DL] Frame 2 running inference
+(PhyDLL:DL) ----> SET... DL field: (0) 'DL-OUT' ...done
+(PhyDLL:DL) ----> SEND...>>>... DL fields ...done
+[PHYDLL:DL] sent output for frame 2
+(PhyDLL:PHY) ----> RECV...<<<... DL fields ...done
+(PhyDLL:PHY) ----> GET... DL field: (0) 'DL-OUT' ...done
+STEP_TIMING step=3 latency_ms=520.25 min_ms=519.87 avg_ms=520.21 total_samples=2000000 throughput_samples_sec=3844293
+(PhyDLL:PHY) ----> SET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (17) 'PHY-IN-017' ...done
+(PhyDLL:DL) ----> ITE (PHY ITE) = 4 (4)
+(PhyDLL:PHY) ----> ITE (PHY ITE) = 4 (4)
+[PHYDLL:DL] Waiting for frame 3
+(PhyDLL:PHY) ----> SEND...>>>... Physical fields ...done
+(PhyDLL:DL) ----> RECV...<<<... Physical fields ...done
+(PhyDLL:DL) ----> GET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:DL) ----> GET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:DL) ----> GET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:DL) ----> GET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:DL) ----> GET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:DL) ----> GET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:DL) ----> GET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:DL) ----> GET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:DL) ----> GET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:DL) ----> GET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:DL) ----> GET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:DL) ----> GET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:DL) ----> GET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:DL) ----> GET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:DL) ----> GET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:DL) ----> GET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:DL) ----> GET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:DL) ----> GET... Physical field: (17) 'PHY-IN-017' ...done
+[PHYDLL:DL] Received frame 3 (has_meta=0, data_size=36000000)
+[PHYDLL:DL] Frame 3 extracting data: total_input_size=36000000, batch=2000000, field/rank=100000, used/rank=18
+[PHYDLL:DL] Frame 3 running inference
+(PhyDLL:DL) ----> SET... DL field: (0) 'DL-OUT' ...done
+(PhyDLL:DL) ----> SEND...>>>... DL fields ...done
+[PHYDLL:DL] sent output for frame 3
+(PhyDLL:PHY) ----> RECV...<<<... DL fields ...done
+(PhyDLL:PHY) ----> GET... DL field: (0) 'DL-OUT' ...done
+STEP_TIMING step=4 latency_ms=514.61 min_ms=514.24 avg_ms=514.46 total_samples=2000000 throughput_samples_sec=3886418
+(PhyDLL:PHY) ----> SET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (17) 'PHY-IN-017' ...done
+(PhyDLL:DL) ----> ITE (PHY ITE) = 5 (5)
+(PhyDLL:PHY) ----> ITE (PHY ITE) = 5 (5)
+[PHYDLL:DL] Waiting for frame 4
+(PhyDLL:PHY) ----> SEND...>>>... Physical fields ...done
+(PhyDLL:DL) ----> RECV...<<<... Physical fields ...done
+(PhyDLL:DL) ----> GET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:DL) ----> GET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:DL) ----> GET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:DL) ----> GET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:DL) ----> GET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:DL) ----> GET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:DL) ----> GET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:DL) ----> GET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:DL) ----> GET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:DL) ----> GET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:DL) ----> GET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:DL) ----> GET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:DL) ----> GET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:DL) ----> GET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:DL) ----> GET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:DL) ----> GET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:DL) ----> GET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:DL) ----> GET... Physical field: (17) 'PHY-IN-017' ...done
+[PHYDLL:DL] Received frame 4 (has_meta=0, data_size=36000000)
+[PHYDLL:DL] Frame 4 extracting data: total_input_size=36000000, batch=2000000, field/rank=100000, used/rank=18
+[PHYDLL:DL] Frame 4 running inference
+(PhyDLL:DL) ----> SET... DL field: (0) 'DL-OUT' ...done
+(PhyDLL:DL) ----> SEND...>>>... DL fields ...done
+[PHYDLL:DL] sent output for frame 4
+(PhyDLL:PHY) ----> RECV...<<<... DL fields ...done
+(PhyDLL:PHY) ----> GET... DL field: (0) 'DL-OUT' ...done
+STEP_TIMING step=5 latency_ms=516.72 min_ms=516.36 avg_ms=516.49 total_samples=2000000 throughput_samples_sec=3870583
+(PhyDLL:PHY) ----> SET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (17) 'PHY-IN-017' ...done
+(PhyDLL:DL) ----> ITE (PHY ITE) = 6 (6)
+(PhyDLL:PHY) ----> ITE (PHY ITE) = 6 (6)
+[PHYDLL:DL] Waiting for frame 5
+(PhyDLL:PHY) ----> SEND...>>>... Physical fields ...done
+(PhyDLL:DL) ----> RECV...<<<... Physical fields ...done
+(PhyDLL:DL) ----> GET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:DL) ----> GET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:DL) ----> GET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:DL) ----> GET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:DL) ----> GET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:DL) ----> GET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:DL) ----> GET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:DL) ----> GET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:DL) ----> GET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:DL) ----> GET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:DL) ----> GET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:DL) ----> GET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:DL) ----> GET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:DL) ----> GET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:DL) ----> GET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:DL) ----> GET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:DL) ----> GET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:DL) ----> GET... Physical field: (17) 'PHY-IN-017' ...done
+[PHYDLL:DL] Received frame 5 (has_meta=0, data_size=36000000)
+[PHYDLL:DL] Frame 5 extracting data: total_input_size=36000000, batch=2000000, field/rank=100000, used/rank=18
+[PHYDLL:DL] Frame 5 running inference
+(PhyDLL:DL) ----> SET... DL field: (0) 'DL-OUT' ...done
+(PhyDLL:DL) ----> SEND...>>>... DL fields ...done
+[PHYDLL:DL] sent output for frame 5
+(PhyDLL:PHY) ----> RECV...<<<... DL fields ...done
+(PhyDLL:PHY) ----> GET... DL field: (0) 'DL-OUT' ...done
+STEP_TIMING step=6 latency_ms=513.33 min_ms=512.99 avg_ms=513.03 total_samples=2000000 throughput_samples_sec=3896134
+(PhyDLL:PHY) ----> SET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (17) 'PHY-IN-017' ...done
+(PhyDLL:PHY) ----> ITE (PHY ITE) = 7 (7)
+(PhyDLL:DL) ----> ITE (PHY ITE) = 7 (7)
+[PHYDLL:DL] Waiting for frame 6
+(PhyDLL:PHY) ----> SEND...>>>... Physical fields ...done
+(PhyDLL:DL) ----> RECV...<<<... Physical fields ...done
+(PhyDLL:DL) ----> GET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:DL) ----> GET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:DL) ----> GET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:DL) ----> GET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:DL) ----> GET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:DL) ----> GET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:DL) ----> GET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:DL) ----> GET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:DL) ----> GET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:DL) ----> GET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:DL) ----> GET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:DL) ----> GET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:DL) ----> GET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:DL) ----> GET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:DL) ----> GET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:DL) ----> GET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:DL) ----> GET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:DL) ----> GET... Physical field: (17) 'PHY-IN-017' ...done
+[PHYDLL:DL] Received frame 6 (has_meta=0, data_size=36000000)
+[PHYDLL:DL] Frame 6 extracting data: total_input_size=36000000, batch=2000000, field/rank=100000, used/rank=18
+[PHYDLL:DL] Frame 6 running inference
+(PhyDLL:DL) ----> SET... DL field: (0) 'DL-OUT' ...done
+(PhyDLL:DL) ----> SEND...>>>... DL fields ...done
+[PHYDLL:DL] sent output for frame 6
+(PhyDLL:PHY) ----> RECV...<<<... DL fields ...done
+(PhyDLL:PHY) ----> GET... DL field: (0) 'DL-OUT' ...done
+STEP_TIMING step=7 latency_ms=513.77 min_ms=513.45 avg_ms=513.51 total_samples=2000000 throughput_samples_sec=3892763
+(PhyDLL:PHY) ----> SET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (17) 'PHY-IN-017' ...done
+(PhyDLL:DL) ----> ITE (PHY ITE) = 8 (8)
+(PhyDLL:PHY) ----> ITE (PHY ITE) = 8 (8)
+[PHYDLL:DL] Waiting for frame 7
+(PhyDLL:PHY) ----> SEND...>>>... Physical fields ...done
+(PhyDLL:DL) ----> RECV...<<<... Physical fields ...done
+(PhyDLL:DL) ----> GET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:DL) ----> GET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:DL) ----> GET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:DL) ----> GET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:DL) ----> GET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:DL) ----> GET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:DL) ----> GET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:DL) ----> GET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:DL) ----> GET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:DL) ----> GET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:DL) ----> GET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:DL) ----> GET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:DL) ----> GET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:DL) ----> GET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:DL) ----> GET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:DL) ----> GET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:DL) ----> GET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:DL) ----> GET... Physical field: (17) 'PHY-IN-017' ...done
+[PHYDLL:DL] Received frame 7 (has_meta=0, data_size=36000000)
+[PHYDLL:DL] Frame 7 extracting data: total_input_size=36000000, batch=2000000, field/rank=100000, used/rank=18
+[PHYDLL:DL] Frame 7 running inference
+(PhyDLL:DL) ----> SET... DL field: (0) 'DL-OUT' ...done
+(PhyDLL:DL) ----> SEND...>>>... DL fields ...done
+[PHYDLL:DL] sent output for frame 7
+(PhyDLL:PHY) ----> RECV...<<<... DL fields ...done
+(PhyDLL:PHY) ----> GET... DL field: (0) 'DL-OUT' ...done
+STEP_TIMING step=8 latency_ms=516.97 min_ms=516.55 avg_ms=516.87 total_samples=2000000 throughput_samples_sec=3868677
+(PhyDLL:PHY) ----> SET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (17) 'PHY-IN-017' ...done
+(PhyDLL:DL) ----> ITE (PHY ITE) = 9 (9)
+(PhyDLL:PHY) ----> ITE (PHY ITE) = 9 (9)
+[PHYDLL:DL] Waiting for frame 8
+(PhyDLL:PHY) ----> SEND...>>>... Physical fields ...done
+(PhyDLL:DL) ----> RECV...<<<... Physical fields ...done
+(PhyDLL:DL) ----> GET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:DL) ----> GET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:DL) ----> GET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:DL) ----> GET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:DL) ----> GET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:DL) ----> GET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:DL) ----> GET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:DL) ----> GET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:DL) ----> GET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:DL) ----> GET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:DL) ----> GET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:DL) ----> GET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:DL) ----> GET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:DL) ----> GET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:DL) ----> GET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:DL) ----> GET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:DL) ----> GET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:DL) ----> GET... Physical field: (17) 'PHY-IN-017' ...done
+[PHYDLL:DL] Received frame 8 (has_meta=0, data_size=36000000)
+[PHYDLL:DL] Frame 8 extracting data: total_input_size=36000000, batch=2000000, field/rank=100000, used/rank=18
+[PHYDLL:DL] Frame 8 running inference
+(PhyDLL:DL) ----> SET... DL field: (0) 'DL-OUT' ...done
+(PhyDLL:PHY) ----> RECV...<<<... DL fields ...done
+(PhyDLL:DL) ----> SEND...>>>... DL fields ...done
+[PHYDLL:DL] sent output for frame 8
+(PhyDLL:PHY) ----> GET... DL field: (0) 'DL-OUT' ...done
+STEP_TIMING step=9 latency_ms=510.73 min_ms=510.67 avg_ms=510.69 total_samples=2000000 throughput_samples_sec=3916001
+(PhyDLL:PHY) ----> SET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (17) 'PHY-IN-017' ...done
+(PhyDLL:DL) ----> ITE (PHY ITE) = 10 (10)
+(PhyDLL:PHY) ----> ITE (PHY ITE) = 10 (10)
+[PHYDLL:DL] Waiting for frame 9
+(PhyDLL:PHY) ----> SEND...>>>... Physical fields ...done
+(PhyDLL:DL) ----> RECV...<<<... Physical fields ...done
+(PhyDLL:DL) ----> GET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:DL) ----> GET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:DL) ----> GET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:DL) ----> GET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:DL) ----> GET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:DL) ----> GET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:DL) ----> GET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:DL) ----> GET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:DL) ----> GET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:DL) ----> GET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:DL) ----> GET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:DL) ----> GET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:DL) ----> GET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:DL) ----> GET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:DL) ----> GET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:DL) ----> GET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:DL) ----> GET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:DL) ----> GET... Physical field: (17) 'PHY-IN-017' ...done
+[PHYDLL:DL] Received frame 9 (has_meta=0, data_size=36000000)
+[PHYDLL:DL] Frame 9 extracting data: total_input_size=36000000, batch=2000000, field/rank=100000, used/rank=18
+[PHYDLL:DL] Frame 9 running inference
+(PhyDLL:DL) ----> SET... DL field: (0) 'DL-OUT' ...done
+(PhyDLL:DL) ----> SEND...>>>... DL fields ...done
+[PHYDLL:DL] sent output for frame 9
+(PhyDLL:PHY) ----> RECV...<<<... DL fields ...done
+(PhyDLL:PHY) ----> GET... DL field: (0) 'DL-OUT' ...done
+STEP_TIMING step=10 latency_ms=513.06 min_ms=512.73 avg_ms=512.76 total_samples=2000000 throughput_samples_sec=3898211
+(PhyDLL:PHY) ----> SET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (17) 'PHY-IN-017' ...done
+(PhyDLL:DL) ----> ITE (PHY ITE) = 11 (11)
+(PhyDLL:PHY) ----> ITE (PHY ITE) = 11 (11)
+[PHYDLL:DL] Waiting for frame 10
+(PhyDLL:PHY) ----> SEND...>>>... Physical fields ...done
+(PhyDLL:DL) ----> RECV...<<<... Physical fields ...done
+(PhyDLL:DL) ----> GET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:DL) ----> GET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:DL) ----> GET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:DL) ----> GET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:DL) ----> GET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:DL) ----> GET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:DL) ----> GET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:DL) ----> GET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:DL) ----> GET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:DL) ----> GET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:DL) ----> GET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:DL) ----> GET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:DL) ----> GET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:DL) ----> GET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:DL) ----> GET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:DL) ----> GET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:DL) ----> GET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:DL) ----> GET... Physical field: (17) 'PHY-IN-017' ...done
+[PHYDLL:DL] Received frame 10 (has_meta=0, data_size=36000000)
+[PHYDLL:DL] Frame 10 extracting data: total_input_size=36000000, batch=2000000, field/rank=100000, used/rank=18
+[PHYDLL:DL] Frame 10 running inference
+(PhyDLL:DL) ----> SET... DL field: (0) 'DL-OUT' ...done
+(PhyDLL:DL) ----> SEND...>>>... DL fields ...done
+[PHYDLL:DL] sent output for frame 10
+(PhyDLL:PHY) ----> RECV...<<<... DL fields ...done
+(PhyDLL:PHY) ----> GET... DL field: (0) 'DL-OUT' ...done
+STEP_TIMING step=11 latency_ms=512.34 min_ms=512.01 avg_ms=512.04 total_samples=2000000 throughput_samples_sec=3903666
+(PhyDLL:PHY) ----> SET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:PHY) ----> SET... Physical field: (17) 'PHY-IN-017' ...done
+(PhyDLL:DL) ----> ITE (PHY ITE) = 12 (12)
+(PhyDLL:PHY) ----> ITE (PHY ITE) = 12 (12)
+[PHYDLL:DL] Waiting for frame 11
+(PhyDLL:PHY) ----> SEND...>>>... Physical fields ...done
+(PhyDLL:DL) ----> RECV...<<<... Physical fields ...done
+(PhyDLL:DL) ----> GET... Physical field: (0) 'PHY-IN-000' ...done
+(PhyDLL:DL) ----> GET... Physical field: (1) 'PHY-IN-001' ...done
+(PhyDLL:DL) ----> GET... Physical field: (2) 'PHY-IN-002' ...done
+(PhyDLL:DL) ----> GET... Physical field: (3) 'PHY-IN-003' ...done
+(PhyDLL:DL) ----> GET... Physical field: (4) 'PHY-IN-004' ...done
+(PhyDLL:DL) ----> GET... Physical field: (5) 'PHY-IN-005' ...done
+(PhyDLL:DL) ----> GET... Physical field: (6) 'PHY-IN-006' ...done
+(PhyDLL:DL) ----> GET... Physical field: (7) 'PHY-IN-007' ...done
+(PhyDLL:DL) ----> GET... Physical field: (8) 'PHY-IN-008' ...done
+(PhyDLL:DL) ----> GET... Physical field: (9) 'PHY-IN-009' ...done
+(PhyDLL:DL) ----> GET... Physical field: (10) 'PHY-IN-010' ...done
+(PhyDLL:DL) ----> GET... Physical field: (11) 'PHY-IN-011' ...done
+(PhyDLL:DL) ----> GET... Physical field: (12) 'PHY-IN-012' ...done
+(PhyDLL:DL) ----> GET... Physical field: (13) 'PHY-IN-013' ...done
+(PhyDLL:DL) ----> GET... Physical field: (14) 'PHY-IN-014' ...done
+(PhyDLL:DL) ----> GET... Physical field: (15) 'PHY-IN-015' ...done
+(PhyDLL:DL) ----> GET... Physical field: (16) 'PHY-IN-016' ...done
+(PhyDLL:DL) ----> GET... Physical field: (17) 'PHY-IN-017' ...done
+[PHYDLL:DL] Received frame 11 (has_meta=0, data_size=36000000)
+[PHYDLL:DL] Frame 11 extracting data: total_input_size=36000000, batch=2000000, field/rank=100000, used/rank=18
+[PHYDLL:DL] Frame 11 running inference
+(PhyDLL:DL) ----> SET... DL field: (0) 'DL-OUT' ...done
+(PhyDLL:DL) ----> SEND...>>>... DL fields ...done
+[PHYDLL:DL] sent output for frame 11
+(PhyDLL:PHY) ----> RECV...<<<... DL fields ...done
+(PhyDLL:PHY) ----> GET... DL field: (0) 'DL-OUT' ...done
+STEP_TIMING step=12 latency_ms=510.03 min_ms=509.69 avg_ms=509.93 total_samples=2000000 throughput_samples_sec=3921358
+
+=================================================================
+=== Benchmark Summary (Steady-State Steps 3 to 12) ===
+=================================================================
+Steady Step Count:   10
+Median Latency:      513.77 ms
+Mean Latency:        514.18 ms
+Min Latency:         510.03 ms
+Max Latency:         520.25 ms
+Median Throughput:   3892763 samples/sec
+=================================================================
+[PHYDLL:DL] exited main loop after 12 frames
+(PhyDLL:PHY) ----> Finalize... ...done
+(PhyDLL:DL) ----> Finalize... ...done
+[PHYDLL:DL] waiting for solver teardown
+[PHYDLL:DL] client exiting cleanly

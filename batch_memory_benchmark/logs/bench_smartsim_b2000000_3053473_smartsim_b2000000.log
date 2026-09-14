@@ -1,0 +1,415 @@
+=================================================================
+=== CMI Batch & Memory Calibration Benchmark Harness          ===
+=================================================================
+Provider:           smartsim
+Config:             /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/configs/smartsim.toml
+Model Path:         /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/../mini_app/train_models/model_a/watercnn_cuda.pt
+Solver Ranks:       20 (World size: 20)
+Samples per Rank:   100000
+Total Work/Step:    2000000 samples
+Target Batch Size:  2000000
+SmartSim Min Batch: 2000000 (timeout=1000 ms)
+Total Steps:        12 (Warmup: 2)
+=================================================================
+
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-22-37:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+CMI initialized successfully. Starting benchmark steps...
+
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=1 latency_ms=475.78 min_ms=472.37 avg_ms=473.54 total_samples=2000000 throughput_samples_sec=4203609
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=2 latency_ms=207.54 min_ms=195.01 avg_ms=196.96 total_samples=2000000 throughput_samples_sec=9636612
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=3 latency_ms=173.37 min_ms=170.85 avg_ms=172.18 total_samples=2000000 throughput_samples_sec=11536307
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=4 latency_ms=180.70 min_ms=178.64 avg_ms=179.30 total_samples=2000000 throughput_samples_sec=11068304
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=5 latency_ms=227.84 min_ms=224.07 avg_ms=226.96 total_samples=2000000 throughput_samples_sec=8778201
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=6 latency_ms=247.44 min_ms=243.47 avg_ms=245.96 total_samples=2000000 throughput_samples_sec=8082650
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=7 latency_ms=211.33 min_ms=203.11 avg_ms=205.68 total_samples=2000000 throughput_samples_sec=9464014
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=8 latency_ms=187.20 min_ms=184.21 avg_ms=185.74 total_samples=2000000 throughput_samples_sec=10683793
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=9 latency_ms=185.43 min_ms=180.84 avg_ms=184.09 total_samples=2000000 throughput_samples_sec=10785761
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=10 latency_ms=169.91 min_ms=164.30 avg_ms=168.09 total_samples=2000000 throughput_samples_sec=11771272
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=11 latency_ms=175.64 min_ms=170.13 avg_ms=172.62 total_samples=2000000 throughput_samples_sec=11387220
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+STEP_TIMING step=12 latency_ms=168.89 min_ms=167.01 avg_ms=167.94 total_samples=2000000 throughput_samples_sec=11841852
+
+=================================================================
+=== Benchmark Summary (Steady-State Steps 3 to 12) ===
+=================================================================
+Steady Step Count:   10
+Median Latency:      185.43 ms
+Mean Latency:        192.77 ms
+Min Latency:         168.89 ms
+Max Latency:         247.44 ms
+Median Throughput:   10785761 samples/sec
+=================================================================

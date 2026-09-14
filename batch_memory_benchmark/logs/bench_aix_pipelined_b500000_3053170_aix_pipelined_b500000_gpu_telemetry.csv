@@ -1,0 +1,3 @@
+timestamp,index,name,utilization.gpu,utilization.memory,memory.used,memory.free
+2026/08/18 18:58:34.500, 0, NVIDIA H100, 0, 0, 0, 95320
+2026/08/18 18:58:34.558, 0, NVIDIA H100, 0, 0, 0, 95320

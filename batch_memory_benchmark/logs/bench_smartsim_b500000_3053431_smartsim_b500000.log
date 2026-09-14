@@ -1,0 +1,159 @@
+=================================================================
+=== CMI Batch & Memory Calibration Benchmark Harness          ===
+=================================================================
+Provider:           smartsim
+Config:             /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/configs/smartsim.toml
+Model Path:         /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/../mini_app/train_models/model_a/watercnn_cuda.pt
+Solver Ranks:       20 (World size: 20)
+Samples per Rank:   100000
+Total Work/Step:    2000000 samples
+Target Batch Size:  500000
+SmartSim Min Batch: 500000 (timeout=1000 ms)
+Total Steps:        12 (Warmup: 2)
+=================================================================
+
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_FILE is not set. Defaulting to stdout
+SmartRedis Library@19-19-49:WARNING: Environment variable SR_LOG_LEVEL is not set. Defaulting to INFO
+solver_0@19-19-49:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_14@19-19-49:ERROR: Unable to connect to backend database: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_7@19-19-49:ERROR: Unable to connect to backend database: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_6@19-19-49:ERROR: Unable to connect to backend database: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_8@19-19-49:ERROR: Unable to connect to backend database: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_5@19-19-49:ERROR: Unable to connect to backend database: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_12@19-19-49:ERROR: Unable to connect to backend database: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_15@19-19-49:ERROR: Unable to connect to backend database: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_1@19-19-49:ERROR: Unable to connect to backend database: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_11@19-19-49:ERROR: Unable to connect to backend database: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_9@19-19-49:ERROR: Unable to connect to backend database: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+CMI initialized successfully. Starting benchmark steps...
+
+[DEBUG] Write these tensors to SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000, 18]}
+DEBUG: put_tensor input_2_0 dims=[100000,18]
+DEBUG: put_tensor input_19_0 dims=[100000,18]
+DEBUG: put_tensor input_9_0 dims=[100000,18]
+DEBUG: put_tensor input_0_0 dims=[100000,18]
+[DEBUG] Input tensor names sent to SmartSim:
+[DEBUG]   input_0_0
+[DEBUG] Output tensor names expected from SmartSim:
+[DEBUG]   output_0_0
+DEBUG: put_tensor input_15_0 dims=[100000,18]
+DEBUG: put_tensor input_12_0 dims=[100000,18]
+DEBUG: put_tensor input_18_0 dims=[100000,18]
+DEBUG: put_tensor input_14_0 dims=[100000,18]
+DEBUG: put_tensor input_3_0 dims=[100000,18]
+DEBUG: put_tensor input_7_0 dims=[100000,18]
+DEBUG: put_tensor input_6_0 dims=[100000,18]
+DEBUG: put_tensor input_5_0 dims=[100000,18]
+DEBUG: put_tensor input_4_0 dims=[100000,18]
+DEBUG: put_tensor input_1_0 dims=[100000,18]
+DEBUG: put_tensor input_16_0 dims=[100000,18]
+DEBUG: put_tensor input_13_0 dims=[100000,18]
+DEBUG: put_tensor input_8_0 dims=[100000,18]
+DEBUG: put_tensor input_11_0 dims=[100000,18]
+DEBUG: put_tensor input_10_0 dims=[100000,18]
+DEBUG: put_tensor input_17_0 dims=[100000,18]
+solver_2@19-19-50:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_19@19-19-50:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_9@19-19-50:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_0@19-19-50:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_5@19-19-50:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_1@19-19-50:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_12@19-19-50:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_14@19-19-50:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_15@19-19-50:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_7@19-19-50:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_6@19-19-50:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_13@19-19-50:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_18@19-19-50:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_3@19-19-50:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-19-50:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_16@19-19-50:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+[DEBUG] Retrieve these tensors from SmartSim:
+[DEBUG]   Tensor 0{dtype=Float, layout=Contiguous, ownership=External, shape=[100000]}
+solver_4@19-19-52:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-19-53:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-19-54:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-19-55:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-19-57:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-19-58:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-19-59:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-01:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-02:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-03:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-04:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-06:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-07:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-08:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-09:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-11:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-12:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-13:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-14:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-16:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-17:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-18:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-19:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-21:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-22:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-23:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-24:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-26:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-27:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-28:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-29:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-31:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-32:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-33:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-34:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-36:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-37:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-38:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-39:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-41:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-42:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-43:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-44:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-46:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-47:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-48:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-50:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11
+solver_4@19-20-51:ERROR: Redis IO error when executing command: Failed to get reply: Resource temporarily unavailable, err: 1, errno: 11

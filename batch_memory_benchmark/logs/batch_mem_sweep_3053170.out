@@ -1,0 +1,177 @@
+Loading required modules...
+=================================================================
+=== Batch & Memory Calibration Sweep on 1 GPU (3053170) ===
+=================================================================
+Loading required modules...
+=== Building Batch Memory Benchmark ===
+-- Found MPI: TRUE (found version "3.1") found components: CXX
+WITH_SMARTSIM: ON
+WITH_AIX: ON
+AIX_USE_PREBUILT: ON
+WITH_PHYDLL: ON
+WITH_TORCH: ON
+WITH_TENSORFLOW: OFF
+WITH_ONNX: OFF
+Using SmartRedis directory: /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/CPP-ML-Interface/extern/SmartRedis
+Using AIXelerator directory: /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/CPP-ML-Interface/extern/AIxeleratorService
+-- Found MPI: TRUE (found version "3.1")
+-- MPI found: /cvmfs/software.hpc.rwth.de/Linux/RH9/x86_64/intel/sapphirerapids/software/OpenMPI/4.1.4-GCC-11.3.0/bin/mpicxx
+-- AIXelerator support enabled.
+-- AIxelerator backend flags: WITH_TORCH=ON, WITH_TENSORFLOW=OFF, WITH_ONNX=OFF
+-- Caffe2: CUDA detected: 12.4
+-- Caffe2: CUDA nvcc is: /cvmfs/software.hpc.rwth.de/Linux/RH9/x86_64/intel/sapphirerapids/software/CUDA/12.4.0/bin/nvcc
+-- Caffe2: CUDA toolkit directory: /cvmfs/software.hpc.rwth.de/Linux/RH9/x86_64/intel/sapphirerapids/software/CUDA/12.4.0
+-- Caffe2: Header version is: 12.4
+-- /cvmfs/software.hpc.rwth.de/Linux/RH9/x86_64/intel/sapphirerapids/software/CUDA/12.4.0/lib/libnvrtc.so shorthash is 53a95926
+-- USE_CUDNN is set to 0. Compiling without cuDNN support
+-- USE_CUSPARSELT is set to 0. Compiling without cuSPARSELt support
+-- Autodetected CUDA architecture(s):  9.0
+-- Added CUDA NVCC flags for: -gencode;arch=compute_90,code=sm_90
+-- Torch found; building DL client with libtorch.
+CMake Warning at /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/CPP-ML-Interface/CMakeLists.txt:361 (message):
+  No Python executable found; skipping test_provider_inference.  Set
+  -DTEST_PYTHON_EXECUTABLE=/path/to/python3 to enable it.
+
+
+-- Configuring done (9.1s)
+-- Generating done (1.8s)
+-- Build files have been written to: /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build
+[ 20%] Built target benchmark_registry
+[ 60%] Built target cpp_ml_interface_library
+[100%] Built target fake_solver
+=== Build Complete: /rwthfs/rz/cluster/hpcwork/ro092286/smartsim/batch_memory_benchmark/build/fake_solver ===
+
+>>> Running Provider: smartsim | Batch Size: 100000 <<<
+=================================================================
+=== Running Case: smartsim | Batch: 100000 | ID: 3053170_smartsim_b100000 ===
+=================================================================
+Starting SmartSim Redis DB on port 6426...
+--------------------------------------------------------------------------
+A request was made to bind to that would result in binding more
+processes than cpus on a resource:
+
+   Bind to:     CORE
+   Node:        r23g0004
+   #processes:  2
+   #cpus:       1
+
+You can override this protection by adding the "overload-allowed"
+option to your binding directive.
+--------------------------------------------------------------------------
+WARNING: Case smartsim b=100000 failed with exit code 1
+
+>>> Running Provider: smartsim | Batch Size: 500000 <<<
+=================================================================
+=== Running Case: smartsim | Batch: 500000 | ID: 3053170_smartsim_b500000 ===
+=================================================================
+Starting SmartSim Redis DB on port 6458...
+--------------------------------------------------------------------------
+A request was made to bind to that would result in binding more
+processes than cpus on a resource:
+
+   Bind to:     CORE
+   Node:        r23g0004
+   #processes:  2
+   #cpus:       1
+
+You can override this protection by adding the "overload-allowed"
+option to your binding directive.
+--------------------------------------------------------------------------
+WARNING: Case smartsim b=500000 failed with exit code 1
+
+>>> Running Provider: smartsim | Batch Size: 2000000 <<<
+=================================================================
+=== Running Case: smartsim | Batch: 2000000 | ID: 3053170_smartsim_b2000000 ===
+=================================================================
+Starting SmartSim Redis DB on port 7246...
+--------------------------------------------------------------------------
+A request was made to bind to that would result in binding more
+processes than cpus on a resource:
+
+   Bind to:     CORE
+   Node:        r23g0004
+   #processes:  2
+   #cpus:       1
+
+You can override this protection by adding the "overload-allowed"
+option to your binding directive.
+--------------------------------------------------------------------------
+WARNING: Case smartsim b=2000000 failed with exit code 1
+
+>>> Running Provider: aix_collective | Batch Size: 100000 <<<
+=================================================================
+=== Running Case: aix_collective | Batch: 100000 | ID: 3053170_aix_collective_b100000 ===
+=================================================================
+--------------------------------------------------------------------------
+A request was made to bind to that would result in binding more
+processes than cpus on a resource:
+
+   Bind to:     CORE
+   Node:        r23g0004
+   #processes:  2
+   #cpus:       1
+
+You can override this protection by adding the "overload-allowed"
+option to your binding directive.
+--------------------------------------------------------------------------
+WARNING: Case aix_collective b=100000 failed with exit code 1
+
+>>> Running Provider: aix_collective | Batch Size: 500000 <<<
+=================================================================
+=== Running Case: aix_collective | Batch: 500000 | ID: 3053170_aix_collective_b500000 ===
+=================================================================
+--------------------------------------------------------------------------
+A request was made to bind to that would result in binding more
+processes than cpus on a resource:
+
+   Bind to:     CORE
+   Node:        r23g0004
+   #processes:  2
+   #cpus:       1
+
+You can override this protection by adding the "overload-allowed"
+option to your binding directive.
+--------------------------------------------------------------------------
+WARNING: Case aix_collective b=500000 failed with exit code 1
+
+>>> Running Provider: aix_collective | Batch Size: 2000000 <<<
+=================================================================
+=== Running Case: aix_collective | Batch: 2000000 | ID: 3053170_aix_collective_b2000000 ===
+=================================================================
+--------------------------------------------------------------------------
+A request was made to bind to that would result in binding more
+processes than cpus on a resource:
+
+   Bind to:     CORE
+   Node:        r23g0004
+   #processes:  2
+   #cpus:       1
+
+You can override this protection by adding the "overload-allowed"
+option to your binding directive.
+--------------------------------------------------------------------------
+WARNING: Case aix_collective b=2000000 failed with exit code 1
+
+>>> Running Provider: aix_pipelined | Batch Size: 100000 <<<
+=================================================================
+=== Running Case: aix_pipelined | Batch: 100000 | ID: 3053170_aix_pipelined_b100000 ===
+=================================================================
+--------------------------------------------------------------------------
+A request was made to bind to that would result in binding more
+processes than cpus on a resource:
+
+   Bind to:     CORE
+   Node:        r23g0004
+   #processes:  2
+   #cpus:       1
+
+You can override this protection by adding the "overload-allowed"
+option to your binding directive.
+--------------------------------------------------------------------------
+WARNING: Case aix_pipelined b=100000 failed with exit code 1
+
+>>> Running Provider: aix_pipelined | Batch Size: 500000 <<<
+=================================================================
+=== Running Case: aix_pipelined | Batch: 500000 | ID: 3053170_aix_pipelined_b500000 ===
+=================================================================
+[2026-08-18T18:58:34.568] error: *** JOB 3053170 ON r23g0004 CANCELLED AT 2026-08-18T18:58:34 DUE to SIGNAL Terminated ***

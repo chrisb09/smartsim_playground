@@ -1,0 +1,31 @@
+[logging]
+level = "debug"
+error_separate = false
+
+[library]
+class = "Smartsim"
+device = "GPU"
+model_backend = "TORCH"
+model_path = "../mini_app/train_models/model_a/watercnn_cuda.pt"
+model_name = "watercnn_batch_bench"
+nodes = 1
+host = ""
+port = -1
+num_gpus = 1
+first_gpu = 0
+batch_size = 100000
+min_batch_size = 0
+min_batch_timeout = 0
+
+[normalization]
+class = "MinMax"
+input_min = 0.0
+input_max = 1.0
+output_min = 0.0
+output_max = 1.0
+
+[behavior]
+class = "Default"
+
+[application]
+class = "MLCouplingApplicationBenchmark"
