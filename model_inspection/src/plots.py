@@ -4,16 +4,22 @@ from __future__ import annotations
 
 import csv
 import math
+import sys
 from pathlib import Path
 
-import matplotlib
-matplotlib.use("Agg")
-matplotlib.rcParams["pdf.fonttype"] = 42
-matplotlib.rcParams["ps.fonttype"] = 42
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.text import Text
 from matplotlib.transforms import Bbox, offset_copy
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+# Also search the thesis sourcecode directory where thesis_style.py lives
+_thesis_src = Path.home() / "Master-Thesis" / "gitlab" / "sourcecode"
+if _thesis_src.exists() and str(_thesis_src) not in sys.path:
+    sys.path.insert(0, str(_thesis_src))
+import thesis_style as ts  # noqa: E402
+
+ts.apply()
 
 MODEL_COLORS = {"watercnn": "#0072B2", "mmcp_test_mlp_m5": "#009E73", "tbl_transformer": "#882255", "giant_mlp": "#D55E00"}
 MEASURED_COLOR = "#EE6677"
@@ -21,8 +27,9 @@ L2_COLOR = "#CCBB44"
 PRECISION_COLORS = {"fp32": "#4477AA", "tf32": "#EE6677", "fp16": "#228833", "bf16": "#CCBB44", "fp8": "#66CCEE", "int8": "#AA3377", "fp64": "#BBBBBB"}
 PRECISION_ORDER = ("fp32", "tf32", "fp16", "bf16", "fp8", "int8", "fp64")
 FALLBACK_COMPUTE_GFLOPS = {"fp32": 60320.0, "tf32": 482600.0}
-SINGLE_FIGSIZE = (6.2, 4.6)
-PAIR_FIGSIZE = (3.4, 2.9)
+# Figure sizes: SINGLE = full textwidth, PAIR = half-width panel
+SINGLE_FIGSIZE = ts.figure_size(1.0, aspect=4.6 / 6.2)
+PAIR_FIGSIZE   = ts.figure_size(0.5, aspect=2.9 / 3.4)
 
 
 def read_table(path: Path) -> list[dict]:
@@ -60,8 +67,9 @@ def _human(value: float, unit: str) -> str:
 def _finish(fig, run_dir: Path, name: str) -> Path:
     output_dir = run_dir / "figures"
     output_dir.mkdir(parents=True, exist_ok=True)
-    path = output_dir / f"{name}.pdf"
-    fig.tight_layout(); fig.savefig(path); fig.savefig(output_dir / f"{name}.png"); plt.close(fig)
+    path = output_dir / f"{name}.png"
+    ts.save(fig, path)
+    plt.close(fig)
     return path
 
 
@@ -78,7 +86,7 @@ def bar_measured(run_dir: Path, table: list[dict], metric: str, unit: str, title
         if not value:
             continue
         ax.bar(index, value, 0.5, color=MEASURED_COLOR)
-        ax.annotate(_human(value, unit), (index, value), ha="center", va="bottom", fontsize=7)
+        ax.annotate(_human(value, unit), (index, value), ha="center", va="bottom", fontsize=ts.ANNOT)
     ax.set_yscale("log")
     ax.set_xticks(np.arange(len(models)))
     ax.set_xticklabels([displays.get(model, model) for model in models])
@@ -86,9 +94,9 @@ def bar_measured(run_dir: Path, table: list[dict], metric: str, unit: str, title
     if positives:
         ax.set_ylim(min(positives) * 0.3, max(positives) * 8)
     ax.set(ylabel=ylabel)
-    ax.tick_params(axis="x", labelsize=7)
-    ax.tick_params(axis="y", labelsize=8)
-    ax.set_title(f"{title} (B={comparison_batch})", fontsize=8.5)
+    ax.tick_params(axis="x", labelsize=ts.TICK)
+    ax.tick_params(axis="y", labelsize=ts.TICK)
+    ax.set_title(f"{title} (B={comparison_batch})", fontsize=ts.AXIS_TITLE)
     ax.grid(True, axis="y", which="major", alpha=0.3)
     return _finish(fig, run_dir, name)
 
@@ -108,13 +116,13 @@ def l2_cache_bars(run_dir: Path, cache_table: list[dict], comparison_batch: int,
         l2_value = l2.get((model, "fp32", comparison_batch))
         if dram_value:
             ax.bar(index - width / 2, dram_value, width, color=MEASURED_COLOR, label="RAM" if index == 0 else None)
-            ax.annotate(_human(dram_value, "bytes"), (index - width / 2, dram_value), ha="center", va="bottom", fontsize=7)
+            ax.annotate(_human(dram_value, "bytes"), (index - width / 2, dram_value), ha="center", va="bottom", fontsize=ts.ANNOT)
         if l2_value:
             ax.bar(index + width / 2, l2_value, width, color=L2_COLOR, label="L2 requested" if index == 0 else None)
-            ax.annotate(_human(l2_value, "bytes"), (index + width / 2, l2_value), ha="center", va="bottom", fontsize=7)
+            ax.annotate(_human(l2_value, "bytes"), (index + width / 2, l2_value), ha="center", va="bottom", fontsize=ts.ANNOT)
         if dram_value and l2_value:
             ax.annotate(f"L2/RAM {l2_value / dram_value:,.0f}x", (index, max(dram_value, l2_value)),
-                        xytext=(0, 14), textcoords="offset points", ha="center", fontsize=6.5, color="#333333")
+                        xytext=(0, 14), textcoords="offset points", ha="center", fontsize=ts.ANNOT, color="#333333")
     ax.set_yscale("log")
     ax.set_xticks(xs)
     ax.set_xticklabels([displays.get(model, model) for model in models])
@@ -123,10 +131,10 @@ def l2_cache_bars(run_dir: Path, cache_table: list[dict], comparison_batch: int,
     if positives:
         ax.set_ylim(min(positives) * 0.3, max(positives) * 12)
     ax.set(ylabel="Bytes (log scale)")
-    ax.tick_params(axis="x", labelsize=7)
-    ax.tick_params(axis="y", labelsize=8)
-    ax.set_title(f"L2 versus RAM (B={comparison_batch})", fontsize=8.5)
-    ax.legend(fontsize=6.5, loc="upper left")
+    ax.tick_params(axis="x", labelsize=ts.TICK)
+    ax.tick_params(axis="y", labelsize=ts.TICK)
+    ax.set_title(f"L2 versus RAM (B={comparison_batch})", fontsize=ts.AXIS_TITLE)
+    ax.legend(fontsize=ts.LEGEND, loc="upper left")
     ax.grid(True, axis="y", which="major", alpha=0.3)
     return _finish(fig, run_dir, name)
 
@@ -160,16 +168,16 @@ def bar_precision(run_dir: Path, precision_table: list[dict], comparison_batch: 
                    label=category.upper() if category not in labelled else None)
             labelled.add(category)
             if share >= 4:
-                ax.annotate(f"{share:.0f}%", (index, bottom + share / 2), ha="center", va="center", fontsize=7.5, color="white")
+                ax.annotate(f"{share:.0f}%", (index, bottom + share / 2), ha="center", va="center", fontsize=ts.ANNOT, color="white")
             bottom += share
     ax.set_xticks(np.arange(len(models)))
     ax.set_xticklabels([displays.get(model, model) for model in models])
-    ax.tick_params(axis="x", labelsize=7)
-    ax.tick_params(axis="y", labelsize=8)
+    ax.tick_params(axis="x", labelsize=ts.TICK)
+    ax.tick_params(axis="y", labelsize=ts.TICK)
     ax.set_ylim(0, 100)
     ax.set(ylabel="Share of counter-derived FLOPs (%)", title=f"Arithmetic precision composition (B={comparison_batch})")
     ax.grid(True, axis="y", which="major", alpha=0.3)
-    ax.legend(fontsize=7.5, loc="upper right")
+    ax.legend(fontsize=ts.LEGEND, loc="upper right")
     return _finish(fig, run_dir, name)
 
 
@@ -181,7 +189,7 @@ def _batch_label(batch: int) -> str:
 
 
 def _place_point_labels(ax, entries: list[tuple[float, float, str, str]],
-                        fontsize: float = 6.5, pad: float = 1.5) -> int:
+                        fontsize: float | None = None, pad: float = 1.5) -> int:
     """Place labels next to points, avoiding overlaps with each other, markers, and the legend.
 
     ``entries`` are ``(x, y, text, color)`` in data coordinates. Candidate offsets
@@ -191,6 +199,8 @@ def _place_point_labels(ax, entries: list[tuple[float, float, str, str]],
     """
     if not entries:
         return 0
+    if fontsize is None:
+        fontsize = ts.ANNOT
     fig = ax.figure
     fig.canvas.draw()
     renderer = fig.canvas.get_renderer()
@@ -302,7 +312,7 @@ def roofline_measured(run_dir: Path, oi_table: list[dict], flops_table: list[dic
     if min(ys_values) > 0:
         ax.set_ylim(min(ys_values) * 0.5, y_top)
     ax.grid(True, which="major", alpha=0.3)
-    ax.legend(fontsize=7.5)
+    ax.legend(fontsize=ts.LEGEND)
     fig.tight_layout()
     fallback = _place_point_labels(ax, labels)
     if fallback:
@@ -324,7 +334,7 @@ def throughput(run_dir: Path, timing_table: list[dict], precision: str, hardware
     ax.set(xscale="log", yscale="log", xlabel="Batch size", ylabel="Serial end-to-end throughput (samples/s)",
            title=f"Serial throughput vs batch size ({precision.upper()}, H2D + forward + D2H)")
     ax.grid(True, which="major", alpha=0.3)
-    ax.legend(fontsize=8)
+    ax.legend(fontsize=ts.LEGEND)
     return _finish(fig, run_dir, f"throughput_{precision}")
 
 
@@ -347,7 +357,7 @@ def hbm_vs_batch(run_dir: Path, hbm_table: list[dict], name: str = "hbm_vs_batch
     ax.set(xscale="log", yscale="log", xlabel="Batch size", ylabel="NCU RAM bytes",
            title="Measured HBM3 RAM traffic versus batch size (FP32)")
     ax.grid(True, which="major", alpha=0.3)
-    ax.legend(fontsize=7)
+    ax.legend(fontsize=ts.LEGEND)
     return _finish(fig, run_dir, name)
 
 
@@ -364,5 +374,5 @@ def oi_vs_batch(run_dir: Path, oi_table: list[dict], name: str = "oi_vs_batch") 
     ax.set(xscale="log", yscale="log", xlabel="Batch size", ylabel="Measured operational intensity (FLOP / RAM byte)",
            title="Measured operational intensity versus batch size (FP32)")
     ax.grid(True, which="major", alpha=0.3)
-    ax.legend(fontsize=8)
+    ax.legend(fontsize=ts.LEGEND)
     return _finish(fig, run_dir, name)
