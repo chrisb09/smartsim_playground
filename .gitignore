@@ -39,3 +39,10 @@ package-lock.json
 
 # Empty placeholder dir (AIxeleratorService worktrees are registered as submodules)
 AIxeleratorService/
+
+# AIxeleratorService checkout copies (symlink-only dirs, not submodules)
+AIxeleratorService-p2p/
+AIxeleratorService-pipelined/
+
+# Benchmark directory with large result data (not tracked in git)
+batch_memory_benchmark/

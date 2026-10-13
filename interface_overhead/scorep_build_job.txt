@@ -1,0 +1,2 @@
+sbatch: [I] Partition 'devel' requested, max time 60 mins, oversubscribe 2 is set.
+4941273

@@ -22,6 +22,7 @@ import thesis_style as ts  # noqa: E402
 ts.apply()
 
 MODEL_COLORS = {"watercnn": "#0072B2", "mmcp_test_mlp_m5": "#009E73", "tbl_transformer": "#882255", "giant_mlp": "#D55E00"}
+MODEL_ORDER = ("watercnn", "mmcp_test_mlp_m5", "tbl_transformer", "giant_mlp")
 MEASURED_COLOR = "#EE6677"
 L2_COLOR = "#CCBB44"
 PRECISION_COLORS = {"fp32": "#4477AA", "tf32": "#EE6677", "fp16": "#228833", "bf16": "#CCBB44", "fp8": "#66CCEE", "int8": "#AA3377", "fp64": "#BBBBBB"}
@@ -320,22 +321,93 @@ def roofline_measured(run_dir: Path, oi_table: list[dict], flops_table: list[dic
     return _finish(fig, run_dir, name)
 
 
-def throughput(run_dir: Path, timing_table: list[dict], precision: str, hardware: dict) -> Path | None:
+def _samples_rate(value: float) -> str:
+    """Rounded throughput label, e.g. 5532 -> 5.5k, 222127162 -> 222M."""
+    for scale, suffix in ((1e6, "M"), (1e3, "k")):
+        if abs(value) >= scale:
+            scaled = value / scale
+            return f"{scaled:.0f}{suffix}" if scaled >= 100 else f"{scaled:.1f}{suffix}"
+    return f"{value:.0f}"
+
+
+def throughput(run_dir: Path, timing_table: list[dict], precision: str, hardware: dict,
+               name: str | None = None) -> Path | None:
+    """Wide, short serial-throughput-versus-batch figure.
+
+    The B=1 labels sit in the left margin, equally spaced on the log axis;
+    every curve is labelled at B=1 and B_max with a thin leader to its marker,
+    and a dashed line marks each B_max with its exact value printed on the axis.
+    """
     serial = collect(timing_table, "serial_samples_per_s")
     rows = [key for key in serial if key[1] == precision]
     if not rows:
         return None
-    fig, ax = plt.subplots(figsize=SINGLE_FIGSIZE, dpi=250)
+    fig, ax = plt.subplots(figsize=ts.figure_size(1.0, aspect=0.371), dpi=250)
     displays = _display_names(timing_table)
-    for model in sorted({key[0] for key in rows}):
+    models = {key[0] for key in rows}
+    ordered = [model for model in MODEL_ORDER if model in models] + sorted(models - set(MODEL_ORDER))
+    series: dict[str, list[tuple[int, float]]] = {}
+    for model in ordered:
         pairs = sorted((key[2], serial[key]) for key in rows if key[0] == model)
-        color = MODEL_COLORS.get(model, "#333333")
-        ax.plot([p[0] for p in pairs], [p[1] for p in pairs], "o-", color=color, label=displays.get(model, model))
-    ax.set(xscale="log", yscale="log", xlabel="Batch size", ylabel="Serial end-to-end throughput (samples/s)",
-           title=f"Serial throughput vs batch size ({precision.upper()}, H2D + forward + D2H)")
+        if not pairs:
+            continue
+        series[model] = pairs
+        ax.plot([p[0] for p in pairs], [p[1] for p in pairs], "o-",
+                color=MODEL_COLORS.get(model, "#333333"), label=displays.get(model, model))
+    all_points = [point for pairs in series.values() for point in pairs]
+    xs = [point[0] for point in all_points]
+    ys = [point[1] for point in all_points]
+    x_lo, x_hi = min(xs) * 0.20, max(xs) * 2.2
+    y_lo, y_hi = min(ys) * 0.5, max(ys) * 2.4
+    ax.set(xscale="log", yscale="log", xlim=(x_lo, x_hi), ylim=(y_lo, y_hi),
+           xlabel="Batch size", ylabel="Throughput (samples/s)",
+           title="Serial throughput versus batch size (H2D + forward + D2H)")
+    # Show only every other decade so the short axis stays readable.
+    ax.set_yticks([10**exponent for exponent in range(1, 10)
+                   if exponent % 2 == 1 and y_lo <= 10**exponent <= y_hi])
+    ax.yaxis.label.set_fontsize(ts.ANNOT)
     ax.grid(True, which="major", alpha=0.3)
-    ax.legend(fontsize=ts.LEGEND)
-    return _finish(fig, run_dir, f"throughput_{precision}")
+    ax.legend(fontsize=ts.LEGEND - 2, loc="upper left")
+
+    # B=1 labels: keep the extremes, space the rest evenly on the log axis,
+    # stacked top-to-bottom in this order.
+    stack = [model for model in ("watercnn", "mmcp_test_mlp_m5", "giant_mlp", "tbl_transformer")
+             if model in series]
+    if len(stack) >= 2:
+        top, bottom = series[stack[0]][0][1], series[stack[-1]][0][1]
+        ratio = (top / bottom) ** (1 / (len(stack) - 1))
+        b1_target = {model: bottom * ratio ** (len(stack) - 1 - index)
+                     for index, model in enumerate(stack)}
+    else:
+        b1_target = {model: series[model][0][1] for model in series}
+    axes_height_pt = fig.get_size_inches()[1] * (0.91 - 0.19) * 72.0
+    points_per_decade = axes_height_pt / math.log10(y_hi / y_lo)
+
+    bmax = {
+        "watercnn": (-3, -9, "right", "top"),
+        "mmcp_test_mlp_m5": (9, 0, "left", "center"),
+        "tbl_transformer": (9, 0, "left", "center"),
+        "giant_mlp": (0, 7, "center", "bottom"),
+    }
+    for model in ordered:
+        pairs = series[model]
+        color = MODEL_COLORS.get(model, "#333333")
+        leader = {"arrowstyle": "-", "color": color, "lw": 0.4,
+                  "shrinkA": 1.0, "shrinkB": 2.0, "alpha": 0.85}
+        (b_first, y_first), (b_last, y_last) = pairs[0], pairs[-1]
+        ax.vlines(b_last, y_lo, y_last, color=color, linestyle="--", linewidth=0.8, alpha=0.7, zorder=1)
+        ax.annotate(f"{b_last:,}", (b_last, y_lo), xytext=(5, 6), textcoords="offset points",
+                    rotation=90, ha="center", va="bottom", fontsize=ts.ANNOT - 1, color=color, zorder=6)
+        dy = (math.log10(b1_target[model]) - math.log10(y_first)) * points_per_decade
+        ax.annotate(_samples_rate(y_first), (b_first, y_first), xytext=(-5, dy),
+                    textcoords="offset points", ha="right", va="center",
+                    fontsize=ts.ANNOT, color=color, zorder=6, arrowprops=leader)
+        dx, dy, ha, va = bmax.get(model, (9, 0, "left", "center"))
+        ax.annotate(_samples_rate(y_last), (b_last, y_last), xytext=(dx, dy),
+                    textcoords="offset points", ha=ha, va=va, fontsize=ts.ANNOT, color=color,
+                    zorder=6, arrowprops=leader)
+    fig.subplots_adjust(left=0.085, right=0.985, top=0.91, bottom=0.19)
+    return _finish(fig, run_dir, name or f"throughput_{precision}")
 
 
 def hbm_vs_batch(run_dir: Path, hbm_table: list[dict], name: str = "hbm_vs_batch") -> Path | None:
