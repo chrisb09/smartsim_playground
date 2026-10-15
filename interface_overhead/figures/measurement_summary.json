@@ -1,0 +1,991 @@
+{
+  "campaign_root": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357",
+  "phase": "production",
+  "confidence_interval": "Student-t, df=4; five independent job means",
+  "timing_scope": "Synchronized ML-step time; first three ML calls excluded",
+  "payload_scope": "Logical MiB summed over ranks, all 33 calls plus one-time preload",
+  "platforms": {
+    "cpu": {
+      "platform": "cpu",
+      "phase": "production",
+      "warmup_unit": "first ML calls, not solver steps",
+      "jobs": [
+        {
+          "job": "cpu_production_r1_4966611",
+          "mean_ml_step_ms": {
+            "direct_nopreload": 31488.46,
+            "direct_preload": 35714.08666666667,
+            "cmi_baseline": 32110.593333333334,
+            "cmi_profiling": 31758.286666666667,
+            "cmi_tracing": 32284.533333333333
+          },
+          "measured_calls": {
+            "direct_nopreload": 30,
+            "direct_preload": 30,
+            "cmi_baseline": 30,
+            "cmi_profiling": 30,
+            "cmi_tracing": 30
+          }
+        },
+        {
+          "job": "cpu_production_r2_4966613",
+          "mean_ml_step_ms": {
+            "direct_preload": 30060.3,
+            "cmi_baseline": 29669.15,
+            "cmi_profiling": 29832.096666666668,
+            "cmi_tracing": 29578.72,
+            "direct_nopreload": 29391.67
+          },
+          "measured_calls": {
+            "direct_preload": 30,
+            "cmi_baseline": 30,
+            "cmi_profiling": 30,
+            "cmi_tracing": 30,
+            "direct_nopreload": 30
+          }
+        },
+        {
+          "job": "cpu_production_r3_4966614",
+          "mean_ml_step_ms": {
+            "cmi_baseline": 30276.09,
+            "cmi_profiling": 30325.69,
+            "cmi_tracing": 29714.783333333333,
+            "direct_nopreload": 29003.16,
+            "direct_preload": 29912.273333333334
+          },
+          "measured_calls": {
+            "cmi_baseline": 30,
+            "cmi_profiling": 30,
+            "cmi_tracing": 30,
+            "direct_nopreload": 30,
+            "direct_preload": 30
+          }
+        },
+        {
+          "job": "cpu_production_r4_4966618",
+          "mean_ml_step_ms": {
+            "cmi_profiling": 31174.646666666667,
+            "cmi_tracing": 30476.27,
+            "direct_nopreload": 29303.329999999998,
+            "direct_preload": 28557.38,
+            "cmi_baseline": 31246.916666666668
+          },
+          "measured_calls": {
+            "cmi_profiling": 30,
+            "cmi_tracing": 30,
+            "direct_nopreload": 30,
+            "direct_preload": 30,
+            "cmi_baseline": 30
+          }
+        },
+        {
+          "job": "cpu_production_r5_4966621",
+          "mean_ml_step_ms": {
+            "cmi_tracing": 29679.896666666667,
+            "direct_nopreload": 29902.823333333334,
+            "direct_preload": 30445.323333333334,
+            "cmi_baseline": 30958.92,
+            "cmi_profiling": 30256.203333333335
+          },
+          "measured_calls": {
+            "cmi_tracing": 30,
+            "direct_nopreload": 30,
+            "direct_preload": 30,
+            "cmi_baseline": 30,
+            "cmi_profiling": 30
+          }
+        }
+      ],
+      "excluded_jobs": [],
+      "paired_comparisons": [
+        {
+          "control": "direct_nopreload",
+          "treatment": "direct_preload",
+          "paired_jobs": 5,
+          "mean_difference_ms": 1119.9840000000017,
+          "sd_difference_ms": 1851.2428735182818,
+          "ci95_difference_ms": [
+            -1178.2691249487602,
+            3418.2371249487637
+          ],
+          "mean_paired_percent": 3.6195254387138798
+        },
+        {
+          "control": "direct_nopreload",
+          "treatment": "cmi_baseline",
+          "paired_jobs": 5,
+          "mean_difference_ms": 1034.4453333333345,
+          "sd_difference_ms": 637.745909759086,
+          "ci95_difference_ms": [
+            242.70614503247748,
+            1826.1845216341915
+          ],
+          "mean_paired_percent": 3.4946345995220485
+        },
+        {
+          "control": "cmi_baseline",
+          "treatment": "cmi_profiling",
+          "paired_jobs": 5,
+          "mean_difference_ms": -182.9493333333332,
+          "sd_difference_ms": 348.14262064242695,
+          "ci95_difference_ms": [
+            -615.1561913663279,
+            249.25752469966147
+          ],
+          "mean_paired_percent": -0.5770502113368203
+        },
+        {
+          "control": "cmi_baseline",
+          "treatment": "cmi_tracing",
+          "paired_jobs": 5,
+          "mean_difference_ms": -505.49333333333345,
+          "sd_difference_ms": 571.33118774879,
+          "ci95_difference_ms": [
+            -1214.7809726849819,
+            203.79430601831496
+          ],
+          "mean_paired_percent": -1.6429467304157197
+        }
+      ]
+    },
+    "gpu": {
+      "platform": "gpu",
+      "phase": "production",
+      "warmup_unit": "first ML calls, not solver steps",
+      "jobs": [
+        {
+          "job": "gpu_production_r1_4966610",
+          "mean_ml_step_ms": {
+            "direct_nopreload": 9490.238666666666,
+            "direct_preload": 9468.97,
+            "cmi_baseline": 9534.863666666666,
+            "cmi_profiling": 9522.138,
+            "cmi_tracing": 9519.657333333333
+          },
+          "measured_calls": {
+            "direct_nopreload": 30,
+            "direct_preload": 30,
+            "cmi_baseline": 30,
+            "cmi_profiling": 30,
+            "cmi_tracing": 30
+          }
+        },
+        {
+          "job": "gpu_production_r2_4966612",
+          "mean_ml_step_ms": {
+            "direct_preload": 9549.329,
+            "cmi_baseline": 9599.231666666667,
+            "cmi_profiling": 9632.258666666667,
+            "cmi_tracing": 9599.118,
+            "direct_nopreload": 9597.552333333333
+          },
+          "measured_calls": {
+            "direct_preload": 30,
+            "cmi_baseline": 30,
+            "cmi_profiling": 30,
+            "cmi_tracing": 30,
+            "direct_nopreload": 30
+          }
+        },
+        {
+          "job": "gpu_production_r3_4966616",
+          "mean_ml_step_ms": {
+            "cmi_baseline": 9129.344000000001,
+            "cmi_profiling": 9166.187666666667,
+            "cmi_tracing": 9138.222666666667,
+            "direct_nopreload": 9150.637,
+            "direct_preload": 9128.889666666666
+          },
+          "measured_calls": {
+            "cmi_baseline": 30,
+            "cmi_profiling": 30,
+            "cmi_tracing": 30,
+            "direct_nopreload": 30,
+            "direct_preload": 30
+          }
+        },
+        {
+          "job": "gpu_production_r4_4966617",
+          "mean_ml_step_ms": {
+            "cmi_profiling": 9519.524,
+            "cmi_tracing": 9598.477,
+            "direct_nopreload": 9505.335666666668,
+            "direct_preload": 9520.161333333333,
+            "cmi_baseline": 9558.146666666667
+          },
+          "measured_calls": {
+            "cmi_profiling": 30,
+            "cmi_tracing": 30,
+            "direct_nopreload": 30,
+            "direct_preload": 30,
+            "cmi_baseline": 30
+          }
+        },
+        {
+          "job": "gpu_production_r5_4966620",
+          "mean_ml_step_ms": {
+            "cmi_tracing": 9630.829,
+            "direct_nopreload": 9582.924333333332,
+            "direct_preload": 9555.919666666667,
+            "cmi_baseline": 9626.366,
+            "cmi_profiling": 9591.749333333333
+          },
+          "measured_calls": {
+            "cmi_tracing": 30,
+            "direct_nopreload": 30,
+            "direct_preload": 30,
+            "cmi_baseline": 30,
+            "cmi_profiling": 30
+          }
+        }
+      ],
+      "excluded_jobs": [],
+      "paired_comparisons": [
+        {
+          "control": "direct_nopreload",
+          "treatment": "direct_preload",
+          "paired_jobs": 5,
+          "mean_difference_ms": -20.683666666666976,
+          "sd_difference_ms": 22.69787791108781,
+          "ci95_difference_ms": [
+            -48.86228633082953,
+            7.494952997495574
+          ],
+          "mean_paired_percent": -0.21801050184828918
+        },
+        {
+          "control": "direct_nopreload",
+          "treatment": "cmi_baseline",
+          "paired_jobs": 5,
+          "mean_difference_ms": 24.252800000000207,
+          "sd_difference_ms": 32.337251038941915,
+          "ci95_difference_ms": [
+            -15.892763456650648,
+            64.39836345665105
+          ],
+          "mean_paired_percent": 0.2527880481543332
+        },
+        {
+          "control": "cmi_baseline",
+          "treatment": "cmi_profiling",
+          "paired_jobs": 5,
+          "mean_difference_ms": -3.218866666666872,
+          "sd_difference_ms": 36.22291944688552,
+          "ci95_difference_ms": [
+            -48.188351224550196,
+            41.75061789121646
+          ],
+          "mean_paired_percent": -0.02990309726888407
+        },
+        {
+          "control": "cmi_baseline",
+          "treatment": "cmi_tracing",
+          "paired_jobs": 5,
+          "mean_difference_ms": 7.67039999999979,
+          "sd_difference_ms": 20.385995133369818,
+          "ci95_difference_ms": [
+            -17.638098247674762,
+            32.978898247674344
+          ],
+          "mean_paired_percent": 0.08097962125783287
+        }
+      ]
+    }
+  },
+  "absolute_time": [
+    {
+      "platform": "cpu",
+      "condition": "direct_nopreload",
+      "jobs": 5,
+      "calls_per_job": 30,
+      "mean_s": 29.817888666666665,
+      "ci95_low_s": 28.59054945687032,
+      "ci95_high_s": 31.04522787646301
+    },
+    {
+      "platform": "cpu",
+      "condition": "direct_preload",
+      "jobs": 5,
+      "calls_per_job": 30,
+      "mean_s": 30.937872666666667,
+      "ci95_low_s": 27.506768466344404,
+      "ci95_high_s": 34.36897686698893
+    },
+    {
+      "platform": "cpu",
+      "condition": "cmi_baseline",
+      "jobs": 5,
+      "calls_per_job": 30,
+      "mean_s": 30.852334,
+      "ci95_low_s": 29.693811895453056,
+      "ci95_high_s": 32.01085610454694
+    },
+    {
+      "platform": "cpu",
+      "condition": "cmi_profiling",
+      "jobs": 5,
+      "calls_per_job": 30,
+      "mean_s": 30.669384666666666,
+      "ci95_low_s": 29.701425492095,
+      "ci95_high_s": 31.63734384123833
+    },
+    {
+      "platform": "cpu",
+      "condition": "cmi_tracing",
+      "jobs": 5,
+      "calls_per_job": 30,
+      "mean_s": 30.34684066666667,
+      "ci95_low_s": 28.93034678668944,
+      "ci95_high_s": 31.763334546643897
+    },
+    {
+      "platform": "gpu",
+      "condition": "direct_nopreload",
+      "jobs": 5,
+      "calls_per_job": 30,
+      "mean_s": 9.4653376,
+      "ci95_low_s": 9.239296981687017,
+      "ci95_high_s": 9.691378218312982
+    },
+    {
+      "platform": "gpu",
+      "condition": "direct_preload",
+      "jobs": 5,
+      "calls_per_job": 30,
+      "mean_s": 9.444653933333333,
+      "ci95_low_s": 9.22138161253613,
+      "ci95_high_s": 9.667926254130537
+    },
+    {
+      "platform": "gpu",
+      "condition": "cmi_baseline",
+      "jobs": 5,
+      "calls_per_job": 30,
+      "mean_s": 9.4895904,
+      "ci95_low_s": 9.235689184922315,
+      "ci95_high_s": 9.743491615077687
+    },
+    {
+      "platform": "gpu",
+      "condition": "cmi_profiling",
+      "jobs": 5,
+      "calls_per_job": 30,
+      "mean_s": 9.486371533333333,
+      "ci95_low_s": 9.256342117151537,
+      "ci95_high_s": 9.71640094951513
+    },
+    {
+      "platform": "gpu",
+      "condition": "cmi_tracing",
+      "jobs": 5,
+      "calls_per_job": 30,
+      "mean_s": 9.4972608,
+      "ci95_low_s": 9.242893831624768,
+      "ci95_high_s": 9.751627768375231
+    }
+  ],
+  "job_means": [
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r1_4966611",
+      "condition": "direct_nopreload",
+      "mean_s": 31.48846,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r1_4966611/direct_nopreload.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r1_4966611",
+      "condition": "direct_preload",
+      "mean_s": 35.71408666666667,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r1_4966611/direct_preload.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r1_4966611",
+      "condition": "cmi_baseline",
+      "mean_s": 32.110593333333334,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r1_4966611/cmi_baseline.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r1_4966611",
+      "condition": "cmi_profiling",
+      "mean_s": 31.758286666666667,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r1_4966611/cmi_profiling.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r1_4966611",
+      "condition": "cmi_tracing",
+      "mean_s": 32.284533333333336,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r1_4966611/cmi_tracing.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r2_4966613",
+      "condition": "direct_preload",
+      "mean_s": 30.060299999999998,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r2_4966613/direct_preload.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r2_4966613",
+      "condition": "cmi_baseline",
+      "mean_s": 29.669150000000002,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r2_4966613/cmi_baseline.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r2_4966613",
+      "condition": "cmi_profiling",
+      "mean_s": 29.83209666666667,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r2_4966613/cmi_profiling.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r2_4966613",
+      "condition": "cmi_tracing",
+      "mean_s": 29.57872,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r2_4966613/cmi_tracing.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r2_4966613",
+      "condition": "direct_nopreload",
+      "mean_s": 29.391669999999998,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r2_4966613/direct_nopreload.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r3_4966614",
+      "condition": "cmi_baseline",
+      "mean_s": 30.27609,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r3_4966614/cmi_baseline.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r3_4966614",
+      "condition": "cmi_profiling",
+      "mean_s": 30.325689999999998,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r3_4966614/cmi_profiling.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r3_4966614",
+      "condition": "cmi_tracing",
+      "mean_s": 29.714783333333333,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r3_4966614/cmi_tracing.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r3_4966614",
+      "condition": "direct_nopreload",
+      "mean_s": 29.00316,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r3_4966614/direct_nopreload.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r3_4966614",
+      "condition": "direct_preload",
+      "mean_s": 29.912273333333335,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r3_4966614/direct_preload.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r4_4966618",
+      "condition": "cmi_profiling",
+      "mean_s": 31.174646666666668,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r4_4966618/cmi_profiling.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r4_4966618",
+      "condition": "cmi_tracing",
+      "mean_s": 30.47627,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r4_4966618/cmi_tracing.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r4_4966618",
+      "condition": "direct_nopreload",
+      "mean_s": 29.30333,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r4_4966618/direct_nopreload.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r4_4966618",
+      "condition": "direct_preload",
+      "mean_s": 28.557380000000002,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r4_4966618/direct_preload.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r4_4966618",
+      "condition": "cmi_baseline",
+      "mean_s": 31.246916666666667,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r4_4966618/cmi_baseline.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r5_4966621",
+      "condition": "cmi_tracing",
+      "mean_s": 29.679896666666668,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r5_4966621/cmi_tracing.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r5_4966621",
+      "condition": "direct_nopreload",
+      "mean_s": 29.902823333333334,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r5_4966621/direct_nopreload.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r5_4966621",
+      "condition": "direct_preload",
+      "mean_s": 30.445323333333334,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r5_4966621/direct_preload.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r5_4966621",
+      "condition": "cmi_baseline",
+      "mean_s": 30.95892,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r5_4966621/cmi_baseline.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r5_4966621",
+      "condition": "cmi_profiling",
+      "mean_s": 30.256203333333335,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r5_4966621/cmi_profiling.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r1_4966610",
+      "condition": "direct_nopreload",
+      "mean_s": 9.490238666666666,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r1_4966610/direct_nopreload.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r1_4966610",
+      "condition": "direct_preload",
+      "mean_s": 9.468969999999999,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r1_4966610/direct_preload.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r1_4966610",
+      "condition": "cmi_baseline",
+      "mean_s": 9.534863666666666,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r1_4966610/cmi_baseline.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r1_4966610",
+      "condition": "cmi_profiling",
+      "mean_s": 9.522138,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r1_4966610/cmi_profiling.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r1_4966610",
+      "condition": "cmi_tracing",
+      "mean_s": 9.519657333333333,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r1_4966610/cmi_tracing.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r2_4966612",
+      "condition": "direct_preload",
+      "mean_s": 9.549329,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r2_4966612/direct_preload.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r2_4966612",
+      "condition": "cmi_baseline",
+      "mean_s": 9.599231666666666,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r2_4966612/cmi_baseline.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r2_4966612",
+      "condition": "cmi_profiling",
+      "mean_s": 9.632258666666667,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r2_4966612/cmi_profiling.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r2_4966612",
+      "condition": "cmi_tracing",
+      "mean_s": 9.599118,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r2_4966612/cmi_tracing.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r2_4966612",
+      "condition": "direct_nopreload",
+      "mean_s": 9.597552333333333,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r2_4966612/direct_nopreload.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r3_4966616",
+      "condition": "cmi_baseline",
+      "mean_s": 9.129344000000001,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r3_4966616/cmi_baseline.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r3_4966616",
+      "condition": "cmi_profiling",
+      "mean_s": 9.166187666666668,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r3_4966616/cmi_profiling.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r3_4966616",
+      "condition": "cmi_tracing",
+      "mean_s": 9.138222666666666,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r3_4966616/cmi_tracing.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r3_4966616",
+      "condition": "direct_nopreload",
+      "mean_s": 9.150637000000001,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r3_4966616/direct_nopreload.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r3_4966616",
+      "condition": "direct_preload",
+      "mean_s": 9.128889666666666,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r3_4966616/direct_preload.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r4_4966617",
+      "condition": "cmi_profiling",
+      "mean_s": 9.519523999999999,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r4_4966617/cmi_profiling.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r4_4966617",
+      "condition": "cmi_tracing",
+      "mean_s": 9.598477,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r4_4966617/cmi_tracing.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r4_4966617",
+      "condition": "direct_nopreload",
+      "mean_s": 9.505335666666667,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r4_4966617/direct_nopreload.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r4_4966617",
+      "condition": "direct_preload",
+      "mean_s": 9.520161333333334,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r4_4966617/direct_preload.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r4_4966617",
+      "condition": "cmi_baseline",
+      "mean_s": 9.558146666666667,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r4_4966617/cmi_baseline.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r5_4966620",
+      "condition": "cmi_tracing",
+      "mean_s": 9.630829,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r5_4966620/cmi_tracing.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r5_4966620",
+      "condition": "direct_nopreload",
+      "mean_s": 9.582924333333333,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r5_4966620/direct_nopreload.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r5_4966620",
+      "condition": "direct_preload",
+      "mean_s": 9.555919666666666,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r5_4966620/direct_preload.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r5_4966620",
+      "condition": "cmi_baseline",
+      "mean_s": 9.626366,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r5_4966620/cmi_baseline.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r5_4966620",
+      "condition": "cmi_profiling",
+      "mean_s": 9.591749333333333,
+      "measured_calls": 30,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r5_4966620/cmi_profiling.log"
+    }
+  ],
+  "payload": [
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r1_4966611",
+      "condition": "direct_nopreload",
+      "input_mib": 187.945,
+      "output_mib": 10.4414,
+      "preload_mib": 0.0,
+      "ml_calls": 33,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r1_4966611/direct_nopreload.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r1_4966611",
+      "condition": "direct_preload",
+      "input_mib": 93.9727,
+      "output_mib": 10.4414,
+      "preload_mib": 2.84766,
+      "ml_calls": 33,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r1_4966611/direct_preload.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r2_4966613",
+      "condition": "direct_preload",
+      "input_mib": 93.9727,
+      "output_mib": 10.4414,
+      "preload_mib": 2.84766,
+      "ml_calls": 33,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r2_4966613/direct_preload.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r2_4966613",
+      "condition": "direct_nopreload",
+      "input_mib": 187.945,
+      "output_mib": 10.4414,
+      "preload_mib": 0.0,
+      "ml_calls": 33,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r2_4966613/direct_nopreload.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r3_4966614",
+      "condition": "direct_nopreload",
+      "input_mib": 187.945,
+      "output_mib": 10.4414,
+      "preload_mib": 0.0,
+      "ml_calls": 33,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r3_4966614/direct_nopreload.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r3_4966614",
+      "condition": "direct_preload",
+      "input_mib": 93.9727,
+      "output_mib": 10.4414,
+      "preload_mib": 2.84766,
+      "ml_calls": 33,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r3_4966614/direct_preload.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r4_4966618",
+      "condition": "direct_nopreload",
+      "input_mib": 187.945,
+      "output_mib": 10.4414,
+      "preload_mib": 0.0,
+      "ml_calls": 33,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r4_4966618/direct_nopreload.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r4_4966618",
+      "condition": "direct_preload",
+      "input_mib": 93.9727,
+      "output_mib": 10.4414,
+      "preload_mib": 2.84766,
+      "ml_calls": 33,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r4_4966618/direct_preload.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r5_4966621",
+      "condition": "direct_nopreload",
+      "input_mib": 187.945,
+      "output_mib": 10.4414,
+      "preload_mib": 0.0,
+      "ml_calls": 33,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r5_4966621/direct_nopreload.log"
+    },
+    {
+      "platform": "cpu",
+      "job": "cpu_production_r5_4966621",
+      "condition": "direct_preload",
+      "input_mib": 93.9727,
+      "output_mib": 10.4414,
+      "preload_mib": 2.84766,
+      "ml_calls": 33,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/cpu_production_r5_4966621/direct_preload.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r1_4966610",
+      "condition": "direct_nopreload",
+      "input_mib": 4698.63,
+      "output_mib": 261.035,
+      "preload_mib": 0.0,
+      "ml_calls": 33,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r1_4966610/direct_nopreload.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r1_4966610",
+      "condition": "direct_preload",
+      "input_mib": 2349.32,
+      "output_mib": 261.035,
+      "preload_mib": 71.1914,
+      "ml_calls": 33,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r1_4966610/direct_preload.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r2_4966612",
+      "condition": "direct_preload",
+      "input_mib": 2349.32,
+      "output_mib": 261.035,
+      "preload_mib": 71.1914,
+      "ml_calls": 33,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r2_4966612/direct_preload.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r2_4966612",
+      "condition": "direct_nopreload",
+      "input_mib": 4698.63,
+      "output_mib": 261.035,
+      "preload_mib": 0.0,
+      "ml_calls": 33,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r2_4966612/direct_nopreload.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r3_4966616",
+      "condition": "direct_nopreload",
+      "input_mib": 4698.63,
+      "output_mib": 261.035,
+      "preload_mib": 0.0,
+      "ml_calls": 33,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r3_4966616/direct_nopreload.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r3_4966616",
+      "condition": "direct_preload",
+      "input_mib": 2349.32,
+      "output_mib": 261.035,
+      "preload_mib": 71.1914,
+      "ml_calls": 33,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r3_4966616/direct_preload.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r4_4966617",
+      "condition": "direct_nopreload",
+      "input_mib": 4698.63,
+      "output_mib": 261.035,
+      "preload_mib": 0.0,
+      "ml_calls": 33,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r4_4966617/direct_nopreload.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r4_4966617",
+      "condition": "direct_preload",
+      "input_mib": 2349.32,
+      "output_mib": 261.035,
+      "preload_mib": 71.1914,
+      "ml_calls": 33,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r4_4966617/direct_preload.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r5_4966620",
+      "condition": "direct_nopreload",
+      "input_mib": 4698.63,
+      "output_mib": 261.035,
+      "preload_mib": 0.0,
+      "ml_calls": 33,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r5_4966620/direct_nopreload.log"
+    },
+    {
+      "platform": "gpu",
+      "job": "gpu_production_r5_4966620",
+      "condition": "direct_preload",
+      "input_mib": 2349.32,
+      "output_mib": 261.035,
+      "preload_mib": 71.1914,
+      "ml_calls": 33,
+      "source_log": "/rwthfs/rz/cluster/hpcwork/ro092286/smartsim/mini_app/logs/colocated_campaign/colocated_full_4961357/gpu_production_r5_4966620/direct_preload.log"
+    }
+  ]
+}
