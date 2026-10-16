@@ -46,3 +46,8 @@ AIxeleratorService-pipelined/
 
 # Benchmark directory with large result data (not tracked in git)
 batch_memory_benchmark/
+
+# Python cache artifacts
+__pycache__/
+*.pyc
+*.pyo
