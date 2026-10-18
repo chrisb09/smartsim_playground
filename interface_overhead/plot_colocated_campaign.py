@@ -19,7 +19,7 @@ CONDITIONS = ("direct_nopreload", "direct_preload", "cmi_baseline",
 COLORS = {"direct_nopreload": "#487797", "direct_preload": "#84AFB9",
           "cmi_baseline": "#C78645", "cmi_profiling": "#9987AD",
           "cmi_tracing": "#596B59"}
-LABELS = {"direct_nopreload": "Direct\nno preload", "direct_preload": "Direct\nwith preload",
+LABELS = {"direct_nopreload": "Direct", "direct_preload": "Direct\nwith preload",
           "cmi_baseline": "CMI", "cmi_profiling": "CMI\nprofiling",
           "cmi_tracing": "CMI\ntracing"}
 TRAFFIC = re.compile(r"^ML_TRAFFIC input_mb=([\d.eE+-]+) output_mb=([\d.eE+-]+) "
